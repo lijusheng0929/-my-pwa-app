@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>仿微博基金</title>
+  <style>
+    /* ====== 基础与通用样式 ====== */
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, sans-serif; }
+    body { background: #f2f2f2; color: #333; overflow-x: hidden; }
+    
+    .page { display: none; min-height: 100vh; flex-direction: column; background: #f5f5f5; }
+    .page.active { display: flex; }
+
+    /* 顶部导航条 */
+    .nav-bar { display: flex; align-items: center; padding: 10px 15px; background: #fff; position: sticky; top: 0; z-index: 10; }
+    .nav-bar .back { font-size: 24px; color: #333; width: 40px; cursor: pointer; }
+    .nav-bar .title { flex: 1; text-align: center; font-size: 17px; font-weight: 500; }
+    .nav-bar .right-icon { width: 40px; text-align: right; font-size: 20px; color: #666; }
+
+    /* 底部导航 */
+    .bottom-nav { margin-top: auto; display: flex; background: #fff; padding: 8px 0; border-top: 1px solid #eee; position: sticky; bottom: 0; z-index: 10; }
+    .bottom-nav div { flex: 1; text-align: center; font-size: 11px; color: #999; display: flex; flex-direction: column; align-items: center; gap: 4px;}
+    .bottom-nav div.active { color: #ff3b30; }
+    .bottom-nav div i { font-style: normal; font-size: 20px; }
+
+    /* 编辑按钮 */
+    .edit-btn { position: fixed; bottom: 80px; right: 20px; background: #007aff; color: #fff; padding: 12px 20px; border-radius: 30px; font-size: 15px; font-weight: bold; box-shadow: 0 4px 15px rgba(0,122,255,0.4); z-index: 1000; border: none; cursor: pointer; }
+    .editing [contenteditable="true"] { border-bottom: 1px dashed #007aff; background: rgba(0,122,255,0.1); outline: none; }
+
+    /* ====== 页面 1：我的主页 ====== */
+    #page1 { background: #f2f2f2; }
+    .profile-header { background: #fff; padding: 20px 15px; display: flex; align-items: center; gap: 15px; }
+    .profile-header img { width: 70px; height: 70px; border-radius: 50%; }
+    .profile-info h2 { font-size: 18px; margin-bottom: 5px; }
+    .profile-info p { font-size: 13px; color: #999; }
+    .wallet-card { background: #fff; margin: 10px 15px; padding: 20px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.03); cursor: pointer; }
+    .wallet-card .left h3 { font-size: 16px; margin-bottom: 8px; }
+    .wallet-card .left .num { font-size: 22px; font-weight: bold; }
+    .wallet-card .left .desc { font-size: 12px; color: #999; margin-top: 5px; }
+    .btn-orange { background: #ff8200; color: #fff; padding: 8px 16px; border-radius: 20px; font-size: 14px; }
+
+    /* ====== 页面 2：钱包 ====== */
+    #page2 { background: #fff; }
+    .wallet-header { background: linear-gradient(180deg, #fff5f0, #fff); padding: 20px 15px; text-align: center; }
+    .wallet-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px 10px; padding: 20px 15px; }
+    .menu-item { text-align: center; cursor: pointer; }
+    .menu-item .icon-box { width: 48px; height: 48px; margin: 0 auto 8px; border-radius: 16px; display: flex; justify-content: center; align-items: center; font-size: 20px; font-weight: bold; }
+    .menu-item span { font-size: 13px; color: #333; }
+    .icon-jie { background: #fff0e0; color: #ff8200; }
+    .icon-li { background: #fff0e0; color: #ff8200; }
+    .icon-ji { background: #e0f0ff; color: #0066cc; }
+    .icon-bao { background: #fff0e0; color: #ff8200; }
+
+    /* ====== 页面 3：基金首页 ====== */
+    #page3 { background: #f5f5f5; }
+    .fund-hero { background: linear-gradient(135deg, #ff4d4d, #ff7b61); color: #fff; padding: 20px 15px 30px; position: relative; }
+    .fund-hero .search { background: rgba(255,255,255,0.2); border-radius: 20px; padding: 8px 15px; font-size: 13px; display: flex; align-items: center; gap: 5px; margin-bottom: 20px; }
+    .fund-hero .asset-row { display: flex; justify-content: space-between; margin-bottom: 15px; }
+    .fund-hero .asset-item h4 { font-size: 13px; opacity: 0.9; margin-bottom: 5px; font-weight: normal; }
+    .fund-hero .asset-item .val { font-size: 26px; font-weight: bold; }
+    .fund-hero .asset-item .profit-val { font-size: 22px; font-weight: bold; display: flex; align-items: center; gap: 5px; cursor: pointer;}
+    
+    .fund-card { background: #fff; border-radius: 12px; margin: -15px 15px 15px; padding: 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: relative; z-index: 2; }
+    .fund-card .tag { background: #ffebee; color: #ff3b30; font-size: 12px; padding: 3px 10px; border-radius: 10px; display: inline-block; margin-bottom: 10px; }
+    .fund-card h3 { font-size: 18px; color: #333; margin-bottom: 5px; }
+    .fund-card h4 { font-size: 16px; color: #666; margin-bottom: 15px; font-weight: normal;}
+    .fund-card .big-rate { font-size: 42px; color: #ff3b30; font-weight: bold; margin-bottom: 5px;}
+    .fund-card .rate-desc { font-size: 12px; color: #999; margin-bottom: 20px;}
+    .fund-card .btn-buy { background: #ff3b30; color: #fff; padding: 12px; border-radius: 25px; font-size: 16px; font-weight: bold; cursor: pointer; }
+
+    .quick-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px 5px; padding: 0 15px; }
+    .quick-item { text-align: center; font-size: 12px; color: #333;}
+    .quick-item .q-icon { font-size: 24px; margin-bottom: 5px; color: #666;}
+
+    /* ====== 页面 4：收益分析 ====== */
+    #page4 { background: #f5f5f5; }
+    .analysis-top { display: flex; background: #fff; border-bottom: 1px solid #eee; }
+    .analysis-top div { flex: 1; text-align: center; padding: 15px 0; font-size: 15px; color: #666; }
+    .analysis-top div.active { color: #ff3b30; font-weight: bold; position: relative; }
+    .analysis-top div.active::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 30px; height: 3px; background: #ff3b30; border-radius: 2px; }
+
+    .time-tabs { display: flex; gap: 10px; padding: 15px; background: #fff; overflow-x: auto; }
+    .time-tabs div { padding: 6px 15px; border-radius: 20px; background: #f5f5f5; font-size: 13px; color: #666; white-space: nowrap; }
+    .time-tabs div.active { background: #ffeeee; color: #ff3b30; }
+
+    .data-box { background: #fff; padding: 0 15px 20px; }
+    .data-box h2 { font-size: 18px; margin-bottom: 15px; }
+    .data-row { display: flex; background: #fdf6f6; border-radius: 8px; padding: 15px 0; }
+    .data-col { flex: 1; text-align: center; border-right: 1px solid #f0e0e0; }
+    .data-col:last-child { border-right: none; }
+    .data-col p { font-size: 12px; color: #888; margin-bottom: 5px; }
+    .data-col h3 { font-size: 18px; color: #00a854; }
+
+    .chart-box { background: #fff; padding: 15px; margin: 10px 0; }
+    .chart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .chart-header h3 { font-size: 16px; }
+    .toggle-switch { display: flex; background: #f5f5f5; border-radius: 15px; font-size: 12px; }
+    .toggle-switch div { padding: 5px 15px; color: #666; }
+    .toggle-switch div.active { background: #fff; font-weight: bold; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-radius: 15px; }
+    
+    /* 高仿折线图 */
+    .chart-wrapper { position: relative; height: 200px; border: 1px solid #f0f0f0; background: #fff; }
+    .chart-svg { width: 100%; height: 100%; position: absolute; top:0; left:0; }
+    .chart-tag { position: absolute; font-size: 11px; padding: 3px 8px; border-radius: 4px; color: #fff; }
+    .tag-red { background: #ff3b30; top: 20%; left: 30%; }
+    .tag-green { background: #00a854; bottom: 30%; right: 10%; }
+    .tag-green2 { background: #00a854; bottom: 5%; right: 5%; }
+
+    .cal-box { background: #fff; padding: 15px; margin-bottom: 10px; }
+    .cal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+    .cal-header h3 { font-size: 16px; }
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; text-align: center; }
+    .cal-day { font-size: 12px; color: #888; padding: 10px 0; }
+    .cal-item { height: 55px; border-radius: 6px; background: #f7f7f7; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 2px; }
+    .cal-item .d { font-size: 14px; font-weight: bold; color: #333; }
+    .cal-item .v { font-size: 10px; }
+    .cal-item.profit { background: #ffebee; }
+    .cal-item.profit .v { color: #ff3b30; }
+    .cal-item.loss { background: #e8f5e9; }
+    .cal-item.loss .v { color: #00a854; }
+    .cal-item.active { background: #007aff; }
+    .cal-item.active .d, .cal-item.active .v { color: #fff; }
+
+    .metrics-box { background: #fff; padding: 15px; }
+    .metrics-header { display: flex; justify-content: space-between; margin-bottom: 15px; }
+    .metrics-header h3 { font-size: 16px; }
+    .metrics-header span { font-size: 12px; color: #999; }
+    table { width: 100%; border-collapse: collapse; text-align: center; font-size: 14px; }
+    th { color: #666; font-weight: normal; padding: 10px 0; border-bottom: 1px solid #f0f0f0; }
+    td { padding: 12px 0; border-bottom: 1px solid #f0f0f0; }
+    .green-text { color: #00a854; }
+  </style>
+</head>
+<body>
+
+  <!-- 悬浮编辑按钮 -->
+  <button class="edit-btn" id="editBtn" onclick="toggleEdit()">✏️ 编辑数据</button>
+
+  <!-- ================= 页面 1：我的 ================= -->
+  <div id="page1" class="page active">
+    <div class="nav-bar" style="background: transparent; position: absolute; width: 100%; border: none;">
+      <div class="back"></div>
+      <div class="title"></div>
+      <div class="right-icon">⚙️</div>
+    </div>
+    
+    <div class="profile-header" style="padding-top: 50px;">
+      <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Felix" alt="头像">
+      <div class="profile-info">
+        <h2 contenteditable="false" data-key="userName">废话一大堆 0619</h2>
+        <p contenteditable="false" data-key="userDesc">简介：暂无简介</p>
+      </div>
+    </div>
+
+    <!-- 点击进入钱包 -->
+    <div class="wallet-card" onclick="goToPage('page2')">
+      <div class="left">
+        <h3>我的钱包</h3>
+        <div class="num" contenteditable="false" data-key="walletAmount">3.07万</div>
+        <div class="desc">可借额度</div>
+      </div>
+      <div class="btn-orange">查看详情 ></div>
+    </div>
+
+    <div class="bottom-nav">
+      <div><i>🏠</i>首页</div>
+      <div><i>🎬</i>视频</div>
+      <div><i>🔍</i>发现</div>
+      <div><i>💬</i>消息</div>
+      <div class="active"><i>👤</i>我</div>
+    </div>
+  </div>
+
+  <!-- ================= 页面 2：钱包 ================= -->
+  <div id="page2" class="page">
+    <div class="nav-bar">
+      <div class="back" onclick="goToPage('page1')">‹</div>
+      <div class="title">微博钱包</div>
+      <div class="right-icon">⚙️</div>
+    </div>
+    
+    <div class="wallet-header">
+      <div style="font-size: 18px; font-weight: bold; margin-bottom: 5px;">金融理财</div>
+    </div>
+
+    <div class="wallet-grid">
+      <div class="menu-item"><div class="icon-box icon-jie">借</div><span>借钱</span></div>
+      <div class="menu-item"><div class="icon-box icon-li">理</div><span>理财</span></div>
+      <!-- 点击进入基金首页 -->
+      <div class="menu-item" onclick="goToPage('page3')"><div class="icon-box icon-ji">基</div><span>基金</span></div>
+      <div class="menu-item"><div class="icon-box icon-bao">保</div><span>保险</span></div>
+      <div class="menu-item"><div class="icon-box icon-jie">租</div><span>租赁·手机</span></div>
+    </div>
+
+    <div style="padding: 20px 15px;">
+      <h3 style="font-size: 16px; margin-bottom: 15px;">娱乐购物</h3>
+      <div class="wallet-grid" style="padding: 0;">
+        <div class="menu-item"><div class="icon-box" style="background:#f0f8ff;color:#007aff;">⏰</div><span>早起打卡</span></div>
+        <div class="menu-item"><div class="icon-box" style="background:#fff0f0;color:#ff3b30;">🔄</div><span>旧手机换钱</span></div>
+        <div class="menu-item"><div class="icon-box" style="background:#fff8e0;color:#ff9500;">🎁</div><span>福利赏</span></div>
+        <div class="menu-item"><div class="icon-box" style="background:#fff8e0;color:#ff9500;">👑</div><span>联合会员</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= 页面 3：基金首页 ================= -->
+  <div id="page3" class="page">
+    <div class="nav-bar" style="background: transparent; position: absolute; width: 100%; color: #fff; border: none;">
+      <div class="back" onclick="goToPage('page2')" style="color: #fff;">‹</div>
+      <div class="title" style="color: #fff;">首页</div>
+      <div class="right-icon" style="color: #fff;">...</div>
+    </div>
+
+    <div class="fund-hero">
+      <div class="search" style="margin-top: 40px;">
+        <span>🔍</span> 请输入基金简称/代码
+      </div>
+      
+      <div class="asset-row">
+        <div class="asset-item">
+          <h4>总资产(元)</h4>
+          <div class="val" contenteditable="false" data-key="totalAsset">336,201.01</div>
+        </div>
+        <!-- 点击进入收益详情 -->
+        <div class="asset-item" onclick="goToPage('page4')">
+          <h4>最新收益(元)</h4>
+          <div class="profit-val">
+            <span contenteditable="false" data-key="latestProfit">-1,948.29</span> 
+            <span style="font-weight:normal; font-size:16px;">></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fund-card">
+      <div class="tag">💰 明星基金</div>
+      <h3>灵活配置聚焦科技赛道</h3>
+      <h4>易方达产业机遇混合C</h4>
+      <div class="big-rate">97.41%</div>
+      <div class="rate-desc">近一年涨幅</div>
+      <div class="btn-buy">立即买入</div>
+    </div>
+
+    <div class="quick-grid">
+      <div class="quick-item"><div class="q-icon">⭐</div>基金排行</div>
+      <div class="quick-item"><div class="q-icon">💰</div>备用金</div>
+      <div class="quick-item"><div class="q-icon">🔴</div>债基正收益</div>
+      <div class="quick-item"><div class="q-icon">🎯</div>11月推荐</div>
+      <div class="quick-item"><div class="q-icon">💎</div>VIP会员</div>
+      <div class="quick-item"><div class="q-icon">🔥</div>今日热搜</div>
+      <div class="quick-item"><div class="q-icon">🆕</div>新发基金</div>
+      <div class="quick-item"><div class="q-icon">📈</div>指数监控</div>
+      <div class="quick-item"><div class="q-icon">🇭🇰</div>香港互认</div>
+    </div>
+
+    <div class="bottom-nav">
+      <div class="active"><i>🏠</i>首页</div>
+      <div><i>⭐</i>自选</div>
+      <div><i>📊</i>选基</div>
+      <div><i>👔</i>投顾</div>
+      <div><i>👤</i>我的</div>
+    </div>
+  </div>
+
+  <!-- ================= 页面 4：资产收益分析 ================= -->
+  <div id="page4" class="page">
+    <div class="nav-bar">
+      <div class="back" onclick="goToPage('page3')">‹</div>
+      <div class="title">资产收益分析</div>
+      <div class="right-icon">...</div>
+    </div>
+
+    <div class="analysis-top">
+      <div>持仓分析</div>
+      <div class="active">收益分析</div>
+    </div>
+
+    <div class="time-tabs">
+      <div class="active">本月收益</div>
+      <div>近3月收益</div>
+      <div>近6月收益</div>
+      <div>今年以来收益</div>
+    </div>
+
+    <div class="data-box">
+      <h2>本月收益(元)</h2>
+      <div class="data-row">
+        <div class="data-col">
+          <p>本月收益金额</p>
+          <h3 contenteditable="false" data-key="mProfit">-4,572.76</h3>
+        </div>
+        <div class="data-col">
+          <p>本月收益率</p>
+          <h3 contenteditable="false" data-key="mRate">-1.34%</h3>
+        </div>
+        <div class="data-col">
+          <p>同期沪深300</p>
+          <h3 contenteditable="false" data-key="hs300">-0.04%</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-box">
+      <div class="chart-header">
+        <h3>收益走势 ⓘ</h3>
+        <div class="toggle-switch">
+          <div class="active">收益</div>
+          <div>收益率</div>
+        </div>
+      </div>
+      <div class="chart-wrapper">
+        <!-- 完美的 SVG 折线图 -->
+        <svg class="chart-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="gRed" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#ff3b30" stop-opacity="0.2"/>
+              <stop offset="100%" stop-color="#ff3b30" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="gGreen" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#00a854" stop-opacity="0.2"/>
+              <stop offset="100%" stop-color="#00a854" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <!-- 绿线（下跌段） -->
+          <path d="M 50 30 L 60 60 L 75 70 L 90 85 L 100 95 L 100 100 L 50 100 Z" fill="url(#gGreen)" />
+          <path d="M 50 30 L 60 60 L 75 70 L 90 85 L 100 95" fill="none" stroke="#00a854" stroke-width="1.5" />
+          <!-- 红线（上涨段） -->
+          <path d="M 0 80 L 15 60 L 25 70 L 35 30 L 50 30 L 50 100 L 0 100 Z" fill="url(#gRed)" />
+          <path d="M 0 80 L 15 60 L 25 70 L 35 30 L 50 30" fill="none" stroke="#ff3b30" stroke-width="1.5" />
+          <!-- 分隔线 -->
+          <line x1="50" y1="0" x2="50" y2="100" stroke="#eee" stroke-dasharray="2,2" />
+        </svg>
+        <!-- 悬浮标签 -->
+        <div class="chart-tag tag-red" contenteditable="false" data-key="tag1">最高收益 19103.48元</div>
+        <div class="chart-tag tag-green" contenteditable="false" data-key="tag2">最大回撤 6.57% (13天)</div>
+        <div class="chart-tag tag-green2" contenteditable="false" data-key="tag3">最低收益 -4572.76元</div>
+      </div>
+    </div>
+
+    <div class="cal-box">
+      <div class="cal-header">
+        <h3>◀ 2026年11月</h3>
+        <div class="toggle-switch">
+          <div class="active">金额</div>
+          <div>收益率</div>
+        </div>
+      </div>
+      <div class="cal-grid">
+        <div class="cal-day">日</div><div class="cal-day">一</div><div class="cal-day">二</div>
+        <div class="cal-day">三</div><div class="cal-day">四</div><div class="cal-day">五</div><div class="cal-day">六</div>
+
+        <!-- 第一周 -->
+        <div class="cal-item"><div class="d">1</div><div class="v">0</div></div>
+        <div class="cal-item profit"><div class="d">2</div><div class="v" contenteditable="false" data-key="c2">4713.41</div></div>
+        <div class="cal-item loss"><div class="d">3</div><div class="v" contenteditable="false" data-key="c3">-2398.99</div></div>
+        <div class="cal-item profit"><div class="d">4</div><div class="v" contenteditable="false" data-key="c4">10914.64</div></div>
+        <div class="cal-item profit"><div class="d">5</div><div class="v" contenteditable="false" data-key="c5">5874.42</div></div>
+        <div class="cal-item loss"><div class="d">6</div><div class="v" contenteditable="false" data-key="c6">-5066.32</div></div>
+        <div class="cal-item"><div class="d">7</div><div class="v">0</div></div>
+        
+        <!-- 第二周 -->
+        <div class="cal-item"><div class="d">8</div><div class="v">0</div></div>
+        <div class="cal-item profit"><div class="d">9</div><div class="v">420.82</div></div>
+        <div class="cal-item profit"><div class="d">10</div><div class="v">2791.64</div></div>
+        <div class="cal-item profit"><div class="d">11</div><div class="v">1533.33</div></div>
+        <div class="cal-item loss"><div class="d">12</div><div class="v">-5879.54</div></div>
+        <div class="cal-item loss"><div class="d">13</div><div class="v">-4709.98</div></div>
+        <div class="cal-item"><div class="d">14</div><div class="v">0</div></div>
+
+        <!-- 第三周 -->
+        <div class="cal-item"><div class="d">15</div><div class="v">0</div></div>
+        <div class="cal-item loss"><div class="d">16</div><div class="v">-6866.33</div></div>
+        <div class="cal-item loss"><div class="d">17</div><div class="v">-3951.57</div></div>
+        <div class="cal-item active"><div class="d">18</div><div class="v" contenteditable="false" data-key="c18">-1948.29</div></div>
+        <div class="cal-item"><div class="d">19</div><div class="v">0</div></div>
+        <div class="cal-item"><div class="d">20</div><div class="v">0</div></div>
+        <div class="cal-item"><div class="d">21</div><div class="v">0</div></div>
+        
+        <!-- 第四周 -->
+        <div class="cal-item"><div class="d">22</div><div class="v">0</div></div>
+        <div class="cal-item"><div class="d">23</div><div class="v">0</div></div>
+        <div class="cal-item"><div class="d">24</div><div class="v">0</div></div>
+        <div class="cal-item"><div class="d">25</div><div class="v">0</div></div>
+        <div class="cal-item"><div class="d">26</div><div class="v">0</div></div>
+        <div class="cal-item"><div class="d">27</div><div class="v">0</div></div>
+        <div class="cal-item"><div class="d">28</div><div class="v">0</div></div>
+        
+        <!-- 第五周 -->
+        <div class="cal-item"><div class="d">29</div><div class="v">0</div></div>
+        <div class="cal-item"><div class="d">30</div><div class="v">0</div></div>
+      </div>
+    </div>
+
+    <div class="metrics-box">
+      <div class="metrics-header">
+        <h3>核心指标</h3>
+        <span>本月 ▼</span>
+      </div>
+      <table>
+        <tr>
+          <th>核心指标</th>
+          <th>账户区间收益</th>
+          <th>沪深300</th>
+        </tr>
+        <tr>
+          <td>收益率</td>
+          <td class="green-text" contenteditable="false" data-key="tRate">-1.34%</td>
+          <td class="green-text">-0.04%</td>
+        </tr>
+        <tr>
+          <td>最大回撤</td>
+          <td style="font-weight:bold;" contenteditable="false" data-key="tDrawdown">6.57%</td>
+          <td style="font-weight:bold;">3.33%</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    // 页面跳转
+    function goToPage(pageId) {
+      if (document.body.classList.contains('editing')) return;
+      var pages = document.querySelectorAll('.page');
+      pages.forEach(p => p.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+      window.scrollTo(0, 0);
+    }
+
+    // 编辑与保存逻辑
+    const isLocked = localStorage.getItem('isLocked') === 'true';
+    
+    window.onload = function() {
+      const editables = document.querySelectorAll('[data-key]');
+      
+      // 载入本地数据
+      editables.forEach(el => {
+        const val = localStorage.getItem(el.getAttribute('data-key'));
+        if (val !== null) el.innerText = val;
+      });
+
+      // 如果之前已经保存锁定过
+      if (isLocked) {
+        document.getElementById('editBtn').style.display = 'none';
+        editables.forEach(el => el.setAttribute('contenteditable', 'false'));
+      }
+    };
+
+    let isEditing = false;
+    function toggleEdit() {
+      isEditing = !isEditing;
+      const btn = document.getElementById('editBtn');
+      const editables = document.querySelectorAll('[data-key]');
+      
+      if (isEditing) {
+        btn.innerHTML = '💾 保存并锁定';
+        btn.style.background = '#ff3b30';
+        btn.style.boxShadow = '0 4px 15px rgba(255,59,48,0.4)';
+        document.body.classList.add('editing');
+        editables.forEach(el => el.setAttribute('contenteditable', 'true'));
+      } else {
+        if(!confirm('保存后无法再次修改，确定保存吗？')) {
+          isEditing = true; 
+          return;
+        }
+        
+        btn.style.display = 'none'; 
+        document.body.classList.remove('editing');
+        editables.forEach(el => {
+          el.setAttribute('contenteditable', 'false');
+          localStorage.setItem(el.getAttribute('data-key'), el.innerText);
+        });
+        
+        localStorage.setItem('isLocked', 'true');
+        alert('数据已保存并锁定，网页刷新也不会丢失！');
+      }
+    }
+  </script>
+</body>
+</html>
