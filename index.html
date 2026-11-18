@@ -391,4 +391,21 @@
         btn.style.background = '#ff3b30';
         btn.style.boxShadow = '0 4px 15px rgba(255,59,48,0.4)';
         document.body.classList.add('editing');
-        editables.forEach(el => el.setAttribute('contented
+        editables.forEach(el => el.setAttribute('contenteditable', 'true'));
+      } else {
+        if(!confirm('保存后无法再次修改，确定保存吗？')) {
+          isEditing = true; return;
+        }
+        btn.style.display = 'none'; 
+        document.body.classList.remove('editing');
+        editables.forEach(el => {
+          el.setAttribute('contenteditable', 'false');
+          localStorage.setItem(el.getAttribute('data-key'), el.innerText);
+        });
+        localStorage.setItem('isLocked_pwa', 'true');
+        alert('数据已保存并锁定！');
+      }
+    }
+  </script>
+</body>
+</html>
