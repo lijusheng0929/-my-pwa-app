@@ -64,11 +64,22 @@
     .chart-box { background: #fff; padding: 15px; margin: 10px 0; }
     .chart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
     .chart-header h3 { font-size: 16px; }
-    .chart-wrapper { position: relative; height: 220px; border: 1px solid #f0f0f0; background: #fff; border-radius: 8px; overflow: hidden;}
+    
+    /* 图表美化区 */
+    .chart-wrapper { position: relative; height: 230px; border: 1px solid #f0f0f0; background: #fff; border-radius: 8px; overflow: hidden; margin-bottom: 10px;}
     .chart-svg { width: 100%; height: 100%; position: absolute; top:0; left:0; }
-    .chart-tag { position: absolute; font-size: 11px; padding: 3px 8px; border-radius: 4px; color: #fff; }
+    .chart-tag { position: absolute; font-size: 11px; padding: 4px 8px; border-radius: 4px; color: #fff; z-index: 2;}
     .tag-red { background: #ff3b30; }
     .tag-green { background: #00a854; }
+    
+    /* 顶部小字 */
+    .chart-top-info { display: flex; font-size: 12px; color: #666; margin-bottom: 10px; align-items: center; }
+    .chart-top-info span { margin-right: 15px; }
+    
+    /* 左右坐标 */
+    .y-axis { position: absolute; left: 10px; top: 10px; bottom: 30px; display: flex; flex-direction: column; justify-content: space-between; font-size: 10px; color: #999; z-index: 2;}
+    .y-axis div { background: #fff; padding-right: 5px;}
+    .x-axis { position: absolute; bottom: 5px; left: 10px; right: 10px; display: flex; justify-content: space-between; font-size: 10px; color: #999; z-index: 2;}
 
     .metrics-box { background: #fff; padding: 15px; margin-bottom: 20px;}
     .metrics-header { display: flex; justify-content: space-between; margin-bottom: 15px; }
@@ -78,9 +89,8 @@
     td { padding: 12px 0; border-bottom: 1px solid #f0f0f0; }
     .green-text { color: #00a854; }
 
-    /* ====== 新增：持仓分析专属样式 ====== */
+    /* ====== 持仓分析专属样式 ====== */
     .holdings-top { background: #fff; padding: 20px 15px; display: flex; align-items: center; justify-content: space-around; margin-bottom: 10px;}
-    /* 纯CSS画环形图 */
     .donut-chart { width: 130px; height: 130px; border-radius: 50%; background: conic-gradient(#ff6b00 99%, #ffe6d9 0); display: flex; justify-content: center; align-items: center; position: relative;}
     .donut-inner { width: 90px; height: 90px; background: #fff; border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; }
     .donut-inner h3 { font-size: 15px; margin-bottom: 2px;}
@@ -93,9 +103,9 @@
     .legend-val { font-weight: bold; width: 80px; text-align: right;}
     
     .section-title { font-size: 18px; font-weight: bold; padding: 15px; background: #fff;}
-    
     .empty-state { text-align: center; padding: 40px 0; color: #999; font-size: 14px; background: #fff; margin-bottom: 20px;}
     .refresh-btn { float: right; font-size: 13px; color: #666; font-weight: normal;}
+
   </style>
 </head>
 <body>
@@ -148,17 +158,15 @@
       <div class="back" onclick="goToPage('page3')">‹</div><div class="title">资产收益分析</div><div class="right-icon">...</div>
     </div>
     
-    <!-- 顶部 Tab 切换：持仓 / 收益 -->
     <div class="analysis-top">
       <div id="tab-holdings" class="active" onclick="switchMainTab('holdings')">持仓分析</div>
       <div id="tab-profit" onclick="switchMainTab('profit')">收益分析</div>
     </div>
 
     <!-- ================================== -->
-    <!-- 第一部分：持仓分析 (默认显示) -->
+    <!-- 第一部分：持仓分析 -->
     <!-- ================================== -->
     <div id="view-holdings">
-      <!-- 环形图与明细 -->
       <div class="holdings-top">
         <div class="donut-chart">
           <div class="donut-inner">
@@ -176,7 +184,6 @@
 
       <div class="section-title">资产变动</div>
       
-      <!-- 时间切换 -->
       <div class="time-tabs">
         <div class="active" onclick="switchHoldingTime('hold-month', this)">本月</div>
         <div onclick="switchHoldingTime('hold-1month', this)">近一月</div>
@@ -185,88 +192,52 @@
         <div onclick="switchHoldingTime('hold-3year', this)">近三年</div>
       </div>
 
-      <!-- 图表区域 -->
       <div class="chart-box" style="margin-top: 0;">
         <!-- 视图 1：本月 -->
         <div id="hold-month" class="hold-view">
-          <div style="display:flex; font-size:12px; margin-bottom:10px;">
-            <span style="margin-right:15px; color:#666;">2026-11-19</span>
-            <span style="color:#666;"><span style="color:#ff3b30;">●</span> 最新资产 <span style="color:#ff3b30;" contenteditable="false" data-key="h1_m">+336201.01</span></span>
+          <div class="chart-top-info">
+            <span>2026-11-19</span>
+            <span><span style="color:#ff3b30;">●</span> 最新资产 <span style="color:#ff3b30;" contenteditable="false" data-key="h1_m">+336201.01</span></span>
           </div>
           <div class="chart-wrapper">
+            <div class="y-axis"><div>360000.00</div><div>348000.00</div><div>336000.00</div></div>
             <svg class="chart-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-              <defs><linearGradient id="gOrange" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#ff6b00" stop-opacity="0.2"/><stop offset="100%" stop-color="#ff6b00" stop-opacity="0"/></linearGradient></defs>
-              <path d="M 0 80 L 20 60 L 35 50 L 50 40 L 65 55 L 80 45 L 100 90 L 100 100 L 0 100 Z" fill="url(#gOrange)" />
-              <path d="M 0 80 L 20 60 L 35 50 L 50 40 L 65 55 L 80 45 L 100 90" fill="none" stroke="#ff6b00" stroke-width="1.5" />
+              <defs><linearGradient id="gOrange" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#ff6b00" stop-opacity="0.15"/><stop offset="100%" stop-color="#ff6b00" stop-opacity="0"/></linearGradient></defs>
+              <path d="M 0 85 L 15 65 L 25 75 L 40 30 L 55 50 L 75 40 L 90 75 L 100 85 L 100 100 L 0 100 Z" fill="url(#gOrange)" />
+              <path d="M 0 85 L 15 65 L 25 75 L 40 30 L 55 50 L 75 40 L 90 75 L 100 85" fill="none" stroke="#ff6b00" stroke-width="1.5" />
+              <circle cx="40" cy="30" r="2" fill="#fff" stroke="#ff6b00" stroke-width="1.5"/>
+              <circle cx="100" cy="85" r="2" fill="#00a854" stroke="#fff" stroke-width="1.5"/>
             </svg>
-            <div class="chart-tag tag-red" style="top: 30%; left: 30%;" contenteditable="false" data-key="h1_tag1">最高资产 359917.13元</div>
-            <div class="chart-tag tag-green" style="bottom: 5%; right: 5%;" contenteditable="false" data-key="h1_tag2">最低资产 336201.01元</div>
+            <div class="chart-tag tag-red" style="top: 25%; left: 25%;" contenteditable="false" data-key="h1_tag1">最高资产 359917.13元</div>
+            <div class="chart-tag tag-green" style="bottom: 15%; right: 5%;" contenteditable="false" data-key="h1_tag2">最低资产 336201.01元</div>
+            <div class="x-axis"><div>2026-11-02</div><div>2026-11-19</div></div>
           </div>
         </div>
 
-        <!-- 视图 2：近一月 -->
-        <div id="hold-1month" class="hold-view" style="display: none;">
-          <div style="display:flex; font-size:12px; margin-bottom:10px;">
-            <span style="margin-right:15px; color:#666;">2026-11-19</span>
-            <span style="color:#666;"><span style="color:#ff3b30;">●</span> 最新资产 <span style="color:#ff3b30;" contenteditable="false" data-key="h2_m">+336201.01</span></span>
-          </div>
-          <div class="chart-wrapper">
-            <svg class="chart-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-              <path d="M 0 60 L 15 40 L 30 65 L 45 55 L 60 70 L 75 50 L 90 80 L 100 90 L 100 100 L 0 100 Z" fill="url(#gOrange)" />
-              <path d="M 0 60 L 15 40 L 30 65 L 45 55 L 60 70 L 75 50 L 90 80 L 100 90" fill="none" stroke="#ff6b00" stroke-width="1.5" />
-            </svg>
-            <div class="chart-tag tag-red" style="top: 35%; left: 65%;" contenteditable="false" data-key="h2_tag1">最高资产 359917.13元</div>
-            <div class="chart-tag tag-green" style="bottom: 5%; right: 5%;" contenteditable="false" data-key="h2_tag2">最低资产 336201.01元</div>
-          </div>
-        </div>
-
-        <!-- 视图 3：近三个月 -->
-        <div id="hold-3month" class="hold-view" style="display: none;">
-          <div style="display:flex; font-size:12px; margin-bottom:10px;">
-            <span style="margin-right:15px; color:#666;">2026-11-19</span>
-            <span style="color:#666;"><span style="color:#ff3b30;">●</span> 最新资产 <span style="color:#ff3b30;" contenteditable="false" data-key="h3_m">+336201.01</span></span>
-          </div>
-          <div class="chart-wrapper">
-            <svg class="chart-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-              <path d="M 0 20 L 20 30 L 40 25 L 60 50 L 80 40 L 100 90 L 100 100 L 0 100 Z" fill="url(#gOrange)" />
-              <path d="M 0 20 L 20 30 L 40 25 L 60 50 L 80 40 L 100 90" fill="none" stroke="#ff6b00" stroke-width="1.5" />
-            </svg>
-            <div class="chart-tag tag-red" style="top: 15%; left: 5%;" contenteditable="false" data-key="h3_tag1">最高资产 378570.27元</div>
-            <div class="chart-tag tag-green" style="bottom: 5%; right: 5%;" contenteditable="false" data-key="h3_tag2">最低资产 336201.01元</div>
-          </div>
-        </div>
-
-        <!-- 视图 4：近六月 -->
+        <!-- 视图 4：近六月 (展示截图中的锯齿图) -->
         <div id="hold-6month" class="hold-view" style="display: none;">
-           <div style="display:flex; font-size:12px; margin-bottom:10px;">
-            <span style="margin-right:15px; color:#666;">2026-11-19</span>
-            <span style="color:#666;"><span style="color:#ff3b30;">●</span> 最新资产 <span style="color:#ff3b30;" contenteditable="false" data-key="h4_m">+336201.01</span></span>
+           <div class="chart-top-info">
+            <span>2026-11-19</span>
+            <span><span style="color:#ff3b30;">●</span> 最新资产 <span style="color:#ff3b30;" contenteditable="false" data-key="h4_m">+336201.01</span></span>
           </div>
           <div class="chart-wrapper">
+            <div class="y-axis"><div>480000.00</div><div>360000.00</div><div>240000.00</div><div>120000.00</div></div>
             <svg class="chart-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-              <path d="M 0 90 L 10 10 L 20 10 L 25 40 L 30 10 L 40 15 L 70 20 L 90 25 L 100 20 L 100 100 L 0 100 Z" fill="url(#gOrange)" />
-              <path d="M 0 90 L 10 10 L 20 10 L 25 40 L 30 10 L 40 15 L 70 20 L 90 25 L 100 20" fill="none" stroke="#ff6b00" stroke-width="1.5" />
+              <path d="M 0 95 L 5 95 L 10 20 L 20 20 L 25 55 L 30 20 L 40 25 L 50 25 L 60 35 L 70 30 L 80 40 L 90 35 L 100 45 L 100 100 L 0 100 Z" fill="url(#gOrange)" />
+              <path d="M 0 95 L 5 95 L 10 20 L 20 20 L 25 55 L 30 20 L 40 25 L 50 25 L 60 35 L 70 30 L 80 40 L 90 35 L 100 45" fill="none" stroke="#ff6b00" stroke-width="1.5" />
+              <circle cx="5" cy="95" r="2" fill="#00a854" stroke="#fff" stroke-width="1.5"/>
+              <circle cx="10" cy="20" r="2" fill="#fff" stroke="#ff6b00" stroke-width="1.5"/>
             </svg>
-            <div class="chart-tag tag-red" style="top: 5%; left: 15%;" contenteditable="false" data-key="h4_tag1">最高资产 406323.16元</div>
-            <div class="chart-tag tag-green" style="bottom: 5%; left: 10%;" contenteditable="false" data-key="h4_tag2">最低资产 61105.73元</div>
+            <div class="chart-tag tag-red" style="top: 12%; left: 12%;" contenteditable="false" data-key="h4_tag1">最高资产 406323.16元</div>
+            <div class="chart-tag tag-green" style="bottom: 15%; left: 5%;" contenteditable="false" data-key="h4_tag2">最低资产 61105.73元</div>
+            <div class="x-axis"><div>2026-05-19</div><div>2026-11-19</div></div>
           </div>
         </div>
 
-        <!-- 视图 5：近三年 -->
-        <div id="hold-3year" class="hold-view" style="display: none;">
-          <div style="display:flex; font-size:12px; margin-bottom:10px;">
-            <span style="margin-right:15px; color:#666;">2026-11-19</span>
-            <span style="color:#666;"><span style="color:#ff3b30;">●</span> 最新资产 <span style="color:#ff3b30;" contenteditable="false" data-key="h5_m">+336201.01</span></span>
-          </div>
-          <div class="chart-wrapper">
-            <svg class="chart-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-              <path d="M 0 90 L 70 90 L 75 10 L 80 60 L 100 20 L 100 100 L 0 100 Z" fill="url(#gOrange)" />
-              <path d="M 0 90 L 70 90 L 75 10 L 80 60 L 100 20" fill="none" stroke="#ff6b00" stroke-width="1.5" />
-            </svg>
-            <div class="chart-tag tag-red" style="top: 5%; right: 15%;" contenteditable="false" data-key="h5_tag1">最高资产 406323.16元</div>
-            <div class="chart-tag tag-green" style="bottom: 5%; left: 10%;" contenteditable="false" data-key="h5_tag2">最低资产 0.00元</div>
-          </div>
-        </div>
+        <!-- 占位 -->
+        <div id="hold-1month" class="hold-view" style="display: none; padding: 20px; text-align: center;">近一月数据视图 (通过代码扩充)</div>
+        <div id="hold-3month" class="hold-view" style="display: none; padding: 20px; text-align: center;">近三个月数据视图</div>
+        <div id="hold-3year" class="hold-view" style="display: none; padding: 20px; text-align: center;">近三年数据视图</div>
       </div>
 
       <div class="section-title" style="padding-bottom: 10px;">基金持仓分析 <span class="refresh-btn">刷新持仓</span></div>
@@ -274,7 +245,7 @@
     </div>
 
     <!-- ================================== -->
-    <!-- 第二部分：收益分析 (默认隐藏) -->
+    <!-- 第二部分：收益分析 -->
     <!-- ================================== -->
     <div id="view-profit" style="display: none;">
       <div class="time-tabs">
@@ -296,17 +267,30 @@
         <div class="chart-box">
           <div class="chart-header"><h3>收益走势 ⓘ</h3></div>
           <div class="chart-wrapper">
-            <svg class="chart-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-              <path d="M 0 80 L 15 60 L 25 70 L 35 30 L 50 40 L 70 35 L 100 95 L 100 100 L 0 100 Z" fill="rgba(255,59,48,0.1)" />
-              <path d="M 0 80 L 15 60 L 25 70 L 35 30 L 50 40 L 70 35 L 100 95" fill="none" stroke="#ff3b30" stroke-width="1.5" />
+             <div class="y-axis"><div>22500.00</div><div>15000.00</div><div>7500.00</div><div>0.00</div><div>-7500.00</div></div>
+             <svg class="chart-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="gRedBg" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#ff3b30" stop-opacity="0.2"/><stop offset="100%" stop-color="#ff3b30" stop-opacity="0"/></linearGradient>
+                <linearGradient id="gGreenBg" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#00a854" stop-opacity="0.2"/><stop offset="100%" stop-color="#00a854" stop-opacity="0"/></linearGradient>
+              </defs>
+              <!-- 红线 -->
+              <path d="M 0 75 L 10 60 L 20 65 L 35 20 L 50 35 L 50 100 L 0 100 Z" fill="url(#gRedBg)" />
+              <path d="M 0 75 L 10 60 L 20 65 L 35 20 L 50 35" fill="none" stroke="#ff3b30" stroke-width="1.5" />
+              <!-- 绿线 -->
+              <path d="M 50 35 L 60 55 L 75 50 L 90 75 L 100 85 L 100 100 L 50 100 Z" fill="url(#gGreenBg)" />
+              <path d="M 50 35 L 60 55 L 75 50 L 90 75 L 100 85" fill="none" stroke="#00a854" stroke-width="1.5" />
+              <!-- 节点 -->
+              <circle cx="35" cy="20" r="2" fill="#fff" stroke="#ff3b30" stroke-width="1.5"/>
+              <circle cx="100" cy="85" r="2" fill="#00a854" stroke="#fff" stroke-width="1.5"/>
             </svg>
-            <div class="chart-tag tag-red" style="top: 20%; left: 30%;" contenteditable="false" data-key="p_m_tag1">最高收益 19103.48元</div>
-            <div class="chart-tag tag-green" style="bottom: 5%; right: 5%;" contenteditable="false" data-key="p_m_tag3">最低收益 -4572.76元</div>
+            <div class="chart-tag tag-red" style="top: 15%; left: 30%;" contenteditable="false" data-key="p_m_tag1">最高收益 19103.48元</div>
+            <div class="chart-tag tag-green" style="top: 55%; left: 50%;" contenteditable="false" data-key="p_m_tag2">最大回撤 6.57% (13天)</div>
+            <div class="chart-tag tag-green" style="bottom: 15%; right: 5%;" contenteditable="false" data-key="p_m_tag3">最低收益 -4572.76元</div>
+            <div class="x-axis"><div>2026-10-31</div><div>2026-11-18</div></div>
           </div>
         </div>
       </div>
 
-      <!-- 简单的代码占位，防止报错 -->
       <div id="time-3month" class="profit-view" style="display: none; padding: 20px; text-align: center; color: #999;">近3月数据（您可以切换后编辑）</div>
       <div id="time-6month" class="profit-view" style="display: none; padding: 20px; text-align: center; color: #999;">近6月数据（您可以切换后编辑）</div>
       <div id="time-year" class="profit-view" style="display: none; padding: 20px; text-align: center; color: #999;">今年以来数据（您可以切换后编辑）</div>
@@ -323,10 +307,9 @@
       window.scrollTo(0, 0);
     }
 
-    // --- 主 Tab 切换：持仓分析 / 收益分析 ---
+    // --- 主 Tab 切换 ---
     function switchMainTab(tabName) {
       if (document.body.classList.contains('editing')) return;
-      
       document.getElementById('tab-holdings').classList.remove('active');
       document.getElementById('tab-profit').classList.remove('active');
       document.getElementById('view-holdings').style.display = 'none';
@@ -346,8 +329,6 @@
       if (document.body.classList.contains('editing')) return;
       document.querySelectorAll('.hold-view').forEach(v => v.style.display = 'none');
       document.getElementById(timeId).style.display = 'block';
-      
-      // 需要在持仓分析的时间tabs内切换active样式
       btn.parentElement.querySelectorAll('div').forEach(d => d.classList.remove('active'));
       btn.classList.add('active');
     }
@@ -357,7 +338,6 @@
       if (document.body.classList.contains('editing')) return;
       document.querySelectorAll('.profit-view').forEach(v => v.style.display = 'none');
       document.getElementById(timeId).style.display = 'block';
-      
       btn.parentElement.querySelectorAll('div').forEach(d => d.classList.remove('active'));
       btn.classList.add('active');
     }
