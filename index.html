@@ -5,25 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>仿微博理财</title>
   <style>
-    /* 基础样式 */
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, sans-serif; }
     body { background: #f5f5f5; color: #333; overflow-x: hidden; }
-    
-    /* 页面容器控制 */
     .page { display: none; min-height: 100vh; flex-direction: column; padding-bottom: 20px; }
     .page.active { display: flex; }
-
-    /* 顶部导航栏 */
     .header { display: flex; align-items: center; padding: 15px; background: #fff; position: sticky; top: 0; z-index: 10; border-bottom: 1px solid #eee; }
     .header .back { font-size: 24px; cursor: pointer; width: 30px; color: #333; }
     .header .title { flex: 1; text-align: center; font-weight: 500; font-size: 16px; }
-
-    /* 编辑模式按钮（悬浮在右下角） */
-    .edit-btn { position: fixed; bottom: 80px; right: 20px; background: #007aff; color: #fff; border: none; padding: 10px 15px; border-radius: 20px; font-size: 14px; box-shadow: 0 4px 10px rgba(0,122,255,0.3); z-index: 100; cursor: pointer; }
-    .edit-btn.active { background: #ff3b30; box-shadow: 0 4px 10px rgba(255,59,48,0.3); }
-    .editing [contenteditable="true"] { border-bottom: 1px dashed #007aff; outline: none; background: rgba(0,122,255,0.05); }
-
-    /* ========== 页面 1 ========== */
+    
     #page1 { background: #f5f5f7; }
     .profile-top { padding: 20px; background: #fff; text-align: center; }
     .profile-top img { width: 80px; height: 80px; border-radius: 50%; margin-bottom: 10px; }
@@ -36,14 +25,12 @@
     .bottom-nav div { flex: 1; text-align: center; font-size: 10px; color: #888; }
     .bottom-nav div.active { color: #ff3b30; }
 
-    /* ========== 页面 2 ========== */
     #page2 { background: #fff; }
     .grid-menu { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; padding: 20px; }
     .menu-item { text-align: center; font-size: 12px; }
     .menu-item .icon { width: 40px; height: 40px; background: #fff0e0; border-radius: 12px; margin: 0 auto 5px; display: flex; justify-content: center; align-items: center; color: #ff8200; font-weight: bold; cursor: pointer; }
     .fund-btn .icon { background: #e0f0ff; color: #0066cc; }
 
-    /* ========== 页面 3 ========== */
     #page3 { background: #f5f5f7; }
     .fund-header { background: linear-gradient(135deg, #ff3b30, #ff7b61); color: #fff; padding: 20px; border-radius: 0 0 20px 20px; }
     .fund-header h2 { font-size: 14px; font-weight: normal; opacity: 0.8; }
@@ -54,7 +41,6 @@
     .fund-card .rate { font-size: 30px; color: #ff3b30; font-weight: bold; }
     .fund-card .btn { background: #ff3b30; color: #fff; padding: 12px; border-radius: 25px; margin-top: 15px; font-size: 16px; cursor: pointer; }
 
-    /* ========== 页面 4：收益详情 ========== */
     #page4 { background: #f5f5f5; }
     .detail-top { background: #fff; padding: 15px; display: flex; justify-content: space-between; text-align: center; border-bottom: 1px solid #eee; }
     .detail-top .item { flex: 1; }
@@ -85,21 +71,16 @@
 </head>
 <body>
 
-  <!-- 悬浮的编辑按钮 -->
-  <button class="edit-btn" id="editBtn" onclick="toggleEdit()">✏️ 修改数据</button>
-
-  <!-- ================= 页面 1 ================= -->
   <div id="page1" class="page active">
     <div class="profile-top">
       <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Felix" alt="头像">
-      <!-- 加上了 data-key，用于保存修改 -->
-      <h2 contenteditable="false" data-key="name">废话一大堆 0619</h2>
-      <p contenteditable="false" data-key="desc" style="color: #888; font-size: 14px; margin-top: 5px;">简介：暂无简介</p>
+      <h2>废话一大堆 0619</h2>
+      <p style="color: #888; font-size: 14px; margin-top: 5px;">简介：暂无简介</p>
     </div>
     <div class="wallet-card" onclick="goToPage('page2')">
       <div class="left">
         <h3>我的钱包</h3>
-        <p contenteditable="false" data-key="wallet">3.07万 可借额度</p>
+        <p>3.07万 可借额度</p>
       </div>
       <div class="wallet-btn">查看详情 ></div>
     </div>
@@ -108,7 +89,6 @@
     </div>
   </div>
 
-  <!-- ================= 页面 2 ================= -->
   <div id="page2" class="page">
     <div class="header">
       <div class="back" onclick="goToPage('page1')">‹</div>
@@ -123,7 +103,6 @@
     </div>
   </div>
 
-  <!-- ================= 页面 3 ================= -->
   <div id="page3" class="page">
     <div class="header" style="background: transparent; position: absolute; width: 100%; color: #fff; border: none;">
       <div class="back" onclick="goToPage('page2')">‹</div>
@@ -132,10 +111,10 @@
     </div>
     <div class="fund-header">
       <h2 style="margin-top: 30px;">总资产(元)</h2>
-      <div class="amount" contenteditable="false" data-key="totalAsset">336,201.01</div>
+      <div class="amount">336,201.01</div>
       <div class="profit" onclick="goToPage('page4')">
         最新收益(元) <br> 
-        <span style="font-size: 20px; font-weight: bold;" contenteditable="false" data-key="latestProfit">-1,948.29 ></span>
+        <span style="font-size: 20px; font-weight: bold;">-1,948.29 ></span>
       </div>
     </div>
     <div class="fund-card">
@@ -150,7 +129,6 @@
     </div>
   </div>
 
-  <!-- ================= 页面 4：收益分析 ================= -->
   <div id="page4" class="page">
     <div class="header">
       <div class="back" onclick="goToPage('page3')">‹</div>
@@ -161,11 +139,11 @@
     <div class="detail-top">
       <div class="item">
         <p>本月收益金额</p>
-        <h3 contenteditable="false" data-key="monthProfit">-4,572.76</h3>
+        <h3>-4,572.76</h3>
       </div>
       <div class="item">
         <p>本月收益率</p>
-        <h3 contenteditable="false" data-key="monthRate">-1.34%</h3>
+        <h3>-1.34%</h3>
       </div>
       <div class="item">
         <p>同期沪深300</p>
@@ -189,8 +167,8 @@
       </div>
       <div class="mock-chart">
         <div class="line"></div>
-        <div class="peak" contenteditable="false" data-key="peakProfit">最高收益 19103.48元</div>
-        <div class="valley" contenteditable="false" data-key="valleyProfit">最低收益 -4572.76元</div>
+        <div class="peak">最高收益 19103.48元</div>
+        <div class="valley">最低收益 -4572.76元</div>
       </div>
     </div>
 
@@ -202,15 +180,13 @@
         <div class="weekday">日</div><div class="weekday">一</div><div class="weekday">二</div><div class="weekday">三</div>
         <div class="weekday">四</div><div class="weekday">五</div><div class="weekday">六</div>
 
-        <!-- 只给几个日期的数值加了可编辑，你可以自己扩展 -->
         <div class="cal-day"><span class="date">1</span><span class="val">0</span></div>
-        <div class="cal-day profit"><span class="date">2</span><span class="val" contenteditable="false" data-key="d2">4713.41</span></div>
-        <div class="cal-day loss"><span class="date">3</span><span class="val" contenteditable="false" data-key="d3">-2398.99</span></div>
-        <div class="cal-day profit"><span class="date">4</span><span class="val" contenteditable="false" data-key="d4">10914.64</span></div>
-        <div class="cal-day profit"><span class="date">5</span><span class="val" contenteditable="false" data-key="d5">5874.42</span></div>
-        <div class="cal-day loss"><span class="date">6</span><span class="val" contenteditable="false" data-key="d6">-5066.32</span></div>
+        <div class="cal-day profit"><span class="date">2</span><span class="val">4713.41</span></div>
+        <div class="cal-day loss"><span class="date">3</span><span class="val">-2398.99</span></div>
+        <div class="cal-day profit"><span class="date">4</span><span class="val">10914.64</span></div>
+        <div class="cal-day profit"><span class="date">5</span><span class="val">5874.42</span></div>
+        <div class="cal-day loss"><span class="date">6</span><span class="val">-5066.32</span></div>
         <div class="cal-day"><span class="date">7</span><span class="val">0</span></div>
-        
         <div class="cal-day"><span class="date">8</span><span class="val">0</span></div>
         <div class="cal-day profit"><span class="date">9</span><span class="val">420.82</span></div>
         <div class="cal-day profit"><span class="date">10</span><span class="val">2791.64</span></div>
@@ -218,11 +194,10 @@
         <div class="cal-day loss"><span class="date">12</span><span class="val">-5879.54</span></div>
         <div class="cal-day loss"><span class="date">13</span><span class="val">-4709.98</span></div>
         <div class="cal-day"><span class="date">14</span><span class="val">0</span></div>
-
         <div class="cal-day"><span class="date">15</span><span class="val">0</span></div>
         <div class="cal-day loss"><span class="date">16</span><span class="val">-6866.33</span></div>
         <div class="cal-day loss"><span class="date">17</span><span class="val">-3951.57</span></div>
-        <div class="cal-day active"><span class="date">18</span><span class="val" contenteditable="false" data-key="d18">-1948.29</span></div>
+        <div class="cal-day active"><span class="date">18</span><span class="val">-1948.29</span></div>
         <div class="cal-day"><span class="date">19</span><span class="val">0</span></div>
         <div class="cal-day"><span class="date">20</span><span class="val">0</span></div>
         <div class="cal-day"><span class="date">21</span><span class="val">0</span></div>
@@ -231,11 +206,7 @@
   </div>
 
   <script>
-    // 页面跳转逻辑
     function goToPage(pageId) {
-      // 如果正在编辑，不要触发跳转
-      if (document.body.classList.contains('editing')) return;
-      
       var pages = document.querySelectorAll('.page');
       pages.forEach(function(page) {
         page.classList.remove('active');
@@ -243,42 +214,6 @@
       document.getElementById(pageId).classList.add('active');
       window.scrollTo(0, 0);
     }
-
-    // 切换编辑模式
-    let isEditing = false;
-    function toggleEdit() {
-      isEditing = !isEditing;
-      const btn = document.getElementById('editBtn');
-      const editables = document.querySelectorAll('[data-key]');
-      
-      if (isEditing) {
-        btn.innerHTML = '💾 保存数据';
-        btn.classList.add('active');
-        document.body.classList.add('editing');
-        editables.forEach(el => el.setAttribute('contenteditable', 'true'));
-      } else {
-        btn.innerHTML = '✏️ 修改数据';
-        btn.classList.remove('active');
-        document.body.classList.remove('editing');
-        editables.forEach(el => {
-          el.setAttribute('contenteditable', 'false');
-          // 保存到本地
-          localStorage.setItem(el.getAttribute('data-key'), el.innerText);
-        });
-        alert('数据已保存在您的手机中！下次打开依然有效。');
-      }
-    }
-
-    // 页面加载时，读取本地保存的数据
-    window.onload = function() {
-      const editables = document.querySelectorAll('[data-key]');
-      editables.forEach(el => {
-        const savedValue = localStorage.getItem(el.getAttribute('data-key'));
-        if (savedValue !== null) {
-          el.innerText = savedValue;
-        }
-      });
-    };
   </script>
 </body>
 </html>
