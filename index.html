@@ -20,7 +20,7 @@
     .top-bar span { font-size: 22px; color: #333; font-weight: bold;}
     .profile-section { background: #fff; padding: 50px 20px 20px; position: relative; }
     .profile-info-top { display: flex; align-items: center; gap: 15px; margin-bottom: 15px;}
-    /* 修复头像链接，保证能稳定显示 */
+    /* 换成了网络高清卡通小女孩头像 */
     .profile-info-top img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 1px solid #eee; background: #f0f0f0;}
     .profile-text h2 { font-size: 20px; font-weight: 600; display: flex; align-items: center; gap: 5px;}
     .vip-tag { background: #555; color: #ffd700; font-size: 10px; padding: 2px 6px; border-radius: 10px; font-weight: normal;}
@@ -103,7 +103,6 @@
     .circle-icon { font-size: 24px; margin-bottom: 5px;}
     .daily-bonus-bar { background: #fffcf0; color: #ff9800; text-align: center; font-size: 13px; padding: 10px; border-radius: 0 0 12px 12px; margin: -10px 15px 10px;}
 
-    /* 大功能网格（恢复基金并加粗可点击样式） */
     .big-grid-container { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px 5px; background: #fff; margin: 10px 15px; border-radius: 12px; padding: 20px 10px;}
     .big-grid-item { text-align: center; font-size: 12px; color: #333; position: relative; cursor: pointer; }
     .big-grid-item .icon-bg { font-size: 28px; margin-bottom: 5px; display: inline-block;}
@@ -136,6 +135,74 @@
     .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px 0; text-align: center; font-size: 12px;}
     .grid-5 .icon { font-size: 26px; margin-bottom: 5px;}
 
+    /* ====== 第三页、第四页的样式（完美恢复） ====== */
+    .nav-bar { display: flex; align-items: center; padding: 10px 15px; background: #fff; position: sticky; top: 0; z-index: 10; }
+    .nav-bar .back { font-size: 24px; color: #333; width: 40px; cursor: pointer; }
+    .nav-bar .title { flex: 1; text-align: center; font-size: 17px; font-weight: 500; }
+    .nav-bar .right-icon { width: 40px; text-align: right; font-size: 20px; color: #666; }
+
+    .fund-hero { background: linear-gradient(135deg, #ff4d4d, #ff7b61); color: #fff; padding: 20px 15px 30px; position: relative; }
+    .fund-hero .search { background: rgba(255,255,255,0.2); border-radius: 20px; padding: 8px 15px; font-size: 13px; display: flex; align-items: center; gap: 5px; margin-bottom: 20px; }
+    .fund-hero .asset-row { display: flex; justify-content: space-between; margin-bottom: 15px; }
+    .fund-hero .asset-item h4 { font-size: 13px; opacity: 0.9; margin-bottom: 5px; font-weight: normal; }
+    .fund-hero .asset-item .val { font-size: 26px; font-weight: bold; }
+    .fund-hero .asset-item .profit-val { font-size: 22px; font-weight: bold; display: flex; align-items: center; gap: 5px; cursor: pointer;}
+    .fund-card { background: #fff; border-radius: 12px; margin: -15px 15px 15px; padding: 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: relative; z-index: 2; }
+    .fund-card .tag { background: #ffebee; color: #ff3b30; font-size: 12px; padding: 3px 10px; border-radius: 10px; display: inline-block; margin-bottom: 10px; }
+    .fund-card h3 { font-size: 18px; color: #333; margin-bottom: 5px; } .fund-card h4 { font-size: 16px; color: #666; margin-bottom: 15px; font-weight: normal;}
+    .fund-card .big-rate { font-size: 42px; color: #ff3b30; font-weight: bold; margin-bottom: 5px;} .fund-card .rate-desc { font-size: 12px; color: #999; margin-bottom: 20px;}
+    .fund-card .btn-buy { background: #ff3b30; color: #fff; padding: 12px; border-radius: 25px; font-size: 16px; font-weight: bold; cursor: pointer; }
+
+    .analysis-top { display: flex; background: #fff; border-bottom: 1px solid #eee; }
+    .analysis-top div { flex: 1; text-align: center; padding: 15px 0; font-size: 15px; color: #666; cursor: pointer;}
+    .analysis-top div.active { color: #ff3b30; font-weight: bold; position: relative; }
+    .analysis-top div.active::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 30px; height: 3px; background: #ff3b30; border-radius: 2px; }
+    .time-tabs { display: flex; padding: 15px; background: #fff; gap: 10px; overflow-x: auto; white-space: nowrap; border-bottom: 1px solid #eee; }
+    .time-tabs div { padding: 8px 18px; border-radius: 20px; background: #f5f5f5; font-size: 14px; color: #666; cursor: pointer; }
+    .time-tabs div.active { background: #ffeeee; color: #ff3b30; font-weight: bold; }
+    .data-box { background: #fff; padding: 15px; }
+    .data-box h2 { font-size: 18px; margin-bottom: 15px; }
+    .data-row { display: flex; background: #fdf6f6; border-radius: 8px; padding: 15px 0; }
+    .data-col { flex: 1; text-align: center; border-right: 1px solid #f0e0e0; }
+    .data-col:last-child { border-right: none; }
+    .data-col p { font-size: 12px; color: #888; margin-bottom: 5px; }
+    .data-col h3 { font-size: 18px; color: #00a854; }
+    .chart-box { background: #fff; padding: 15px; margin: 10px 0; }
+    .chart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .chart-header h3 { font-size: 16px; }
+    .chart-wrapper { position: relative; height: 240px; border: 1px solid #f0f0f0; background: #fff; border-radius: 8px; overflow: hidden; margin-bottom: 10px;}
+    .chart-svg { width: 100%; height: 100%; position: absolute; top:0; left:0; }
+    .chart-tag { position: absolute; font-size: 11px; padding: 4px 8px; border-radius: 4px; color: #fff; z-index: 2; transform: translate(-50%, -50%); white-space: nowrap;}
+    .tag-red { background: #ff3b30; }
+    .tag-green { background: #00a854; }
+    .chart-top-info { display: flex; font-size: 12px; color: #666; margin-bottom: 10px; align-items: center; }
+    .chart-top-info span { margin-right: 15px; }
+    .y-axis { position: absolute; left: 10px; top: 15px; bottom: 35px; display: flex; flex-direction: column; justify-content: space-between; font-size: 10px; color: #999; z-index: 2;}
+    .y-axis div { background: #fff; padding-right: 5px;}
+    .x-axis { position: absolute; bottom: 10px; left: 10px; right: 10px; display: flex; justify-content: space-between; font-size: 10px; color: #999; z-index: 2;}
+    .grid-line { position: absolute; width: 100%; border-bottom: 1px dashed #f0f0f0; z-index: 1;}
+    .metrics-box { background: #fff; padding: 15px; margin-bottom: 20px;}
+    .metrics-header { display: flex; justify-content: space-between; margin-bottom: 15px; }
+    .metrics-header h3 { font-size: 16px; }
+    table { width: 100%; border-collapse: collapse; text-align: center; font-size: 14px; }
+    th { color: #666; font-weight: normal; padding: 10px 0; border-bottom: 1px solid #f0f0f0; }
+    td { padding: 12px 0; border-bottom: 1px solid #f0f0f0; }
+    .green-text { color: #00a854; }
+    
+    .holdings-top { background: #fff; padding: 20px 15px; display: flex; align-items: center; justify-content: space-around; margin-bottom: 10px;}
+    .donut-chart { width: 130px; height: 130px; border-radius: 50%; background: conic-gradient(#ff6b00 99%, #ffe6d9 0); display: flex; justify-content: center; align-items: center; position: relative;}
+    .donut-inner { width: 90px; height: 90px; background: #fff; border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+    .donut-inner h3 { font-size: 15px; margin-bottom: 2px;}
+    .donut-inner p { font-size: 12px; color: #666;}
+    .legend-list { display: flex; flex-direction: column; gap: 12px; }
+    .legend-item { display: flex; align-items: center; font-size: 14px; color: #333; }
+    .legend-dot { width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; }
+    .legend-name { width: 60px; }
+    .legend-val { font-weight: bold; width: 80px; text-align: right;}
+    .section-title { font-size: 18px; font-weight: bold; padding: 15px; background: #fff;}
+    .empty-state { text-align: center; padding: 40px 0; color: #999; font-size: 14px; background: #fff; margin-bottom: 20px;}
+    .refresh-btn { float: right; font-size: 13px; color: #666; font-weight: normal;}
+
   </style>
 </head>
 <body>
@@ -149,8 +216,8 @@
     </div>
     <div class="profile-section">
       <div class="profile-info-top">
-        <!-- 更换为绝对稳定的可爱卡通小女孩头像 -->
-        <img src="https://img.icons8.com/color/150/girl.png" alt="头像">
+        <!-- 网络稳定加载的卡通小女孩头像 -->
+        <img src="https://pic.qqtn.com/up/2018-9/2018091410314662422.jpg" alt="头像">
         <div class="profile-text">
           <h2 contenteditable="false" data-key="u_name">废话一大堆 0619 <span class="vip-tag">续费</span></h2>
           <p contenteditable="false" data-key="u_desc">简介：暂无简介</p>
@@ -247,7 +314,7 @@
         </div>
         <div class="wallet-user-row">
           <div class="wallet-user-info">
-            <img src="https://img.icons8.com/color/150/girl.png" alt="">
+            <img src="https://pic.qqtn.com/up/2018-9/2018091410314662422.jpg" alt="">
             <span contenteditable="false" data-key="w_name">废话一大堆0619</span>
             <span class="tag">💰 开通</span>
           </div>
@@ -263,12 +330,12 @@
       </div>
       <div class="daily-bonus-bar">领取每日专属福利 ⌄</div>
 
-      <!-- 恢复并强化了“基金”入口，点击跳转至Page3 -->
+      <!-- 基金入口在此，点击跳转至Page3 -->
       <div class="big-grid-container">
         <div class="big-grid-item"><div class="icon-bg">💰</div>借钱<p>领尊享特权</p></div>
         <div class="big-grid-item"><div class="icon-bg">📱</div>租赁·手机</div>
         
-        <!-- 基金在这里！ -->
+        <!-- 基金入口 -->
         <div class="big-grid-item" onclick="goToPage('page3')">
           <div class="icon-bg">📈</div>
           <span style="color:#0066cc; font-weight:bold;">基金</span>
@@ -354,7 +421,7 @@
     </div>
   </div>
 
-  <!-- ================= 页面 3 ================= -->
+  <!-- ================= 页面 3：基金首页（已恢复） ================= -->
   <div id="page3" class="page">
     <div class="nav-bar" style="background: transparent; position: absolute; width: 100%; color: #fff; border: none;">
       <div class="back" onclick="goToPage('page2')" style="color: #fff;">‹</div><div class="title" style="color: #fff;">首页</div><div class="right-icon" style="color: #fff;">...</div>
@@ -372,7 +439,7 @@
     </div>
   </div>
 
-  <!-- ================= 页面 4：分析页（保留完美图表） ================= -->
+  <!-- ================= 页面 4：分析页（已恢复） ================= -->
   <div id="page4" class="page">
     <div class="nav-bar">
       <div class="back" onclick="goToPage('page3')">‹</div><div class="title">资产收益分析</div><div class="right-icon">...</div>
