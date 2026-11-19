@@ -20,7 +20,8 @@
     .top-bar span { font-size: 22px; color: #333; font-weight: bold;}
     .profile-section { background: #fff; padding: 50px 20px 20px; position: relative; }
     .profile-info-top { display: flex; align-items: center; gap: 15px; margin-bottom: 15px;}
-    .profile-info-top img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 1px solid #eee;}
+    /* 修复头像链接，保证能稳定显示 */
+    .profile-info-top img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 1px solid #eee; background: #f0f0f0;}
     .profile-text h2 { font-size: 20px; font-weight: 600; display: flex; align-items: center; gap: 5px;}
     .vip-tag { background: #555; color: #ffd700; font-size: 10px; padding: 2px 6px; border-radius: 10px; font-weight: normal;}
     .profile-text p { font-size: 14px; color: #666; margin-top: 5px;}
@@ -75,12 +76,11 @@
     .nav-badge { position: absolute; top: -4px; right: -6px; background: #ff3b30; color: #fff; font-size: 10px; padding: 1px 5px; border-radius: 10px; border: 1.5px solid #fff; min-width: 16px; text-align: center; line-height: 1.2; transform: scale(0.9); }
 
 
-    /* ====== 第二页：钱包（超长滑动） ====== */
+    /* ====== 第二页：钱包 ====== */
     #page2 { background: #f5f5f5; padding-bottom: 20px;}
     .wallet-header-new { background: linear-gradient(180deg, #ffdab9 0%, #f5f5f5 100%); padding-top: 10px;}
     .wallet-nav { display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; font-size: 18px; font-weight: bold;}
     
-    /* 顶部卡片 */
     .wallet-main-card { background: #fff; border-radius: 16px; margin: 10px 15px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
     .wallet-top-banner { background: linear-gradient(90deg, #ffb347, #ffcc33); padding: 15px; display: flex; align-items: center; color: #fff; gap: 10px;}
     .wallet-top-banner .icon { background: #fff; color: #ffb347; border-radius: 50%; width: 30px; height: 30px; display: flex; justify-content: center; align-items: center; font-weight: bold;}
@@ -92,26 +92,23 @@
     .wallet-data-col h2 { font-size: 28px; font-weight: normal; margin-bottom: 10px;}
     .wallet-data-col .sub-text { font-size: 12px; color: #ff3b30; display: flex; align-items: center; gap: 5px;}
     
-    /* 个人信息行 */
     .wallet-user-row { display: flex; justify-content: space-between; align-items: center; padding: 15px;}
     .wallet-user-info { display: flex; align-items: center; gap: 10px; font-size: 14px;}
     .wallet-user-info img { width: 30px; height: 30px; border-radius: 50%;}
     .wallet-user-info .tag { background: #fff1d0; color: #ff9800; font-size: 10px; padding: 2px 6px; border-radius: 10px; border: 1px solid #ffd54f;}
     .wallet-user-right { font-size: 13px; color: #999;}
 
-    /* 四个小圈圈 */
     .small-circles { display: flex; justify-content: space-around; background: #fff; margin: 10px 15px; border-radius: 12px; padding: 15px 0;}
     .circle-item { text-align: center; font-size: 13px; color: #333;}
     .circle-icon { font-size: 24px; margin-bottom: 5px;}
     .daily-bonus-bar { background: #fffcf0; color: #ff9800; text-align: center; font-size: 13px; padding: 10px; border-radius: 0 0 12px 12px; margin: -10px 15px 10px;}
 
-    /* 大功能网格 */
+    /* 大功能网格（恢复基金并加粗可点击样式） */
     .big-grid-container { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px 5px; background: #fff; margin: 10px 15px; border-radius: 12px; padding: 20px 10px;}
-    .big-grid-item { text-align: center; font-size: 12px; color: #333; position: relative;}
+    .big-grid-item { text-align: center; font-size: 12px; color: #333; position: relative; cursor: pointer; }
     .big-grid-item .icon-bg { font-size: 28px; margin-bottom: 5px; display: inline-block;}
     .big-grid-item p { color: #ff9800; font-size: 11px; margin-top: 2px;}
     
-    /* 借款横幅 */
     .loan-banner { background: linear-gradient(90deg, #fff5e6, #ffebd2); border-radius: 12px; margin: 10px 15px; padding: 15px; }
     .loan-header { display: flex; justify-content: space-between; font-size: 15px; font-weight: bold; margin-bottom: 10px;}
     .loan-tags { display: flex; gap: 10px; font-size: 12px; color: #ff9800; font-weight: normal; }
@@ -120,7 +117,6 @@
     .loan-content .btn-borrow { background: #ff8c00; color: #fff; padding: 10px 20px; border-radius: 20px; font-weight: bold; font-size: 15px;}
     .loan-footer { font-size: 12px; color: #999; margin-top: 10px;}
 
-    /* 三个广告卡片 */
     .ad-cards { display: flex; gap: 10px; margin: 10px 15px; overflow-x: auto; padding-bottom: 10px;}
     .ad-card { flex: 1; border-radius: 12px; padding: 15px; min-width: 110px; display: flex; flex-direction: column; justify-content: space-between;}
     .ad-card h4 { font-size: 15px; font-weight: bold; margin-bottom: 5px;}
@@ -130,13 +126,11 @@
     .ad-card.yellow { background: #fff8e1; color: #ff9800;}
     .ad-card.pink { background: #fce4ec; color: #e91e63;}
 
-    /* 下方渠道切换 */
     .channel-tabs { display: flex; justify-content: space-around; background: #fff; padding: 15px 0; font-size: 15px; margin-top: 10px;}
     .channel-tabs span { color: #666; }
     .channel-tabs span.active { color: #ff8200; font-weight: bold; position: relative;}
     .channel-tabs span.active::after { content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); width: 20px; height: 3px; background: #ff8200; }
 
-    /* 娱乐购物 & 生活服务 */
     .section-block { background: #fff; padding: 15px; margin: 10px 0; }
     .section-block h3 { font-size: 16px; margin-bottom: 15px;}
     .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px 0; text-align: center; font-size: 12px;}
@@ -155,7 +149,8 @@
     </div>
     <div class="profile-section">
       <div class="profile-info-top">
-        <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Annie&hair=long&hairColor=brown" alt="头像">
+        <!-- 更换为绝对稳定的可爱卡通小女孩头像 -->
+        <img src="https://img.icons8.com/color/150/girl.png" alt="头像">
         <div class="profile-text">
           <h2 contenteditable="false" data-key="u_name">废话一大堆 0619 <span class="vip-tag">续费</span></h2>
           <p contenteditable="false" data-key="u_desc">简介：暂无简介</p>
@@ -233,7 +228,6 @@
         <div style="font-size: 20px;">⚙️</div>
       </div>
 
-      <!-- 主卡片 -->
       <div class="wallet-main-card">
         <div class="wallet-top-banner">
           <div class="icon">✧</div>
@@ -253,7 +247,7 @@
         </div>
         <div class="wallet-user-row">
           <div class="wallet-user-info">
-            <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Annie&hair=long&hairColor=brown" alt="">
+            <img src="https://img.icons8.com/color/150/girl.png" alt="">
             <span contenteditable="false" data-key="w_name">废话一大堆0619</span>
             <span class="tag">💰 开通</span>
           </div>
@@ -261,7 +255,6 @@
         </div>
       </div>
 
-      <!-- 四个小圈 -->
       <div class="small-circles">
         <div class="circle-item"><div class="circle-icon">🎁</div>福利</div>
         <div class="circle-item"><div class="circle-icon">🪙</div>积分</div>
@@ -270,11 +263,17 @@
       </div>
       <div class="daily-bonus-bar">领取每日专属福利 ⌄</div>
 
-      <!-- 大网格 -->
+      <!-- 恢复并强化了“基金”入口，点击跳转至Page3 -->
       <div class="big-grid-container">
         <div class="big-grid-item"><div class="icon-bg">💰</div>借钱<p>领尊享特权</p></div>
         <div class="big-grid-item"><div class="icon-bg">📱</div>租赁·手机</div>
-        <div class="big-grid-item"><div class="icon-bg">🎁</div>绝版装扮</div>
+        
+        <!-- 基金在这里！ -->
+        <div class="big-grid-item" onclick="goToPage('page3')">
+          <div class="icon-bg">📈</div>
+          <span style="color:#0066cc; font-weight:bold;">基金</span>
+        </div>
+        
         <div class="big-grid-item"><div class="icon-bg">📦</div>福利赏<p>开启幸运赏</p></div>
         <div class="big-grid-item"><div class="icon-bg">🖼️</div>免费定制</div>
         <div class="big-grid-item"><div class="icon-bg">🎡</div>幸运抽奖</div>
@@ -284,7 +283,6 @@
         <div class="big-grid-item"><div class="icon-bg">🎮</div>玩一玩</div>
       </div>
 
-      <!-- 借钱横幅 -->
       <div class="loan-banner">
         <div class="loan-header">
           <span>借钱</span>
@@ -302,7 +300,6 @@
         <div class="loan-footer">🥰 综合年化成本(单利)7.2%-24%</div>
       </div>
 
-      <!-- 广告卡片 -->
       <div class="ad-cards">
         <div class="ad-card red">
           <h4>狂欢租新机</h4><p>低价免押</p><div class="ad-btn" style="background: #ff3b30; color:#fff;">免押抢租</div>
@@ -315,7 +312,6 @@
         </div>
       </div>
 
-      <!-- 向下滑动频道切换 -->
       <div class="channel-tabs">
         <span class="active">金融理财</span>
         <span>娱乐购物</span>
@@ -323,7 +319,6 @@
         <span>更多频道</span>
       </div>
 
-      <!-- 娱乐购物 -->
       <div class="section-block">
         <h3>娱乐购物</h3>
         <div class="grid-5">
@@ -340,7 +335,6 @@
         </div>
       </div>
 
-      <!-- 生活服务 -->
       <div class="section-block">
         <h3>生活服务</h3>
         <div class="grid-5">
@@ -354,8 +348,6 @@
           <div><div class="icon">🔋</div>充值中心</div>
           <div><div class="icon">🏠</div>生活缴费</div>
           <div><div class="icon">📚</div>微博课堂</div>
-          <div><div class="icon">🚗</div>微博出行</div>
-          <div><div class="icon">🎁</div>物遇</div>
         </div>
       </div>
 
