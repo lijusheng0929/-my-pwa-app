@@ -20,7 +20,7 @@
     .profile-section { background: #fff; padding: 50px 20px 20px; position: relative; }
     .profile-info-top { display: flex; align-items: center; gap: 15px; margin-bottom: 15px;}
     
-    /* 绝对稳定的兔子卡通头像 */
+    /* 绝对保证能显示的 Base64 卡通头像 */
     .profile-info-top img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 1px solid #eee; background: #f0f0f0;}
     
     .profile-text h2 { font-size: 20px; font-weight: 600; display: flex; align-items: center; gap: 5px;}
@@ -76,7 +76,7 @@
     .nav-icon-wrap i { font-style: normal; font-size: 22px; }
     .nav-badge { position: absolute; top: -4px; right: -6px; background: #ff3b30; color: #fff; font-size: 10px; padding: 1px 5px; border-radius: 10px; border: 1.5px solid #fff; min-width: 16px; text-align: center; line-height: 1.2; transform: scale(0.9); }
 
-    /* ====== 页面 2：微博钱包 ====== */
+    /* ====== 页面 2：钱包 ====== */
     #page2 { background: #f5f5f5; padding-bottom: 20px;}
     .wallet-header-new { background: linear-gradient(180deg, #ffdab9 0%, #f5f5f5 100%); padding-top: 10px;}
     .wallet-nav { display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; font-size: 18px; font-weight: bold;}
@@ -141,7 +141,7 @@
     .fund-asset-item h4 { font-size: 13px; opacity: 0.9; margin-bottom: 5px; font-weight: normal; display: flex; align-items: center; gap: 5px;}
     .fund-asset-item .val { font-size: 28px; font-weight: bold; }
     
-    /* 点击最新收益 */
+    /* 点击最新收益进入 Page5 */
     .fund-asset-item .profit-val { font-size: 24px; font-weight: bold; display: flex; align-items: center; gap: 5px; cursor: pointer;}
 
     .star-fund-card { background: #fff; border-radius: 16px; margin: -50px 15px 15px; padding: 20px; position: relative; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 2px solid #ffe0b2;}
@@ -169,7 +169,7 @@
     .fund-nav-item.active { color: #ff3b30;}
     .fund-nav-item i { font-style: normal; font-size: 22px;}
 
-    /* ====== 页面 5：基金“我的”（图4、图5超长下滑） ====== */
+    /* ====== 页面 5：基金“我的”（超长下滑） ====== */
     #page5 { background: #f5f5f5; padding-bottom: 60px;}
     .my-fund-top { background: linear-gradient(180deg, #ff3b30 0%, #ff5b3e 100%); padding: 50px 15px 20px; color: #fff;}
     .my-fund-user { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; font-size: 14px;}
@@ -186,7 +186,7 @@
     .my-fund-btns div { flex: 1; background: rgba(255,255,255,0.15); padding: 8px; border-radius: 6px; text-align: center; font-size: 13px;}
 
     .my-fund-white-area { background: #fff; border-radius: 12px 12px 0 0; margin-top: -10px; position: relative; padding: 15px 0;}
-    /* 所有图标改为灰白风格 */
+    /* 灰白图标区 */
     .my-fund-grid-menu { display: grid; grid-template-columns: repeat(5, 1fr); text-align: center; font-size: 12px; color: #333; margin-bottom: 15px; gap: 15px 0;}
     .my-fund-grid-menu .icon { font-size: 26px; margin-bottom: 5px; color: #666;}
     
@@ -216,7 +216,7 @@
     .hot-card h2 { font-size: 22px; color: #00a854; margin-bottom: 5px;}
     .hot-card .tag { border: 1px solid #ff3b30; color: #ff3b30; font-size: 11px; padding: 2px 6px; border-radius: 4px;}
 
-    /* ====== 页面 4：分析页（完美保留） ====== */
+    /* ====== 页面 4：分析页 ====== */
     .nav-bar { display: flex; align-items: center; padding: 10px 15px; background: #fff; position: sticky; top: 0; z-index: 10; }
     .nav-bar .back { font-size: 24px; color: #333; width: 40px; cursor: pointer; }
     .nav-bar .title { flex: 1; text-align: center; font-size: 17px; font-weight: 500; }
@@ -279,8 +279,8 @@
     </div>
     <div class="profile-section">
       <div class="profile-info-top">
-        <!-- 极其稳定的兔子卡通头像 -->
-        <img src="https://img0.baidu.com/it/u=3001511420,1731956652&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" alt="头像">
+        <!-- 100%绝对显示的Base64头像 (一张粉色的卡通猫/小熊头像) -->
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI1MCIgZmlsbD0iI2ZmY2U1NCIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjQwIiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMzAiIGN5PSI0MCIgcj0iNSIgZmlsbD0iIzMzMyIvPjxjaXJjbGUgY3g9IjcwIiBjeT0iNDAiIHI9IjUiIGZpbGw9IiMzMzMiLz48cGF0aCBkPSJNIDQwIDYwIFEgNTAgNzAgNjAgNjAiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIi8+PC9zdmc+" alt="头像">
         <div class="profile-text">
           <h2 contenteditable="false" data-key="u_name">废话一大堆 0619 <span class="vip-tag">续费</span></h2>
           <p contenteditable="false" data-key="u_desc">简介：暂无简介</p>
@@ -377,7 +377,7 @@
         </div>
         <div class="wallet-user-row">
           <div class="wallet-user-info">
-            <img src="https://img0.baidu.com/it/u=3001511420,1731956652&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" alt="">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI1MCIgZmlsbD0iI2ZmY2U1NCIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjQwIiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMzAiIGN5PSI0MCIgcj0iNSIgZmlsbD0iIzMzMyIvPjxjaXJjbGUgY3g9IjcwIiBjeT0iNDAiIHI9IjUiIGZpbGw9IiMzMzMiLz48cGF0aCBkPSJNIDQwIDYwIFEgNTAgNzAgNjAgNjAiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIi8+PC9zdmc+" alt="">
             <span contenteditable="false" data-key="w_name">废话一大堆0619</span>
             <span class="tag">💰 开通</span>
           </div>
@@ -492,7 +492,7 @@
           <h4>总资产(元) 👁️ <span style="background:#fff; color:#ff3b30; border-radius:4px; padding:0 4px; font-size:10px; font-weight:bold;">免</span> 全场免申购费</h4>
           <div class="val" contenteditable="false" data-key="totalAsset">336,201.01</div>
         </div>
-        <!-- 点击最新收益进入长页面 -->
+        <!-- 点击最新收益跳转到Page5长图 -->
         <div class="fund-asset-item" style="text-align: right;" onclick="goToPage('page5')">
           <h4 style="justify-content: flex-end;">最新收益(元) <span>></span></h4>
           <div class="profit-val"><span contenteditable="false" data-key="latestProfit">-1,948.29</span></div>
@@ -549,12 +549,12 @@
     </div>
   </div>
 
-  <!-- ================= 页面 5：基金“我的”（长图滚动，点击收益明细进入Page4） ================= -->
+  <!-- ================= 页面 5：基金“我的”（点击“收益明细”进入Page4） ================= -->
   <div id="page5" class="page">
     <div class="my-fund-top">
       <div style="position: absolute; top: 15px; left: 15px; font-size: 24px; color: #fff; cursor:pointer;" onclick="goToPage('page3')">‹</div>
       <div class="my-fund-user">
-        <img src="https://img0.baidu.com/it/u=3001511420,1731956652&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" alt="">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI1MCIgZmlsbD0iI2ZmY2U1NCIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjQwIiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMzAiIGN5PSI0MCIgcj0iNSIgZmlsbD0iIzMzMyIvPjxjaXJjbGUgY3g9IjcwIiBjeT0iNDAiIHI9IjUiIGZpbGw9IiMzMzMiLz48cGF0aCBkPSJNIDQwIDYwIFEgNTAgNzAgNjAgNjAiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIi8+PC9zdmc+" alt="">
         <span>马 * ></span>
         <span style="background: rgba(0,0,0,0.2); padding: 2px 8px; border-radius: 10px;">积极型</span>
         <span style="background: #333; color: #ffd700; padding: 2px 8px; border-radius: 10px;">V会员V2 ></span>
@@ -575,7 +575,7 @@
     </div>
 
     <div class="my-fund-white-area">
-      <!-- 灰白图标区，点击“收益明细”跳转Page4 -->
+      <!-- 所有图标均改为灰白文字风格，点击“收益明细”跳转Page4 -->
       <div class="my-fund-grid-menu">
         <div><div class="icon">📄</div>交易记录</div>
         <div onclick="goToPage('page4')"><div class="icon">📊</div>收益明细</div>
@@ -738,7 +738,6 @@
         <div onclick="switchProfitTime('time-year', this)">今年以来收益</div>
       </div>
       
-      <!-- 收益：本月 -->
       <div id="time-month" class="profit-view" style="display: block;">
         <div class="data-box">
           <h2>本月收益(元)</h2>
