@@ -141,7 +141,6 @@
     .fund-asset-item h4 { font-size: 13px; opacity: 0.9; margin-bottom: 5px; font-weight: normal; display: flex; align-items: center; gap: 5px;}
     .fund-asset-item .val { font-size: 28px; font-weight: bold; }
     
-    /* 点击最新收益进入 Page5 */
     .fund-asset-item .profit-val { font-size: 24px; font-weight: bold; display: flex; align-items: center; gap: 5px; cursor: pointer;}
 
     .star-fund-card { background: #fff; border-radius: 16px; margin: -50px 15px 15px; padding: 20px; position: relative; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 2px solid #ffe0b2;}
@@ -186,7 +185,6 @@
     .my-fund-btns div { flex: 1; background: rgba(255,255,255,0.15); padding: 8px; border-radius: 6px; text-align: center; font-size: 13px;}
 
     .my-fund-white-area { background: #fff; border-radius: 12px 12px 0 0; margin-top: -10px; position: relative; padding: 15px 0;}
-    /* 灰白图标区 */
     .my-fund-grid-menu { display: grid; grid-template-columns: repeat(5, 1fr); text-align: center; font-size: 12px; color: #333; margin-bottom: 15px; gap: 15px 0;}
     .my-fund-grid-menu .icon { font-size: 26px; margin-bottom: 5px; color: #666;}
     
@@ -247,9 +245,12 @@
     .tag-green { background: #00a854; }
     .chart-top-info { display: flex; font-size: 12px; color: #666; margin-bottom: 10px; align-items: center; }
     .chart-top-info span { margin-right: 15px; }
+    
+    /* 图表坐标轴数字可编辑 */
     .y-axis { position: absolute; left: 10px; top: 15px; bottom: 35px; display: flex; flex-direction: column; justify-content: space-between; font-size: 10px; color: #999; z-index: 2;}
-    .y-axis div { background: #fff; padding-right: 5px;}
+    .y-axis div { background: #fff; padding-right: 5px; }
     .x-axis { position: absolute; bottom: 10px; left: 10px; right: 10px; display: flex; justify-content: space-between; font-size: 10px; color: #999; z-index: 2;}
+    
     .grid-line { position: absolute; width: 100%; border-bottom: 1px dashed #f0f0f0; z-index: 1;}
     
     .holdings-top { background: #fff; padding: 20px 15px; display: flex; align-items: center; justify-content: space-around; margin-bottom: 10px;}
@@ -279,7 +280,7 @@
     </div>
     <div class="profile-section">
       <div class="profile-info-top">
-        <!-- 100%绝对显示的Base64头像 (一张粉色的卡通猫/小熊头像) -->
+        <!-- 100%绝对显示的Base64头像 -->
         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI1MCIgZmlsbD0iI2ZmY2U1NCIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjQwIiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMzAiIGN5PSI0MCIgcj0iNSIgZmlsbD0iIzMzMyIvPjxjaXJjbGUgY3g9IjcwIiBjeT0iNDAiIHI9IjUiIGZpbGw9IiMzMzMiLz48cGF0aCBkPSJNIDQwIDYwIFEgNTAgNzAgNjAgNjAiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIi8+PC9zdmc+" alt="头像">
         <div class="profile-text">
           <h2 contenteditable="false" data-key="u_name">废话一大堆 0619 <span class="vip-tag">续费</span></h2>
@@ -492,7 +493,7 @@
           <h4>总资产(元) 👁️ <span style="background:#fff; color:#ff3b30; border-radius:4px; padding:0 4px; font-size:10px; font-weight:bold;">免</span> 全场免申购费</h4>
           <div class="val" contenteditable="false" data-key="totalAsset">336,201.01</div>
         </div>
-        <!-- 点击最新收益跳转到Page5长图 -->
+        <!-- 点击最新收益进入 Page5 -->
         <div class="fund-asset-item" style="text-align: right;" onclick="goToPage('page5')">
           <h4 style="justify-content: flex-end;">最新收益(元) <span>></span></h4>
           <div class="profit-val"><span contenteditable="false" data-key="latestProfit">-1,948.29</span></div>
@@ -549,7 +550,7 @@
     </div>
   </div>
 
-  <!-- ================= 页面 5：基金“我的”（点击“收益明细”进入Page4） ================= -->
+  <!-- ================= 页面 5：基金“我的”（超长下滑，点击收益明细进入Page4） ================= -->
   <div id="page5" class="page">
     <div class="my-fund-top">
       <div style="position: absolute; top: 15px; left: 15px; font-size: 24px; color: #fff; cursor:pointer;" onclick="goToPage('page3')">‹</div>
@@ -575,7 +576,7 @@
     </div>
 
     <div class="my-fund-white-area">
-      <!-- 所有图标均改为灰白文字风格，点击“收益明细”跳转Page4 -->
+      <!-- 灰白图标区，点击“收益明细”跳转Page4 -->
       <div class="my-fund-grid-menu">
         <div><div class="icon">📄</div>交易记录</div>
         <div onclick="goToPage('page4')"><div class="icon">📊</div>收益明细</div>
@@ -702,11 +703,17 @@
       </div>
 
       <div class="chart-box" style="margin-top: 0;">
+        <!-- 持仓：本月 -->
         <div id="hold-month" class="hold-view">
-          <div class="chart-top-info"><span>2026-11-19</span><span><span style="color:#ff3b30;">●</span> 最新资产 <span style="color:#ff3b30;" contenteditable="false" data-key="h1_m">+336201.01</span></span></div>
+          <div class="chart-top-info"><span contenteditable="false" data-key="h1_date">2026-11-19</span><span><span style="color:#ff3b30;">●</span> 最新资产 <span style="color:#ff3b30;" contenteditable="false" data-key="h1_m">+336201.01</span></span></div>
           <div class="chart-wrapper">
             <div class="grid-line" style="top: 20%;"></div><div class="grid-line" style="top: 40%;"></div><div class="grid-line" style="top: 60%;"></div><div class="grid-line" style="top: 80%;"></div>
-            <div class="y-axis"><div>360000.00</div><div>354000.00</div><div>348000.00</div><div>342000.00</div><div>336000.00</div></div>
+            <!-- Y轴数字加上 data-key -->
+            <div class="y-axis">
+              <div contenteditable="false" data-key="h1_y1">360000.00</div><div contenteditable="false" data-key="h1_y2">354000.00</div>
+              <div contenteditable="false" data-key="h1_y3">348000.00</div><div contenteditable="false" data-key="h1_y4">342000.00</div>
+              <div contenteditable="false" data-key="h1_y5">336000.00</div>
+            </div>
             <svg class="chart-svg" viewBox="-15 0 115 100" preserveAspectRatio="none">
               <defs><linearGradient id="gOrange" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#ff6b00" stop-opacity="0.15"/><stop offset="100%" stop-color="#ff6b00" stop-opacity="0"/></linearGradient></defs>
               <path d="M 0 80 L 15 55 L 25 60 L 45 25 L 60 35 L 75 25 L 90 65 L 100 80 L 100 100 L 0 100 Z" fill="url(#gOrange)" />
@@ -716,9 +723,11 @@
             </svg>
             <div class="chart-tag tag-red" style="top: 15%; left: 40%;" contenteditable="false" data-key="h1_tag1">最高资产 359917.13元</div>
             <div class="chart-tag tag-green" style="bottom: 15%; left: 80%;" contenteditable="false" data-key="h1_tag2">最低资产 336201.01元</div>
-            <div class="x-axis"><div>2026-11-02</div><div>2026-11-19</div></div>
+            <!-- X轴日期加上 data-key -->
+            <div class="x-axis"><div contenteditable="false" data-key="h1_x1">2026-11-02</div><div contenteditable="false" data-key="h1_x2">2026-11-19</div></div>
           </div>
         </div>
+        <!-- 其他视图保留... -->
         <div id="hold-1month" class="hold-view" style="display: none; padding: 20px; text-align: center; color: #999;">近一月数据视图</div>
         <div id="hold-3month" class="hold-view" style="display: none; padding: 20px; text-align: center; color: #999;">近三个月数据视图</div>
         <div id="hold-6month" class="hold-view" style="display: none; padding: 20px; text-align: center; color: #999;">近六月数据视图</div>
@@ -751,7 +760,12 @@
           <div class="chart-header"><h3>收益走势 ⓘ</h3></div>
           <div class="chart-wrapper">
              <div class="grid-line" style="top: 20%;"></div><div class="grid-line" style="top: 40%;"></div><div class="grid-line" style="top: 60%;"></div><div class="grid-line" style="top: 80%;"></div>
-             <div class="y-axis"><div>22500.00</div><div>15000.00</div><div>7500.00</div><div>0.00</div><div>-7500.00</div></div>
+             <!-- 收益图 Y 轴数字加上 data-key -->
+             <div class="y-axis">
+               <div contenteditable="false" data-key="p_m_y1">22500.00</div><div contenteditable="false" data-key="p_m_y2">15000.00</div>
+               <div contenteditable="false" data-key="p_m_y3">7500.00</div><div contenteditable="false" data-key="p_m_y4">0.00</div>
+               <div contenteditable="false" data-key="p_m_y5">-7500.00</div>
+             </div>
              <svg class="chart-svg" viewBox="-15 0 115 100" preserveAspectRatio="none">
               <defs>
                 <linearGradient id="gRedBg" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#ff3b30" stop-opacity="0.15"/><stop offset="100%" stop-color="#ff3b30" stop-opacity="0"/></linearGradient>
@@ -767,7 +781,8 @@
             <div class="chart-tag tag-red" style="top: 15%; left: 40%;" contenteditable="false" data-key="p_m_tag1">最高收益 19103.48元</div>
             <div class="chart-tag tag-green" style="top: 60%; left: 55%;" contenteditable="false" data-key="p_m_tag2">最大回撤 6.57% (13天)</div>
             <div class="chart-tag tag-green" style="bottom: 15%; left: 80%;" contenteditable="false" data-key="p_m_tag3">最低收益 -4572.76元</div>
-            <div class="x-axis"><div>2026-10-31</div><div>2026-11-18</div></div>
+            <!-- 收益图 X 轴日期加上 data-key -->
+            <div class="x-axis"><div contenteditable="false" data-key="p_m_x1">2026-10-31</div><div contenteditable="false" data-key="p_m_x2">2026-11-18</div></div>
           </div>
         </div>
       </div>
