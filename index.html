@@ -8,10 +8,11 @@
     /* ====== 基础与通用样式 ====== */
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, sans-serif; }
     body { background: #f2f2f2; color: #333; overflow-x: hidden; }
-    .page { display: none; min-height: 100vh; flex-direction: column; background: #f2f2f2; }
+    .page { display: none; min-height: 100vh; flex-direction: column; background: #f2f2f2; position: relative;}
     .page.active { display: flex; }
     
-    .edit-btn { position: fixed; bottom: 80px; right: 20px; background: #007aff; color: #fff; padding: 12px 20px; border-radius: 30px; font-size: 15px; font-weight: bold; box-shadow: 0 4px 15px rgba(0,122,255,0.4); z-index: 1000; border: none; cursor: pointer; }
+    /* 编辑按钮：修复了默认显示逻辑，由JS控制显示哪个 */
+    .edit-btn { display: none; position: fixed; bottom: 100px; right: 20px; background: #007aff; color: #fff; padding: 12px 20px; border-radius: 30px; font-size: 15px; font-weight: bold; box-shadow: 0 4px 15px rgba(0,122,255,0.4); z-index: 9999; border: none; cursor: pointer; }
     .editing [contenteditable="true"] { border-bottom: 1px dashed #007aff; background: rgba(0,122,255,0.1); outline: none; }
 
     /* ====== 页面 1：微博主页 ====== */
@@ -19,9 +20,7 @@
     .top-bar span { font-size: 22px; color: #333; font-weight: bold;}
     .profile-section { background: #fff; padding: 50px 20px 20px; position: relative; }
     .profile-info-top { display: flex; align-items: center; gap: 15px; margin-bottom: 15px;}
-    
     .profile-info-top img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 1px solid #eee; background: #f0f0f0;}
-    
     .profile-text h2 { font-size: 20px; font-weight: 600; display: flex; align-items: center; gap: 5px;}
     .vip-tag { background: #555; color: #ffd700; font-size: 10px; padding: 2px 6px; border-radius: 10px; font-weight: normal;}
     .profile-text p { font-size: 14px; color: #666; margin-top: 5px;}
@@ -167,7 +166,7 @@
     .fund-nav-item.active { color: #ff3b30;}
     .fund-nav-item i { font-style: normal; font-size: 22px;}
 
-    /* ====== 页面 5：基金“我的”（长图滚动） ====== */
+    /* ====== 页面 5：基金“我的” ====== */
     #page5 { background: #f5f5f5; padding-bottom: 60px;}
     .my-fund-top { background: linear-gradient(180deg, #ff3b30 0%, #ff5b3e 100%); padding: 50px 15px 20px; color: #fff;}
     .my-fund-user { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; font-size: 14px;}
@@ -245,7 +244,6 @@
     .chart-top-info { display: flex; font-size: 12px; color: #666; margin-bottom: 10px; align-items: center; }
     .chart-top-info span { margin-right: 15px; }
     
-    /* 图表坐标轴数字可编辑 */
     .y-axis { position: absolute; left: 10px; top: 15px; bottom: 35px; display: flex; flex-direction: column; justify-content: space-between; font-size: 10px; color: #999; z-index: 2;}
     .y-axis div { background: #fff; padding-right: 5px; }
     .x-axis { position: absolute; bottom: 10px; left: 10px; right: 10px; display: flex; justify-content: space-between; font-size: 10px; color: #999; z-index: 2;}
@@ -270,7 +268,12 @@
 </head>
 <body>
 
-  <button class="edit-btn" id="editBtn" onclick="toggleEdit()">✏️ 编辑数据</button>
+  <!-- 独立按钮，初始全隐藏，由JS控制展示当前页面的按钮 -->
+  <button class="edit-btn" id="btn-page1" onclick="toggleEdit('page1')">✏️ 编辑数据</button>
+  <button class="edit-btn" id="btn-page2" onclick="toggleEdit('page2')">✏️ 编辑数据</button>
+  <button class="edit-btn" id="btn-page3" onclick="toggleEdit('page3')">✏️ 编辑数据</button>
+  <button class="edit-btn" id="btn-page5" onclick="toggleEdit('page5')">✏️ 编辑数据</button>
+  <button class="edit-btn" id="btn-page4" onclick="toggleEdit('page4')">✏️ 编辑数据</button>
 
   <!-- ================= 页面 1 ================= -->
   <div id="page1" class="page active">
@@ -574,7 +577,6 @@
     </div>
 
     <div class="my-fund-white-area">
-      <!-- 灰白图标区，点击“收益明细”跳转Page4 -->
       <div class="my-fund-grid-menu">
         <div><div class="icon">📄</div>交易记录</div>
         <div onclick="goToPage('page4')"><div class="icon">📊</div>收益明细</div>
@@ -712,4 +714,172 @@
             </div>
             <svg class="chart-svg" viewBox="-15 0 115 100" preserveAspectRatio="none">
               <defs><linearGradient id="gOrange" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#ff6b00" stop-opacity="0.15"/><stop offset="100%" stop-color="#ff6b00" stop-opacity="0"/></linearGradient></defs>
-              <path d="M 0 80 L 15 55 L 25 60 L 45 25 L 60 35 L 75 25 L 90 65 L 100 80 L 100 100 L 0 100 Z" fill
+              <path d="M 0 80 L 15 55 L 25 60 L 45 25 L 60 35 L 75 25 L 90 65 L 100 80 L 100 100 L 0 100 Z" fill="url(#gOrange)" />
+              <path d="M 0 80 L 15 55 L 25 60 L 45 25 L 60 35 L 75 25 L 90 65 L 100 80" fill="none" stroke="#ff6b00" stroke-width="1" vector-effect="non-scaling-stroke" />
+              <circle cx="45" cy="25" r="1.5" fill="#fff" stroke="#ff6b00" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <circle cx="100" cy="80" r="1.5" fill="#00a854" stroke="#fff" stroke-width="1" vector-effect="non-scaling-stroke"/>
+            </svg>
+            <div class="chart-tag tag-red" style="top: 15%; left: 40%;" contenteditable="false" data-key="h1_tag1">最高资产 359917.13元</div>
+            <div class="chart-tag tag-green" style="bottom: 15%; left: 80%;" contenteditable="false" data-key="h1_tag2">最低资产 336201.01元</div>
+            <div class="x-axis"><div contenteditable="false" data-key="h1_x1">2026-11-02</div><div contenteditable="false" data-key="h1_x2">2026-11-19</div></div>
+          </div>
+        </div>
+        <div id="hold-1month" class="hold-view" style="display: none; padding: 20px; text-align: center; color: #999;">近一月数据视图</div>
+        <div id="hold-3month" class="hold-view" style="display: none; padding: 20px; text-align: center; color: #999;">近三个月数据视图</div>
+        <div id="hold-6month" class="hold-view" style="display: none; padding: 20px; text-align: center; color: #999;">近六月数据视图</div>
+        <div id="hold-3year" class="hold-view" style="display: none; padding: 20px; text-align: center; color: #999;">近三年数据视图</div>
+      </div>
+      
+      <div class="section-title" style="padding-bottom: 10px;">基金持仓分析 <span class="refresh-btn">刷新持仓</span></div>
+      <div class="empty-state">暂无基金持仓（组合暂不支持分析）</div>
+    </div>
+
+    <!-- 收益分析视图 -->
+    <div id="view-profit" style="display: none;">
+      <div class="time-tabs">
+        <div class="active" onclick="switchProfitTime('time-month', this)">本月收益</div>
+        <div onclick="switchProfitTime('time-3month', this)">近3月收益</div>
+        <div onclick="switchProfitTime('time-6month', this)">近6月收益</div>
+        <div onclick="switchProfitTime('time-year', this)">今年以来收益</div>
+      </div>
+      
+      <div id="time-month" class="profit-view" style="display: block;">
+        <div class="data-box">
+          <h2>本月收益(元)</h2>
+          <div class="data-row">
+            <div class="data-col"><p>本月收益金额</p><h3 contenteditable="false" data-key="p_m_amt">-4,572.76</h3></div>
+            <div class="data-col"><p>本月收益率</p><h3 contenteditable="false" data-key="p_m_rate">-1.34%</h3></div>
+            <div class="data-col"><p>同期沪深300</p><h3 contenteditable="false" data-key="p_m_hs">-0.04%</h3></div>
+          </div>
+        </div>
+        <div class="chart-box">
+          <div class="chart-header"><h3>收益走势 ⓘ</h3></div>
+          <div class="chart-wrapper">
+             <div class="grid-line" style="top: 20%;"></div><div class="grid-line" style="top: 40%;"></div><div class="grid-line" style="top: 60%;"></div><div class="grid-line" style="top: 80%;"></div>
+             <div class="y-axis">
+               <div contenteditable="false" data-key="p_m_y1">22500.00</div><div contenteditable="false" data-key="p_m_y2">15000.00</div>
+               <div contenteditable="false" data-key="p_m_y3">7500.00</div><div contenteditable="false" data-key="p_m_y4">0.00</div>
+               <div contenteditable="false" data-key="p_m_y5">-7500.00</div>
+             </div>
+             <svg class="chart-svg" viewBox="-15 0 115 100" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="gRedBg" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#ff3b30" stop-opacity="0.15"/><stop offset="100%" stop-color="#ff3b30" stop-opacity="0"/></linearGradient>
+                <linearGradient id="gGreenBg" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#00a854" stop-opacity="0.15"/><stop offset="100%" stop-color="#00a854" stop-opacity="0"/></linearGradient>
+              </defs>
+              <path d="M 0 80 L 15 60 L 25 70 L 40 25 L 50 35 L 50 100 L 0 100 Z" fill="url(#gRedBg)" />
+              <path d="M 0 80 L 15 60 L 25 70 L 40 25 L 50 35" fill="none" stroke="#ff3b30" stroke-width="1" vector-effect="non-scaling-stroke" />
+              <path d="M 50 35 L 60 55 L 70 50 L 85 75 L 100 85 L 100 100 L 50 100 Z" fill="url(#gGreenBg)" />
+              <path d="M 50 35 L 60 55 L 70 50 L 85 75 L 100 85" fill="none" stroke="#00a854" stroke-width="1" vector-effect="non-scaling-stroke" />
+              <circle cx="40" cy="25" r="1.5" fill="#fff" stroke="#ff3b30" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <circle cx="100" cy="85" r="1.5" fill="#00a854" stroke="#fff" stroke-width="1" vector-effect="non-scaling-stroke"/>
+            </svg>
+            <div class="chart-tag tag-red" style="top: 15%; left: 40%;" contenteditable="false" data-key="p_m_tag1">最高收益 19103.48元</div>
+            <div class="chart-tag tag-green" style="top: 60%; left: 55%;" contenteditable="false" data-key="p_m_tag2">最大回撤 6.57% (13天)</div>
+            <div class="chart-tag tag-green" style="bottom: 15%; left: 80%;" contenteditable="false" data-key="p_m_tag3">最低收益 -4572.76元</div>
+            <div class="x-axis"><div contenteditable="false" data-key="p_m_x1">2026-10-31</div><div contenteditable="false" data-key="p_m_x2">2026-11-18</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="time-3month" class="profit-view" style="display: none; padding: 20px; text-align: center; color: #999;">数据视图已保留</div>
+      <div id="time-6month" class="profit-view" style="display: none; padding: 20px; text-align: center; color: #999;">数据视图已保留</div>
+      <div id="time-year" class="profit-view" style="display: none; padding: 20px; text-align: center; color: #999;">数据视图已保留</div>
+    </div>
+  </div>
+
+  <script>
+    // --- 页面跳转 ---
+    function goToPage(pageId) {
+      if (document.body.classList.contains('editing')) return;
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+      window.scrollTo(0, 0);
+      
+      // 切换显示的按钮
+      document.querySelectorAll('.edit-btn').forEach(btn => btn.style.display = 'none');
+      let btn = document.getElementById('btn-' + pageId);
+      if (btn && !localStorage.getItem(pageId + '_locked')) {
+        btn.style.display = 'block';
+      }
+    }
+
+    function switchMainTab(tabName) {
+      if (document.body.classList.contains('editing')) return;
+      document.getElementById('tab-holdings').classList.remove('active');
+      document.getElementById('tab-profit').classList.remove('active');
+      document.getElementById('view-holdings').style.display = 'none';
+      document.getElementById('view-profit').style.display = 'none';
+
+      if (tabName === 'holdings') {
+        document.getElementById('tab-holdings').classList.add('active');
+        document.getElementById('view-holdings').style.display = 'block';
+      } else {
+        document.getElementById('tab-profit').classList.add('active');
+        document.getElementById('view-profit').style.display = 'block';
+      }
+    }
+
+    function switchHoldingTime(timeId, btn) {
+      if (document.body.classList.contains('editing')) return;
+      document.querySelectorAll('.hold-view').forEach(v => v.style.display = 'none');
+      document.getElementById(timeId).style.display = 'block';
+      btn.parentElement.querySelectorAll('div').forEach(d => d.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    function switchProfitTime(timeId, btn) {
+      if (document.body.classList.contains('editing')) return;
+      document.querySelectorAll('.profit-view').forEach(v => v.style.display = 'none');
+      document.getElementById(timeId).style.display = 'block';
+      btn.parentElement.querySelectorAll('div').forEach(d => d.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    // --- 独立编辑与锁定逻辑 ---
+    let isEditing = false;
+    
+    function loadData() {
+      document.querySelectorAll('[data-key]').forEach(el => {
+        const val = localStorage.getItem(el.getAttribute('data-key'));
+        if (val !== null) el.innerText = val;
+      });
+    }
+
+    window.onload = function() {
+      loadData();
+      // 初始化展示当前页 (默认 page1) 的按钮
+      document.querySelectorAll('.edit-btn').forEach(btn => btn.style.display = 'none');
+      if (!localStorage.getItem('page1_locked')) {
+        document.getElementById('btn-page1').style.display = 'block';
+      }
+    };
+
+    function toggleEdit(pageId) {
+      isEditing = !isEditing;
+      const btn = document.getElementById('btn-' + pageId);
+      const pageEl = document.getElementById(pageId);
+      const editables = pageEl.querySelectorAll('[data-key]');
+      
+      if (isEditing) {
+        btn.innerHTML = '💾 保存并锁定';
+        btn.style.background = '#ff3b30';
+        btn.style.boxShadow = '0 4px 15px rgba(255,59,48,0.4)';
+        pageEl.classList.add('editing');
+        editables.forEach(el => el.setAttribute('contenteditable', 'true'));
+      } else {
+        if(!confirm('保存后当前页面将无法再次修改，确定保存吗？')) {
+          isEditing = true; return;
+        }
+        btn.style.display = 'none'; 
+        pageEl.classList.remove('editing');
+        editables.forEach(el => {
+          el.setAttribute('contenteditable', 'false');
+          localStorage.setItem(el.getAttribute('data-key'), el.innerText);
+        });
+        localStorage.setItem(pageId + '_locked', 'true'); // 记录当前页面已锁定
+        alert('当前页面数据已保存并锁定！');
+      }
+    }
+  </script>
+</body>
+</html>
