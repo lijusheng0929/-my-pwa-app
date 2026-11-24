@@ -263,6 +263,45 @@
     .empty-state { text-align: center; padding: 40px 0; color: #999; font-size: 14px; background: #fff; margin-bottom: 20px;}
     .refresh-btn { float: right; font-size: 13px; color: #666; font-weight: normal;}
 
+    /* 新增：日历年月视图 */
+    .view-tabs { display: flex; justify-content: center; gap: 15px; background: #fff; padding: 15px 0; margin-bottom: 10px; }
+    .view-tabs div { padding: 8px 20px; border-radius: 20px; background: #f5f5f5; font-size: 14px; color: #666; cursor: pointer; }
+    .view-tabs div.active { background: #ffeeee; color: #ff3b30; }
+    
+    .cal-control { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: #fff; }
+    .cal-control .arrows { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: bold; }
+    .cal-control .arrows span { cursor: pointer; color: #ccc; padding: 0 5px; user-select: none; }
+    .cal-control .arrows span.active-arrow { color: #333; }
+    .cal-box { background: #fff; padding: 0 15px 15px; }
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; text-align: center; }
+    .cal-day { font-size: 12px; color: #888; padding: 10px 0; }
+    .cal-item { height: 55px; border-radius: 6px; background: #f7f7f7; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 2px; }
+    .cal-item .d { font-size: 14px; font-weight: bold; color: #333; }
+    .cal-item .v { font-size: 10px; }
+    .cal-item.profit { background: #ffebee; } .cal-item.profit .v { color: #ff3b30; }
+    .cal-item.loss { background: #e8f5e9; } .cal-item.loss .v { color: #00a854; }
+    .cal-item.active { background: #007aff; } .cal-item.active .d, .cal-item.active .v { color: #fff; }
+    .cal-item.empty { background: transparent; }
+
+    .monthly-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 0 15px 15px; }
+    .m-card { border-radius: 8px; padding: 20px 10px; text-align: center; cursor: pointer; transition: opacity 0.2s;}
+    .m-card:active { opacity: 0.7; }
+    .m-card h4 { font-size: 22px; margin-bottom: 8px; }
+    .m-card p { font-size: 13px; }
+    .m-card .rate { font-size: 13px; margin-top: 4px; }
+    .bg-grey { background: #f2f2f2; color: #999; }
+    .bg-red { background: #ffebee; color: #ff3b30; }
+    .bg-green { background: #e8f5e9; color: #00a854; }
+    .bg-blue { background: #4a90e2; color: #fff; }
+
+    .yearly-area { background: #fff; padding: 15px; }
+    .yearly-title { text-align: center; color: #666; font-size: 15px; margin-bottom: 20px; }
+    .yearly-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+    .yearly-card { border-radius: 8px; padding: 25px 10px; text-align: center; cursor: pointer; transition: opacity 0.2s; }
+    .yearly-card:active { opacity: 0.7; }
+    .yearly-card h4 { font-size: 26px; margin-bottom: 8px; }
+    .yearly-card p { font-size: 13px; }
+
   </style>
 </head>
 <body>
@@ -663,7 +702,7 @@
     </div>
   </div>
 
-  <!-- ================= 页面 4：分析页（图表全量恢复） ================= -->
+  <!-- ================= 页面 4：分析页（全量图表及日历完整恢复） ================= -->
   <div id="page4" class="page">
     <div class="nav-bar">
       <div class="back" onclick="goToPage('page5')">‹</div><div class="title">资产收益分析</div><div class="right-icon">...</div>
@@ -702,7 +741,6 @@
       </div>
 
       <div class="chart-box" style="margin-top: 0;">
-        <!-- 持仓：本月 -->
         <div id="hold-month" class="hold-view">
           <div class="chart-top-info"><span contenteditable="false" data-key="h1_date">2026-11-19</span><span><span style="color:#ff3b30;">●</span> 最新资产 <span style="color:#ff3b30;" contenteditable="false" data-key="h1_m">+336201.01</span></span></div>
           <div class="chart-wrapper">
@@ -725,7 +763,6 @@
           </div>
         </div>
         
-        <!-- 持仓：近一月 -->
         <div id="hold-1month" class="hold-view" style="display: none;">
           <div class="chart-top-info"><span contenteditable="false" data-key="h2_date">2026-11-19</span><span><span style="color:#ff3b30;">●</span> 最新资产 <span style="color:#ff3b30;" contenteditable="false" data-key="h2_m">+336201.01</span></span></div>
           <div class="chart-wrapper">
@@ -747,7 +784,6 @@
           </div>
         </div>
 
-        <!-- 持仓：近三个月 -->
         <div id="hold-3month" class="hold-view" style="display: none;">
           <div class="chart-top-info"><span contenteditable="false" data-key="h3_date">2026-11-19</span><span><span style="color:#ff3b30;">●</span> 最新资产 <span style="color:#ff3b30;" contenteditable="false" data-key="h3_m">+336201.01</span></span></div>
           <div class="chart-wrapper">
@@ -769,7 +805,6 @@
           </div>
         </div>
 
-        <!-- 持仓：近六月 -->
         <div id="hold-6month" class="hold-view" style="display: none;">
            <div class="chart-top-info"><span contenteditable="false" data-key="h4_date">2026-11-19</span><span><span style="color:#ff3b30;">●</span> 最新资产 <span style="color:#ff3b30;" contenteditable="false" data-key="h4_m">+336201.01</span></span></div>
           <div class="chart-wrapper">
@@ -791,7 +826,6 @@
           </div>
         </div>
 
-        <!-- 持仓：近三年 -->
         <div id="hold-3year" class="hold-view" style="display: none;">
           <div class="chart-top-info"><span contenteditable="false" data-key="h5_date">2026-11-19</span><span><span style="color:#ff3b30;">●</span> 最新资产 <span style="color:#ff3b30;" contenteditable="false" data-key="h5_m">+336201.01</span></span></div>
           <div class="chart-wrapper">
@@ -865,7 +899,6 @@
         </div>
       </div>
 
-      <!-- 收益：近3月 -->
       <div id="time-3month" class="profit-view" style="display: none;">
         <div class="data-box">
           <h2>近3月收益(元)</h2>
@@ -898,7 +931,6 @@
         </div>
       </div>
 
-      <!-- 收益：近6月 -->
       <div id="time-6month" class="profit-view" style="display: none;">
         <div class="data-box">
           <h2>近6月收益(元)</h2>
@@ -931,7 +963,6 @@
         </div>
       </div>
 
-      <!-- 收益：今年以来 -->
       <div id="time-year" class="profit-view" style="display: none;">
         <div class="data-box">
           <h2>今年以来收益(元)</h2>
@@ -967,7 +998,6 @@
   </div>
 
   <script>
-    // --- 页面跳转 ---
     function goToPage(pageId) {
       if (document.body.classList.contains('editing')) return;
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
