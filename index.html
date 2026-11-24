@@ -14,7 +14,7 @@
     .edit-btn { display: none; position: fixed; bottom: 100px; right: 20px; background: #007aff; color: #fff; padding: 12px 20px; border-radius: 30px; font-size: 15px; font-weight: bold; box-shadow: 0 4px 15px rgba(0,122,255,0.4); z-index: 9999; border: none; cursor: pointer; }
     .editing [contenteditable="true"] { border-bottom: 1px dashed #007aff; background: rgba(0,122,255,0.1); outline: none; }
 
-    /* ====== 页面 1：微博主页 ====== */
+    /* ====== 页面 1-3-5 略（保持之前的完美排版） ====== */
     .top-bar { display: flex; justify-content: flex-end; padding: 15px; gap: 20px; position: absolute; top: 0; right: 0; width: 100%; z-index: 10; }
     .top-bar span { font-size: 22px; color: #333; font-weight: bold;}
     .profile-section { background: #fff; padding: 50px 20px 20px; position: relative; }
@@ -73,7 +73,7 @@
     .nav-icon-wrap i { font-style: normal; font-size: 22px; }
     .nav-badge { position: absolute; top: -4px; right: -6px; background: #ff3b30; color: #fff; font-size: 10px; padding: 1px 5px; border-radius: 10px; border: 1.5px solid #fff; min-width: 16px; text-align: center; line-height: 1.2; transform: scale(0.9); }
 
-    /* ====== 页面 2：钱包 ====== */
+    /* 页面 2 */
     #page2 { background: #f5f5f5; padding-bottom: 20px;}
     .wallet-header-new { background: linear-gradient(180deg, #ffdab9 0%, #f5f5f5 100%); padding-top: 10px;}
     .wallet-nav { display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; font-size: 18px; font-weight: bold;}
@@ -92,17 +92,14 @@
     .wallet-user-info img { width: 30px; height: 30px; border-radius: 50%;}
     .wallet-user-info .tag { background: #fff1d0; color: #ff9800; font-size: 10px; padding: 2px 6px; border-radius: 10px; border: 1px solid #ffd54f;}
     .wallet-user-right { font-size: 13px; color: #999;}
-
     .small-circles { display: flex; justify-content: space-around; background: #fff; margin: 10px 15px; border-radius: 12px; padding: 15px 0;}
     .circle-item { text-align: center; font-size: 13px; color: #333;}
     .circle-icon { font-size: 24px; margin-bottom: 5px;}
     .daily-bonus-bar { background: #fffcf0; color: #ff9800; text-align: center; font-size: 13px; padding: 10px; border-radius: 0 0 12px 12px; margin: -10px 15px 10px;}
-
     .big-grid-container { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px 5px; background: #fff; margin: 10px 15px; border-radius: 12px; padding: 20px 10px;}
     .big-grid-item { text-align: center; font-size: 12px; color: #333; position: relative; cursor: pointer; }
     .big-grid-item .icon-bg { font-size: 28px; margin-bottom: 5px; display: inline-block;}
     .big-grid-item p { color: #ff9800; font-size: 11px; margin-top: 2px;}
-    
     .loan-banner { background: linear-gradient(90deg, #fff5e6, #ffebd2); border-radius: 12px; margin: 10px 15px; padding: 15px; }
     .loan-header { display: flex; justify-content: space-between; font-size: 15px; font-weight: bold; margin-bottom: 10px;}
     .loan-tags { display: flex; gap: 10px; font-size: 12px; color: #ff9800; font-weight: normal; }
@@ -110,7 +107,6 @@
     .loan-content h2 { font-size: 32px; font-weight: normal;}
     .loan-content .btn-borrow { background: #ff8c00; color: #fff; padding: 10px 20px; border-radius: 20px; font-weight: bold; font-size: 15px;}
     .loan-footer { font-size: 12px; color: #999; margin-top: 10px;}
-
     .ad-cards { display: flex; gap: 10px; margin: 10px 15px; overflow-x: auto; padding-bottom: 10px;}
     .ad-card { flex: 1; border-radius: 12px; padding: 15px; min-width: 110px; display: flex; flex-direction: column; justify-content: space-between;}
     .ad-card h4 { font-size: 15px; font-weight: bold; margin-bottom: 5px;}
@@ -119,27 +115,23 @@
     .ad-card.red { background: #ffe6e6; color: #ff3b30;}
     .ad-card.yellow { background: #fff8e1; color: #ff9800;}
     .ad-card.pink { background: #fce4ec; color: #e91e63;}
-
     .channel-tabs { display: flex; justify-content: space-around; background: #fff; padding: 15px 0; font-size: 15px; margin-top: 10px;}
     .channel-tabs span { color: #666; }
     .channel-tabs span.active { color: #ff8200; font-weight: bold; position: relative;}
     .channel-tabs span.active::after { content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); width: 20px; height: 3px; background: #ff8200; }
-
     .section-block { background: #fff; padding: 15px; margin: 10px 0; }
     .section-block h3 { font-size: 16px; margin-bottom: 15px;}
     .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px 0; text-align: center; font-size: 12px;}
     .grid-5 .icon { font-size: 26px; margin-bottom: 5px;}
 
-    /* ====== 页面 3：基金首页 ====== */
+    /* 页面 3 */
     #page3 { background: #f5f5f5; padding-bottom: 60px; }
     .fund-top-bg { background: linear-gradient(180deg, #ff3b30 0%, #ff6b61 100%); padding: 50px 15px 70px; color: #fff; position: relative;}
     .fund-search { background: rgba(255,255,255,0.25); border-radius: 20px; padding: 8px 15px; font-size: 13px; display: flex; align-items: center; gap: 5px; margin-bottom: 20px; }
     .fund-asset-row { display: flex; justify-content: space-between; align-items: flex-end;}
     .fund-asset-item h4 { font-size: 13px; opacity: 0.9; margin-bottom: 5px; font-weight: normal; display: flex; align-items: center; gap: 5px;}
     .fund-asset-item .val { font-size: 28px; font-weight: bold; }
-    
     .fund-asset-item .profit-val { font-size: 24px; font-weight: bold; display: flex; align-items: center; gap: 5px; cursor: pointer;}
-
     .star-fund-card { background: #fff; border-radius: 16px; margin: -50px 15px 15px; padding: 20px; position: relative; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 2px solid #ffe0b2;}
     .star-tag { background: #ffebee; color: #ff3b30; font-size: 12px; padding: 4px 12px; border-radius: 15px; display: inline-block; margin-bottom: 15px; font-weight: bold;}
     .star-fund-card h3 { font-size: 18px; color: #333; margin-bottom: 5px; text-align: center;}
@@ -150,22 +142,19 @@
     .tags-right { position: absolute; right: 0; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 8px; font-size: 12px; color: #666;}
     .tags-right span::before { content: '✓'; color: #ffb74d; margin-right: 4px;}
     .btn-buy-red { background: #ff3b30; color: #fff; text-align: center; padding: 12px; border-radius: 25px; font-size: 16px; font-weight: bold; margin-top: 10px; cursor: pointer;}
-
     .fund-grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px 0; padding: 10px 15px; text-align: center; font-size: 12px; color: #333;}
     .fund-grid-5 .icon { font-size: 28px; margin-bottom: 5px; color: #666;}
     .fund-grid-5 .icon.red { color: #ff3b30;}
-
     .blue-ad { background: linear-gradient(90deg, #0033cc, #0044ff); margin: 15px; border-radius: 8px; padding: 20px; text-align: center; color: #fff;}
     .blue-ad h3 { font-size: 18px; margin-bottom: 5px; font-weight: bold;}
     .blue-ad p { font-size: 13px; opacity: 0.9; margin-bottom: 10px;}
     .blue-ad span { background: rgba(255,255,255,0.2); padding: 4px 15px; border-radius: 15px; font-size: 12px;}
-
     .fund-bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; display: flex; background: #fff; padding: 8px 0; border-top: 1px solid #eee; z-index: 10;}
     .fund-nav-item { flex: 1; text-align: center; font-size: 11px; color: #999; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer;}
     .fund-nav-item.active { color: #ff3b30;}
     .fund-nav-item i { font-style: normal; font-size: 22px;}
 
-    /* ====== 页面 5：基金“我的” ====== */
+    /* 页面 5 */
     #page5 { background: #f5f5f5; padding-bottom: 60px;}
     .my-fund-top { background: linear-gradient(180deg, #ff3b30 0%, #ff5b3e 100%); padding: 50px 15px 20px; color: #fff;}
     .my-fund-user { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; font-size: 14px;}
@@ -177,22 +166,17 @@
     .my-fund-stats .col { flex: 1; text-align: center; border-right: 1px solid rgba(255,255,255,0.2);}
     .my-fund-stats .col:last-child { border-right: none; }
     .my-fund-stats .val { font-size: 16px; font-weight: bold; margin-top: 4px;}
-    
     .my-fund-btns { display: flex; gap: 10px; margin-top: 20px; }
     .my-fund-btns div { flex: 1; background: rgba(255,255,255,0.15); padding: 8px; border-radius: 6px; text-align: center; font-size: 13px;}
-
     .my-fund-white-area { background: #fff; border-radius: 12px 12px 0 0; margin-top: -10px; position: relative; padding: 15px 0;}
     .my-fund-grid-menu { display: grid; grid-template-columns: repeat(5, 1fr); text-align: center; font-size: 12px; color: #333; margin-bottom: 15px; gap: 15px 0;}
     .my-fund-grid-menu .icon { font-size: 26px; margin-bottom: 5px; color: #666;}
-    
     .ref-profit { background: #fdf6f6; margin: 0 15px; padding: 15px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; font-size: 14px;}
     .ref-profit .left { font-weight: bold; color: #333;}
     .ref-profit .right { color: #00a854; font-weight: bold;}
-    
     .my-fund-tabs { display: flex; padding: 15px; gap: 20px; font-size: 16px; color: #666;}
     .my-fund-tabs span.active { color: #333; font-weight: bold;}
     .my-fund-tabs span:last-child { margin-left: auto; font-size: 13px;}
-
     .reserve-card { margin: 0 15px 15px; border: 1px solid #eee; border-radius: 8px; padding: 15px;}
     .reserve-header { font-size: 15px; font-weight: bold; display: flex; align-items: center; gap: 10px; margin-bottom: 10px;}
     .reserve-header span { font-size: 12px; color: #ff3b30; background: #ffebee; padding: 2px 6px; border-radius: 4px; font-weight: normal;}
@@ -201,7 +185,6 @@
     .reserve-data .btns div { font-size: 13px; padding: 6px 12px; border-radius: 15px;}
     .reserve-data .btns .out { border: 1px solid #ccc; color: #333;}
     .reserve-data .btns .in { background: #ff3b30; color: #fff;}
-
     .hot-funds { padding: 15px; background: #f5f5f5; margin-top: 10px;}
     .hot-funds h3 { font-size: 18px; margin-bottom: 15px;}
     .hot-scroll { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px;}
@@ -211,7 +194,7 @@
     .hot-card h2 { font-size: 22px; color: #00a854; margin-bottom: 5px;}
     .hot-card .tag { border: 1px solid #ff3b30; color: #ff3b30; font-size: 11px; padding: 2px 6px; border-radius: 4px;}
 
-    /* ====== 页面 4：分析页 ====== */
+    /* ====== 页面 4：资产收益分析 ====== */
     .nav-bar { display: flex; align-items: center; padding: 10px 15px; background: #fff; position: sticky; top: 0; z-index: 10; }
     .nav-bar .back { font-size: 24px; color: #333; width: 40px; cursor: pointer; }
     .nav-bar .title { flex: 1; text-align: center; font-size: 17px; font-weight: 500; }
@@ -221,17 +204,61 @@
     .analysis-top div { flex: 1; text-align: center; padding: 15px 0; font-size: 15px; color: #666; cursor: pointer;}
     .analysis-top div.active { color: #ff3b30; font-weight: bold; position: relative; }
     .analysis-top div.active::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 30px; height: 3px; background: #ff3b30; border-radius: 2px; }
-    .time-tabs { display: flex; padding: 15px; background: #fff; gap: 10px; overflow-x: auto; white-space: nowrap; border-bottom: 1px solid #eee; }
-    .time-tabs div { padding: 8px 18px; border-radius: 20px; background: #f5f5f5; font-size: 14px; color: #666; cursor: pointer; }
-    .time-tabs div.active { background: #ffeeee; color: #ff3b30; font-weight: bold; }
-    .data-box { background: #fff; padding: 15px; }
-    .data-box h2 { font-size: 18px; margin-bottom: 15px; }
-    .data-row { display: flex; background: #fdf6f6; border-radius: 8px; padding: 15px 0; }
-    .data-col { flex: 1; text-align: center; border-right: 1px solid #f0e0e0; }
-    .data-col:last-child { border-right: none; }
-    .data-col p { font-size: 12px; color: #888; margin-bottom: 5px; }
-    .data-col h3 { font-size: 18px; color: #00a854; }
     
+    /* 用户超越进度条 */
+    .progress-area { background: #fff; padding: 20px 15px 10px; }
+    .progress-title { font-size: 16px; font-weight: bold; margin-bottom: 15px; }
+    .progress-bar-bg { height: 8px; background: #eee; border-radius: 4px; display: flex; position: relative; margin-bottom: 10px; }
+    .progress-bar-green { height: 100%; background: #00a854; border-radius: 4px 0 0 4px; }
+    .progress-bar-orange { height: 100%; background: #ff3b30; border-radius: 0 4px 4px 0; }
+    .progress-avatar { position: absolute; top: -8px; width: 24px; height: 24px; border-radius: 50%; border: 2px solid #fff; transform: translateX(-50%); background: #f0f0f0;}
+    .progress-labels { display: flex; justify-content: space-between; font-size: 13px; }
+    .progress-labels .green { color: #00a854; }
+    .progress-labels .orange { color: #ff3b30; }
+
+    /* 三个视图 Tab */
+    .view-tabs { display: flex; justify-content: center; gap: 15px; background: #fff; padding: 15px 0; margin-bottom: 10px; }
+    .view-tabs div { padding: 8px 20px; border-radius: 20px; background: #f5f5f5; font-size: 14px; color: #666; cursor: pointer; }
+    .view-tabs div.active { background: #ffeeee; color: #ff3b30; font-weight: bold; }
+
+    .cal-box { background: #fff; padding: 0 15px 15px; }
+    .cal-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #f5f5f5; margin-bottom: 15px; }
+    .cal-header .month-select { display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: bold; }
+    .cal-header .month-select span { cursor: pointer; color: #ccc; padding: 0 5px; user-select: none; }
+    .cal-header .month-select span.active { color: #333; }
+    
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; text-align: center; }
+    .cal-day { font-size: 12px; color: #888; padding: 10px 0; }
+    .cal-item { height: 60px; border-radius: 6px; background: #f7f7f7; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 2px; }
+    .cal-item .d { font-size: 15px; font-weight: bold; color: #333; }
+    .cal-item .v { font-size: 11px; }
+    .cal-item.profit { background: #ffebee; } .cal-item.profit .v { color: #ff3b30; }
+    .cal-item.loss { background: #e8f5e9; } .cal-item.loss .v { color: #00a854; }
+    .cal-item.active { background: #007aff; } .cal-item.active .d, .cal-item.active .v { color: #fff; }
+    .cal-item.empty { background: transparent; }
+    .cal-item.zero { background: #f7f7f7; } .cal-item.zero .v { color: #999; }
+
+    /* 月历/年历 */
+    .monthly-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; padding: 0 15px 15px; }
+    .m-card { border-radius: 8px; padding: 20px 10px; text-align: center; cursor: pointer; transition: opacity 0.2s;}
+    .m-card:active { opacity: 0.7; }
+    .m-card h4 { font-size: 22px; margin-bottom: 8px; }
+    .m-card p { font-size: 13px; }
+    .m-card .rate { font-size: 13px; margin-top: 4px; }
+    .bg-grey { background: #f2f2f2; color: #999; }
+    .bg-red { background: #ffebee; color: #ff3b30; }
+    .bg-green { background: #e8f5e9; color: #00a854; }
+    .bg-blue { background: #4a90e2; color: #fff; }
+
+    .yearly-area { background: #fff; padding: 15px; }
+    .yearly-title { text-align: center; color: #666; font-size: 15px; margin-bottom: 20px; }
+    .yearly-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 0 15px 15px;}
+    .yearly-card { border-radius: 8px; padding: 25px 10px; text-align: center; cursor: pointer; transition: opacity 0.2s; }
+    .yearly-card:active { opacity: 0.7; }
+    .yearly-card h4 { font-size: 26px; margin-bottom: 8px; }
+    .yearly-card p { font-size: 13px; }
+
+    /* 图表区 */
     .chart-box { background: #fff; padding: 15px; margin: 10px 0; }
     .chart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
     .chart-header h3 { font-size: 16px; }
@@ -242,13 +269,12 @@
     .tag-green { background: #00a854; }
     .chart-top-info { display: flex; font-size: 12px; color: #666; margin-bottom: 10px; align-items: center; }
     .chart-top-info span { margin-right: 15px; }
-    
     .y-axis { position: absolute; left: 10px; top: 15px; bottom: 35px; display: flex; flex-direction: column; justify-content: space-between; font-size: 10px; color: #999; z-index: 2;}
     .y-axis div { background: #fff; padding-right: 5px; }
     .x-axis { position: absolute; bottom: 10px; left: 10px; right: 10px; display: flex; justify-content: space-between; font-size: 10px; color: #999; z-index: 2;}
-    
     .grid-line { position: absolute; width: 100%; border-bottom: 1px dashed #f0f0f0; z-index: 1;}
-    
+
+    /* 持仓分析（简略） */
     .holdings-top { background: #fff; padding: 20px 15px; display: flex; align-items: center; justify-content: space-around; margin-bottom: 10px;}
     .donut-chart { width: 130px; height: 130px; border-radius: 50%; background: conic-gradient(#ff6b00 99%, #ffe6d9 0); display: flex; justify-content: center; align-items: center; position: relative;}
     .donut-inner { width: 90px; height: 90px; background: #fff; border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; }
@@ -262,51 +288,10 @@
     .section-title { font-size: 18px; font-weight: bold; padding: 15px; background: #fff;}
     .empty-state { text-align: center; padding: 40px 0; color: #999; font-size: 14px; background: #fff; margin-bottom: 20px;}
     .refresh-btn { float: right; font-size: 13px; color: #666; font-weight: normal;}
-
-    /* 新增：日历年月视图 */
-    .view-tabs { display: flex; justify-content: center; gap: 15px; background: #fff; padding: 15px 0; margin-bottom: 10px; }
-    .view-tabs div { padding: 8px 20px; border-radius: 20px; background: #f5f5f5; font-size: 14px; color: #666; cursor: pointer; }
-    .view-tabs div.active { background: #ffeeee; color: #ff3b30; }
-    
-    .cal-control { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: #fff; }
-    .cal-control .arrows { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: bold; }
-    .cal-control .arrows span { cursor: pointer; color: #ccc; padding: 0 5px; user-select: none; }
-    .cal-control .arrows span.active-arrow { color: #333; }
-    .cal-box { background: #fff; padding: 0 15px 15px; }
-    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; text-align: center; }
-    .cal-day { font-size: 12px; color: #888; padding: 10px 0; }
-    .cal-item { height: 55px; border-radius: 6px; background: #f7f7f7; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 2px; }
-    .cal-item .d { font-size: 14px; font-weight: bold; color: #333; }
-    .cal-item .v { font-size: 10px; }
-    .cal-item.profit { background: #ffebee; } .cal-item.profit .v { color: #ff3b30; }
-    .cal-item.loss { background: #e8f5e9; } .cal-item.loss .v { color: #00a854; }
-    .cal-item.active { background: #007aff; } .cal-item.active .d, .cal-item.active .v { color: #fff; }
-    .cal-item.empty { background: transparent; }
-
-    .monthly-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 0 15px 15px; }
-    .m-card { border-radius: 8px; padding: 20px 10px; text-align: center; cursor: pointer; transition: opacity 0.2s;}
-    .m-card:active { opacity: 0.7; }
-    .m-card h4 { font-size: 22px; margin-bottom: 8px; }
-    .m-card p { font-size: 13px; }
-    .m-card .rate { font-size: 13px; margin-top: 4px; }
-    .bg-grey { background: #f2f2f2; color: #999; }
-    .bg-red { background: #ffebee; color: #ff3b30; }
-    .bg-green { background: #e8f5e9; color: #00a854; }
-    .bg-blue { background: #4a90e2; color: #fff; }
-
-    .yearly-area { background: #fff; padding: 15px; }
-    .yearly-title { text-align: center; color: #666; font-size: 15px; margin-bottom: 20px; }
-    .yearly-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
-    .yearly-card { border-radius: 8px; padding: 25px 10px; text-align: center; cursor: pointer; transition: opacity 0.2s; }
-    .yearly-card:active { opacity: 0.7; }
-    .yearly-card h4 { font-size: 26px; margin-bottom: 8px; }
-    .yearly-card p { font-size: 13px; }
-
   </style>
 </head>
 <body>
 
-  <!-- 各页面独立编辑按钮 -->
   <button class="edit-btn" id="btn-page1" onclick="toggleEdit('page1')">✏️ 编辑数据</button>
   <button class="edit-btn" id="btn-page2" onclick="toggleEdit('page2')">✏️ 编辑数据</button>
   <button class="edit-btn" id="btn-page3" onclick="toggleEdit('page3')">✏️ 编辑数据</button>
@@ -437,7 +422,6 @@
         <div class="big-grid-item"><div class="icon-bg">💰</div>借钱<p>领尊享特权</p></div>
         <div class="big-grid-item"><div class="icon-bg">📱</div>租赁·手机</div>
         
-        <!-- 基金入口 -->
         <div class="big-grid-item" onclick="goToPage('page3')">
           <div class="icon-bg">📈</div>
           <span style="color:#0066cc; font-weight:bold;">基金</span>
@@ -532,7 +516,6 @@
           <h4>总资产(元) 👁️ <span style="background:#fff; color:#ff3b30; border-radius:4px; padding:0 4px; font-size:10px; font-weight:bold;">免</span> 全场免申购费</h4>
           <div class="val" contenteditable="false" data-key="totalAsset">336,201.01</div>
         </div>
-        <!-- 点击最新收益进入 Page5 -->
         <div class="fund-asset-item" style="text-align: right;" onclick="goToPage('page5')">
           <h4 style="justify-content: flex-end;">最新收益(元) <span>></span></h4>
           <div class="profit-val"><span contenteditable="false" data-key="latestProfit">-1,948.29</span></div>
@@ -643,7 +626,6 @@
         <span class="active">全部</span><span>基金</span><span>组合</span><span>全部银行卡 ▼</span>
       </div>
 
-      <!-- 安达精选基金卡片 (数字全可改) -->
       <div style="background:#fff; padding: 0 15px 15px;">
         <div style="display:flex; justify-content:space-between; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px; font-size: 13px; color: #666;">
           <div contenteditable="false" data-key="ada_h1">名称</div>
@@ -672,7 +654,6 @@
       </div>
       <div style="text-align: center; padding: 15px; font-size: 14px; color: #666;">看看更多基金 ></div>
 
-      <!-- 近期热门横向滑动 -->
       <div class="hot-funds">
         <h3>近期热门</h3>
         <div class="hot-scroll">
@@ -702,20 +683,158 @@
     </div>
   </div>
 
-  <!-- ================= 页面 4：分析页（全量图表及日历完整恢复） ================= -->
+  <!-- ================= 页面 4：资产收益分析（全量完整版） ================= -->
   <div id="page4" class="page">
     <div class="nav-bar">
       <div class="back" onclick="goToPage('page5')">‹</div><div class="title">资产收益分析</div><div class="right-icon">...</div>
     </div>
     
     <div class="analysis-top">
-      <div id="tab-holdings" class="active" onclick="switchMainTab('holdings')">持仓分析</div>
-      <div id="tab-profit" onclick="switchMainTab('profit')">收益分析</div>
+      <div id="tab-holdings" onclick="switchMainTab('holdings')">持仓分析</div>
+      <div id="tab-profit" class="active" onclick="switchMainTab('profit')">收益分析</div>
     </div>
 
-    <!-- 持仓分析视图 -->
-    <div id="view-holdings">
-      <div class="holdings-top">
+    <div id="view-profit" style="display: block;">
+      
+      <!-- 超越进度条 -->
+      <div class="progress-area">
+        <div class="progress-title">本月收益率超越了 <span style="color:#ff3b30" contenteditable="false" data-key="p_bar_percent">45.35%</span> 的用户</div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-green" style="width: 75%;"></div>
+          <div class="progress-bar-orange" style="width: 25%;"></div>
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI1MCIgZmlsbD0iI2ZmY2U1NCIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjQwIiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMzAiIGN5PSI0MCIgcj0iNSIgZmlsbD0iIzMzMyIvPjxjaXJjbGUgY3g9IjcwIiBjeT0iNDAiIHI9IjUiIGZpbGw9IiMzMzMiLz48cGF0aCBkPSJNIDQwIDYwIFEgNTAgNzAgNjAgNjAiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIi8+PC9zdmc+" class="progress-avatar" style="left: 75%;">
+        </div>
+        <div class="progress-labels">
+          <div class="green" contenteditable="false" data-key="p_bar_l">亏损基民 74.95%</div>
+          <div class="orange" contenteditable="false" data-key="p_bar_r">盈利基民 25.05%</div>
+        </div>
+      </div>
+
+      <!-- 视图切换 -->
+      <div class="view-tabs">
+        <div id="tab-calendar" class="active" onclick="switchProfitView('view-calendar', this)">收益日历</div>
+        <div id="tab-monthly" onclick="switchProfitView('view-monthly', this)">收益月历</div>
+        <div id="tab-yearly" onclick="switchProfitView('view-yearly', this)">收益年历</div>
+      </div>
+
+      <!-- 1. 收益日历视图 -->
+      <div id="view-calendar">
+        <div class="cal-box">
+          <div class="cal-header">
+            <div class="month-select">
+              <span class="active" onclick="changeMonth(-1)">◀</span>
+              <span contenteditable="false" data-key="cal_month_str">2026年11月</span>
+              <span class="active" onclick="changeMonth(1)">▶</span>
+            </div>
+            <div style="font-size:14px; font-weight:bold;">金额</div>
+            <div style="color: #666; font-size: 13px;">筛选 ▼</div>
+          </div>
+          
+          <div class="cal-grid">
+            <div class="cal-day">日</div><div class="cal-day">一</div><div class="cal-day">二</div><div class="cal-day">三</div>
+            <div class="cal-day">四</div><div class="cal-day">五</div><div class="cal-day">六</div>
+            
+            <div id="calendarDays" style="display: contents;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. 收益月历视图 -->
+      <div id="view-monthly" style="display: none;">
+        <div class="cal-header" style="padding: 15px; margin-bottom: 0; border-bottom: none;">
+          <div class="month-select">
+            <span class="active">◀</span>
+            <span contenteditable="false" data-key="monthly_year">2026年</span>
+          </div>
+          <div style="color: #666; font-size: 13px;">筛选 ▼</div>
+        </div>
+        <div class="monthly-grid">
+          <div class="m-card bg-grey"><h4 contenteditable="false">1月</h4><p contenteditable="false">0.00</p></div>
+          <div class="m-card bg-grey"><h4 contenteditable="false">2月</h4><p contenteditable="false">0.00</p></div>
+          <div class="m-card bg-green"><h4 contenteditable="false">3月</h4><p contenteditable="false">-394.83</p></div>
+          <div class="m-card bg-red"><h4 contenteditable="false">4月</h4><p contenteditable="false">5340.53</p></div>
+          <div class="m-card bg-green"><h4 contenteditable="false">5月</h4><p contenteditable="false">-7720.60</p></div>
+          <div class="m-card bg-red"><h4 contenteditable="false">6月</h4><p contenteditable="false">6010.42</p><div class="rate" contenteditable="false">1.52%</div></div>
+          <div class="m-card bg-green"><h4 contenteditable="false">7月</h4><p contenteditable="false">-51862.89</p><div class="rate" contenteditable="false">-12.78%</div></div>
+          <div class="m-card bg-red"><h4 contenteditable="false">8月</h4><p contenteditable="false">12041.28</p><div class="rate" contenteditable="false">3.31%</div></div>
+          <div class="m-card bg-green"><h4 contenteditable="false">9月</h4><p contenteditable="false">-16621.97</p><div class="rate" contenteditable="false">-4.42%</div></div>
+          <div class="m-card bg-green"><h4 contenteditable="false">10月</h4><p contenteditable="false">-28216.01</p><div class="rate" contenteditable="false">-7.64%</div></div>
+          <div class="m-card bg-blue"><h4 contenteditable="false">11月</h4><p contenteditable="false">-5813.03</p><div class="rate" contenteditable="false">-2.09%</div></div>
+        </div>
+      </div>
+
+      <!-- 3. 收益年历视图 -->
+      <div id="view-yearly" style="display: none;">
+        <div class="yearly-area" style="padding-bottom: 0;">
+          <div class="yearly-title" contenteditable="false">2024年-2026年</div>
+          <div class="yearly-grid">
+            <div class="yearly-card bg-grey"><h4 contenteditable="false">2024</h4><p contenteditable="false">0.00</p></div>
+            <div class="yearly-card bg-grey"><h4 contenteditable="false">2025</h4><p contenteditable="false">0.00</p></div>
+            <div class="yearly-card bg-green"><h4 contenteditable="false">2026</h4><p contenteditable="false">-87237.10</p><div class="rate" contenteditable="false">-20.97%</div></div>
+          </div>
+        </div>
+
+        <div style="background: #fff; padding: 15px; margin-top: 10px;">
+          <h3 style="font-size: 16px; margin-bottom: 15px;">收益明细</h3>
+          <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+            <span style="background:#ffeeee; color:#ff3b30; padding:6px 15px; border-radius:15px; font-size:14px;">基金</span>
+            <span style="background:#f5f5f5; color:#666; padding:6px 15px; border-radius:15px; font-size:14px;">组合</span>
+            <span style="background:#f5f5f5; color:#666; padding:6px 15px; border-radius:15px; font-size:14px;">黄金</span>
+          </div>
+          
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding-bottom: 10px; font-size: 13px; color: #666;">
+            <div>基金名称</div>
+            <div>收益 ▼</div>
+          </div>
+          
+          <!-- 空状态占位图 -->
+          <div style="text-align: center; padding: 40px 0;">
+            <div style="width: 100px; height: 100px; background: #fdf6f6; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 10px; position: relative;">
+              <div style="width: 40px; height: 40px; background: #ffcccb; transform: rotate(45deg);"></div>
+              <span style="position: absolute; top: 20px; right: 20px; font-size: 20px; color: #ff3b30; font-weight: bold;">Z</span>
+              <span style="position: absolute; top: 40px; right: 35px; font-size: 16px; color: #ff3b30; font-weight: bold;">Z</span>
+            </div>
+            <div style="color: #999; font-size: 14px;">暂无收益记录</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 图表走势 -->
+      <div class="chart-box">
+        <div class="chart-header">
+          <h3 contenteditable="false">2026年11月收益走势</h3>
+          <div class="toggle-switch" style="display: flex; background: #f5f5f5; border-radius: 15px; font-size: 12px; padding:2px;">
+            <div style="padding: 5px 15px; background: #fff; border-radius: 13px; font-weight: bold; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">收益</div>
+            <div style="padding: 5px 15px; color: #666;">收益率</div>
+          </div>
+        </div>
+        <div class="chart-wrapper">
+           <div class="grid-line" style="top: 20%;"></div><div class="grid-line" style="top: 40%;"></div><div class="grid-line" style="top: 60%;"></div><div class="grid-line" style="top: 80%;"></div>
+           <div class="y-axis">
+             <div contenteditable="false">20000.00</div><div contenteditable="false">10000.00</div>
+             <div contenteditable="false">0.00</div><div contenteditable="false">-10000.00</div>
+             <div contenteditable="false">-20000.00</div>
+           </div>
+           <svg class="chart-svg" viewBox="-15 0 115 100" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="gRedBg" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#ff3b30" stop-opacity="0.15"/><stop offset="100%" stop-color="#ff3b30" stop-opacity="0"/></linearGradient>
+            </defs>
+            <path d="M 0 80 L 15 60 L 25 50 L 40 25 L 55 45 L 70 40 L 85 75 L 100 85 L 100 100 L 0 100 Z" fill="url(#gRedBg)" />
+            <path d="M 0 80 L 15 60 L 25 50 L 40 25 L 55 45 L 70 40 L 85 75 L 100 85" fill="none" stroke="#ff3b30" stroke-width="1.5" vector-effect="non-scaling-stroke" />
+            <circle cx="40" cy="25" r="2" fill="#fff" stroke="#ff3b30" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+            <circle cx="100" cy="85" r="2" fill="#00a854" stroke="#fff" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+          </svg>
+          <div class="chart-tag tag-red" style="top: 15%; left: 40%;" contenteditable="false">最高收益 19103.48元</div>
+          <div class="chart-tag tag-green" style="bottom: 15%; right: 5%;" contenteditable="false">最低收益 -4572.76元</div>
+          <div class="x-axis"><div contenteditable="false">2026-10-31</div><div contenteditable="false">2026-11-24</div></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 持仓分析（略） -->
+    <div id="view-holdings" style="display: none;">
+       <div class="holdings-top">
         <div class="donut-chart">
           <div class="donut-inner">
             <h3 contenteditable="false" data-key="h_total">336201.01</h3>
@@ -723,288 +842,45 @@
           </div>
         </div>
         <div class="legend-list">
-          <div class="legend-item"><div class="legend-dot" style="background:#6b78ff;"></div><div class="legend-name">备用金</div><div class="legend-val" contenteditable="false" data-key="h_v1">0.95</div></div>
-          <div class="legend-item"><div class="legend-dot" style="background:#ffb600;"></div><div class="legend-name">基金</div><div class="legend-val" contenteditable="false" data-key="h_v2">0.00</div></div>
-          <div class="legend-item"><div class="legend-dot" style="background:#ff3b30;"></div><div class="legend-name">组合</div><div class="legend-val" contenteditable="false" data-key="h_v3">336200.06</div></div>
-          <div class="legend-item"><div class="legend-dot" style="background:#ff4081;"></div><div class="legend-name">黄金</div><div class="legend-val" contenteditable="false" data-key="h_v4">0.00</div></div>
+          <div class="legend-item"><div class="legend-dot" style="background:#6b78ff;"></div><div class="legend-name">备用金</div><div class="legend-val" contenteditable="false">0.95</div></div>
+          <div class="legend-item"><div class="legend-dot" style="background:#ffb600;"></div><div class="legend-name">基金</div><div class="legend-val" contenteditable="false">0.00</div></div>
+          <div class="legend-item"><div class="legend-dot" style="background:#ff3b30;"></div><div class="legend-name">组合</div><div class="legend-val" contenteditable="false">336200.06</div></div>
+          <div class="legend-item"><div class="legend-dot" style="background:#ff4081;"></div><div class="legend-name">黄金</div><div class="legend-val" contenteditable="false">0.00</div></div>
         </div>
       </div>
-
       <div class="section-title">资产变动</div>
-      
-      <div class="time-tabs">
-        <div class="active" onclick="switchHoldingTime('hold-month', this)">本月</div>
-        <div onclick="switchHoldingTime('hold-1month', this)">近一月</div>
-        <div onclick="switchHoldingTime('hold-3month', this)">近三个月</div>
-        <div onclick="switchHoldingTime('hold-6month', this)">近六月</div>
-        <div onclick="switchHoldingTime('hold-3year', this)">近三年</div>
-      </div>
-
       <div class="chart-box" style="margin-top: 0;">
-        <div id="hold-month" class="hold-view">
-          <div class="chart-top-info"><span contenteditable="false" data-key="h1_date">2026-11-19</span><span><span style="color:#ff3b30;">●</span> 最新资产 <span style="color:#ff3b30;" contenteditable="false" data-key="h1_m">+336201.01</span></span></div>
-          <div class="chart-wrapper">
-            <div class="grid-line" style="top: 20%;"></div><div class="grid-line" style="top: 40%;"></div><div class="grid-line" style="top: 60%;"></div><div class="grid-line" style="top: 80%;"></div>
-            <div class="y-axis">
-              <div contenteditable="false" data-key="h1_y1">360000.00</div><div contenteditable="false" data-key="h1_y2">354000.00</div>
-              <div contenteditable="false" data-key="h1_y3">348000.00</div><div contenteditable="false" data-key="h1_y4">342000.00</div>
-              <div contenteditable="false" data-key="h1_y5">336000.00</div>
-            </div>
-            <svg class="chart-svg" viewBox="-15 0 115 100" preserveAspectRatio="none">
-              <defs><linearGradient id="gOrange" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#ff6b00" stop-opacity="0.15"/><stop offset="100%" stop-color="#ff6b00" stop-opacity="0"/></linearGradient></defs>
-              <path d="M 0 80 L 15 55 L 25 60 L 45 25 L 60 35 L 75 25 L 90 65 L 100 80 L 100 100 L 0 100 Z" fill="url(#gOrange)" />
-              <path d="M 0 80 L 15 55 L 25 60 L 45 25 L 60 35 L 75 25 L 90 65 L 100 80" fill="none" stroke="#ff6b00" stroke-width="1" vector-effect="non-scaling-stroke" />
-              <circle cx="45" cy="25" r="1.5" fill="#fff" stroke="#ff6b00" stroke-width="1" vector-effect="non-scaling-stroke"/>
-              <circle cx="100" cy="80" r="1.5" fill="#00a854" stroke="#fff" stroke-width="1" vector-effect="non-scaling-stroke"/>
-            </svg>
-            <div class="chart-tag tag-red" style="top: 15%; left: 40%;" contenteditable="false" data-key="h1_tag1">最高资产 359917.13元</div>
-            <div class="chart-tag tag-green" style="bottom: 15%; left: 80%;" contenteditable="false" data-key="h1_tag2">最低资产 336201.01元</div>
-            <div class="x-axis"><div contenteditable="false" data-key="h1_x1">2026-11-02</div><div contenteditable="false" data-key="h1_x2">2026-11-19</div></div>
+        <div class="chart-top-info"><span contenteditable="false">2026-11-19</span><span><span style="color:#ff3b30;">●</span> 最新资产 <span style="color:#ff3b30;" contenteditable="false">+336201.01</span></span></div>
+        <div class="chart-wrapper">
+          <div class="grid-line" style="top: 20%;"></div><div class="grid-line" style="top: 40%;"></div><div class="grid-line" style="top: 60%;"></div><div class="grid-line" style="top: 80%;"></div>
+          <div class="y-axis">
+            <div contenteditable="false">360000.00</div><div contenteditable="false">354000.00</div>
+            <div contenteditable="false">348000.00</div><div contenteditable="false">342000.00</div>
+            <div contenteditable="false">336000.00</div>
           </div>
-        </div>
-        
-        <div id="hold-1month" class="hold-view" style="display: none;">
-          <div class="chart-top-info"><span contenteditable="false" data-key="h2_date">2026-11-19</span><span><span style="color:#ff3b30;">●</span> 最新资产 <span style="color:#ff3b30;" contenteditable="false" data-key="h2_m">+336201.01</span></span></div>
-          <div class="chart-wrapper">
-            <div class="grid-line" style="top: 20%;"></div><div class="grid-line" style="top: 40%;"></div><div class="grid-line" style="top: 60%;"></div><div class="grid-line" style="top: 80%;"></div>
-            <div class="y-axis">
-              <div contenteditable="false" data-key="h2_y1">360000.00</div><div contenteditable="false" data-key="h2_y2">354000.00</div>
-              <div contenteditable="false" data-key="h2_y3">348000.00</div><div contenteditable="false" data-key="h2_y4">342000.00</div>
-              <div contenteditable="false" data-key="h2_y5">336000.00</div>
-            </div>
-            <svg class="chart-svg" viewBox="-15 0 115 100" preserveAspectRatio="none">
-              <path d="M 0 60 L 15 40 L 25 45 L 40 35 L 50 55 L 65 60 L 75 40 L 85 30 L 100 80 L 100 100 L 0 100 Z" fill="url(#gOrange)" />
-              <path d="M 0 60 L 15 40 L 25 45 L 40 35 L 50 55 L 65 60 L 75 40 L 85 30 L 100 80" fill="none" stroke="#ff6b00" stroke-width="1" vector-effect="non-scaling-stroke" />
-              <circle cx="85" cy="30" r="1.5" fill="#fff" stroke="#ff6b00" stroke-width="1" vector-effect="non-scaling-stroke"/>
-              <circle cx="100" cy="80" r="1.5" fill="#00a854" stroke="#fff" stroke-width="1" vector-effect="non-scaling-stroke"/>
-            </svg>
-            <div class="chart-tag tag-red" style="top: 20%; left: 65%;" contenteditable="false" data-key="h2_tag1">最高资产 359917.13元</div>
-            <div class="chart-tag tag-green" style="bottom: 15%; left: 80%;" contenteditable="false" data-key="h2_tag2">最低资产 336201.01元</div>
-            <div class="x-axis"><div contenteditable="false" data-key="h2_x1">2026-10-19</div><div contenteditable="false" data-key="h2_x2">2026-11-19</div></div>
-          </div>
-        </div>
-
-        <div id="hold-3month" class="hold-view" style="display: none;">
-          <div class="chart-top-info"><span contenteditable="false" data-key="h3_date">2026-11-19</span><span><span style="color:#ff3b30;">●</span> 最新资产 <span style="color:#ff3b30;" contenteditable="false" data-key="h3_m">+336201.01</span></span></div>
-          <div class="chart-wrapper">
-            <div class="grid-line" style="top: 20%;"></div><div class="grid-line" style="top: 40%;"></div><div class="grid-line" style="top: 60%;"></div><div class="grid-line" style="top: 80%;"></div>
-            <div class="y-axis">
-              <div contenteditable="false" data-key="h3_y1">378000.00</div><div contenteditable="false" data-key="h3_y2">366000.00</div>
-              <div contenteditable="false" data-key="h3_y3">354000.00</div><div contenteditable="false" data-key="h3_y4">342000.00</div>
-              <div contenteditable="false" data-key="h3_y5">330000.00</div>
-            </div>
-            <svg class="chart-svg" viewBox="-15 0 115 100" preserveAspectRatio="none">
-              <path d="M 0 20 L 10 35 L 20 30 L 30 45 L 40 40 L 50 55 L 60 50 L 70 70 L 80 65 L 90 55 L 100 85 L 100 100 L 0 100 Z" fill="url(#gOrange)" />
-              <path d="M 0 20 L 10 35 L 20 30 L 30 45 L 40 40 L 50 55 L 60 50 L 70 70 L 80 65 L 90 55 L 100 85" fill="none" stroke="#ff6b00" stroke-width="1" vector-effect="non-scaling-stroke" />
-              <circle cx="0" cy="20" r="1.5" fill="#fff" stroke="#ff6b00" stroke-width="1" vector-effect="non-scaling-stroke"/>
-              <circle cx="100" cy="85" r="1.5" fill="#00a854" stroke="#fff" stroke-width="1" vector-effect="non-scaling-stroke"/>
-            </svg>
-            <div class="chart-tag tag-red" style="top: 10%; left: 30%;" contenteditable="false" data-key="h3_tag1">最高资产 378570.27元</div>
-            <div class="chart-tag tag-green" style="bottom: 15%; left: 80%;" contenteditable="false" data-key="h3_tag2">最低资产 336201.01元</div>
-            <div class="x-axis"><div contenteditable="false" data-key="h3_x1">2026-08-19</div><div contenteditable="false" data-key="h3_x2">2026-11-19</div></div>
-          </div>
-        </div>
-
-        <div id="hold-6month" class="hold-view" style="display: none;">
-           <div class="chart-top-info"><span contenteditable="false" data-key="h4_date">2026-11-19</span><span><span style="color:#ff3b30;">●</span> 最新资产 <span style="color:#ff3b30;" contenteditable="false" data-key="h4_m">+336201.01</span></span></div>
-          <div class="chart-wrapper">
-            <div class="grid-line" style="top: 20%;"></div><div class="grid-line" style="top: 40%;"></div><div class="grid-line" style="top: 60%;"></div><div class="grid-line" style="top: 80%;"></div>
-            <div class="y-axis">
-              <div contenteditable="false" data-key="h4_y1">480000.00</div><div contenteditable="false" data-key="h4_y2">360000.00</div>
-              <div contenteditable="false" data-key="h4_y3">240000.00</div><div contenteditable="false" data-key="h4_y4">120000.00</div>
-              <div contenteditable="false" data-key="h4_y5">0.00</div>
-            </div>
-            <svg class="chart-svg" viewBox="-15 0 115 100" preserveAspectRatio="none">
-              <path d="M 0 90 L 15 90 L 20 20 L 30 20 L 35 60 L 40 25 L 50 25 L 60 30 L 70 35 L 80 30 L 90 40 L 100 35 L 100 100 L 0 100 Z" fill="url(#gOrange)" />
-              <path d="M 0 90 L 15 90 L 20 20 L 30 20 L 35 60 L 40 25 L 50 25 L 60 30 L 70 35 L 80 30 L 90 40 L 100 35" fill="none" stroke="#ff6b00" stroke-width="1" vector-effect="non-scaling-stroke" />
-              <circle cx="20" cy="20" r="1.5" fill="#fff" stroke="#ff6b00" stroke-width="1" vector-effect="non-scaling-stroke"/>
-              <circle cx="0" cy="90" r="1.5" fill="#00a854" stroke="#fff" stroke-width="1" vector-effect="non-scaling-stroke"/>
-            </svg>
-            <div class="chart-tag tag-red" style="top: 10%; left: 35%;" contenteditable="false" data-key="h4_tag1">最高资产 406323.16元</div>
-            <div class="chart-tag tag-green" style="bottom: 15%; left: 20%;" contenteditable="false" data-key="h4_tag2">最低资产 61105.73元</div>
-            <div class="x-axis"><div contenteditable="false" data-key="h4_x1">2026-05-19</div><div contenteditable="false" data-key="h4_x2">2026-11-19</div></div>
-          </div>
-        </div>
-
-        <div id="hold-3year" class="hold-view" style="display: none;">
-          <div class="chart-top-info"><span contenteditable="false" data-key="h5_date">2026-11-19</span><span><span style="color:#ff3b30;">●</span> 最新资产 <span style="color:#ff3b30;" contenteditable="false" data-key="h5_m">+336201.01</span></span></div>
-          <div class="chart-wrapper">
-            <div class="grid-line" style="top: 20%;"></div><div class="grid-line" style="top: 40%;"></div><div class="grid-line" style="top: 60%;"></div><div class="grid-line" style="top: 80%;"></div>
-            <div class="y-axis">
-              <div contenteditable="false" data-key="h5_y1">480000.00</div><div contenteditable="false" data-key="h5_y2">360000.00</div>
-              <div contenteditable="false" data-key="h5_y3">240000.00</div><div contenteditable="false" data-key="h5_y4">120000.00</div>
-              <div contenteditable="false" data-key="h5_y5">0.00</div>
-            </div>
-            <svg class="chart-svg" viewBox="-15 0 115 100" preserveAspectRatio="none">
-              <path d="M 0 90 L 70 90 L 75 15 L 80 60 L 85 25 L 100 30 L 100 100 L 0 100 Z" fill="url(#gOrange)" />
-              <path d="M 0 90 L 70 90 L 75 15 L 80 60 L 85 25 L 100 30" fill="none" stroke="#ff6b00" stroke-width="1" vector-effect="non-scaling-stroke" />
-              <circle cx="75" cy="15" r="1.5" fill="#fff" stroke="#ff6b00" stroke-width="1" vector-effect="non-scaling-stroke"/>
-              <circle cx="0" cy="90" r="1.5" fill="#00a854" stroke="#fff" stroke-width="1" vector-effect="non-scaling-stroke"/>
-            </svg>
-            <div class="chart-tag tag-red" style="top: 5%; left: 70%;" contenteditable="false" data-key="h5_tag1">最高资产 406323.16元</div>
-            <div class="chart-tag tag-green" style="bottom: 15%; left: 20%;" contenteditable="false" data-key="h5_tag2">最低资产 0.00元</div>
-            <div class="x-axis"><div contenteditable="false" data-key="h5_x1">2023-11-20</div><div contenteditable="false" data-key="h5_x2">2026-11-19</div></div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="section-title" style="padding-bottom: 10px;">基金持仓分析 <span class="refresh-btn">刷新持仓</span></div>
-      <div class="empty-state">暂无基金持仓（组合暂不支持分析）</div>
-    </div>
-
-    <!-- 收益分析视图 -->
-    <div id="view-profit" style="display: none;">
-      <div class="time-tabs">
-        <div class="active" onclick="switchProfitTime('time-month', this)">本月收益</div>
-        <div onclick="switchProfitTime('time-3month', this)">近3月收益</div>
-        <div onclick="switchProfitTime('time-6month', this)">近6月收益</div>
-        <div onclick="switchProfitTime('time-year', this)">今年以来收益</div>
-      </div>
-      
-      <div id="time-month" class="profit-view" style="display: block;">
-        <div class="data-box">
-          <h2>本月收益(元)</h2>
-          <div class="data-row">
-            <div class="data-col"><p>本月收益金额</p><h3 contenteditable="false" data-key="p_m_amt">-4,572.76</h3></div>
-            <div class="data-col"><p>本月收益率</p><h3 contenteditable="false" data-key="p_m_rate">-1.34%</h3></div>
-            <div class="data-col"><p>同期沪深300</p><h3 contenteditable="false" data-key="p_m_hs">-0.04%</h3></div>
-          </div>
-        </div>
-        <div class="chart-box">
-          <div class="chart-header"><h3>收益走势 ⓘ</h3></div>
-          <div class="chart-wrapper">
-             <div class="grid-line" style="top: 20%;"></div><div class="grid-line" style="top: 40%;"></div><div class="grid-line" style="top: 60%;"></div><div class="grid-line" style="top: 80%;"></div>
-             <div class="y-axis">
-               <div contenteditable="false" data-key="p_m_y1">22500.00</div><div contenteditable="false" data-key="p_m_y2">15000.00</div>
-               <div contenteditable="false" data-key="p_m_y3">7500.00</div><div contenteditable="false" data-key="p_m_y4">0.00</div>
-               <div contenteditable="false" data-key="p_m_y5">-7500.00</div>
-             </div>
-             <svg class="chart-svg" viewBox="-15 0 115 100" preserveAspectRatio="none">
-              <defs>
-                <linearGradient id="gRedBg" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#ff3b30" stop-opacity="0.15"/><stop offset="100%" stop-color="#ff3b30" stop-opacity="0"/></linearGradient>
-                <linearGradient id="gGreenBg" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#00a854" stop-opacity="0.15"/><stop offset="100%" stop-color="#00a854" stop-opacity="0"/></linearGradient>
-              </defs>
-              <path d="M 0 80 L 15 60 L 25 70 L 40 25 L 50 35 L 50 100 L 0 100 Z" fill="url(#gRedBg)" />
-              <path d="M 0 80 L 15 60 L 25 70 L 40 25 L 50 35" fill="none" stroke="#ff3b30" stroke-width="1" vector-effect="non-scaling-stroke" />
-              <path d="M 50 35 L 60 55 L 70 50 L 85 75 L 100 85 L 100 100 L 50 100 Z" fill="url(#gGreenBg)" />
-              <path d="M 50 35 L 60 55 L 70 50 L 85 75 L 100 85" fill="none" stroke="#00a854" stroke-width="1" vector-effect="non-scaling-stroke" />
-              <circle cx="40" cy="25" r="1.5" fill="#fff" stroke="#ff3b30" stroke-width="1" vector-effect="non-scaling-stroke"/>
-              <circle cx="100" cy="85" r="1.5" fill="#00a854" stroke="#fff" stroke-width="1" vector-effect="non-scaling-stroke"/>
-            </svg>
-            <div class="chart-tag tag-red" style="top: 15%; left: 40%;" contenteditable="false" data-key="p_m_tag1">最高收益 19103.48元</div>
-            <div class="chart-tag tag-green" style="top: 60%; left: 55%;" contenteditable="false" data-key="p_m_tag2">最大回撤 6.57% (13天)</div>
-            <div class="chart-tag tag-green" style="bottom: 15%; left: 80%;" contenteditable="false" data-key="p_m_tag3">最低收益 -4572.76元</div>
-            <div class="x-axis"><div contenteditable="false" data-key="p_m_x1">2026-10-31</div><div contenteditable="false" data-key="p_m_x2">2026-11-18</div></div>
-          </div>
-        </div>
-      </div>
-
-      <div id="time-3month" class="profit-view" style="display: none;">
-        <div class="data-box">
-          <h2>近3月收益(元)</h2>
-          <div class="data-row">
-            <div class="data-col"><p>近3月收益金额</p><h3 contenteditable="false" data-key="p_3_amt">-62,100.56</h3></div>
-            <div class="data-col"><p>近3月收益率</p><h3 contenteditable="false" data-key="p_3_rate">-15.59%</h3></div>
-            <div class="data-col"><p>同期沪深300</p><h3 contenteditable="false" data-key="p_3_hs">-15.70%</h3></div>
-          </div>
-        </div>
-        <div class="chart-box">
-          <div class="chart-header"><h3>收益走势 ⓘ</h3></div>
-          <div class="chart-wrapper">
-            <div class="grid-line" style="top: 20%;"></div><div class="grid-line" style="top: 40%;"></div><div class="grid-line" style="top: 60%;"></div><div class="grid-line" style="top: 80%;"></div>
-             <div class="y-axis">
-               <div contenteditable="false" data-key="p_3_y1">0.00</div><div contenteditable="false" data-key="p_3_y2">-20000.00</div>
-               <div contenteditable="false" data-key="p_3_y3">-40000.00</div><div contenteditable="false" data-key="p_3_y4">-60000.00</div>
-               <div contenteditable="false" data-key="p_3_y5">-80000.00</div>
-             </div>
-             <svg class="chart-svg" viewBox="-15 0 115 100" preserveAspectRatio="none">
-              <path d="M 0 20 L 10 40 L 20 35 L 30 45 L 40 60 L 50 55 L 60 70 L 70 65 L 80 50 L 90 40 L 100 65 L 100 100 L 0 100 Z" fill="url(#gGreenBg)" />
-              <path d="M 0 20 L 10 40 L 20 35 L 30 45 L 40 60 L 50 55 L 60 70 L 70 65 L 80 50 L 90 40 L 100 65" fill="none" stroke="#00a854" stroke-width="1" vector-effect="non-scaling-stroke" />
-              <circle cx="0" cy="20" r="1.5" fill="#fff" stroke="#00a854" stroke-width="1" vector-effect="non-scaling-stroke"/>
-              <circle cx="100" cy="65" r="1.5" fill="#00a854" stroke="#fff" stroke-width="1" vector-effect="non-scaling-stroke"/>
-            </svg>
-            <div class="chart-tag tag-red" style="top: 10%; left: 20%;" contenteditable="false" data-key="p_3_tag1">最高收益 0.00元</div>
-            <div class="chart-tag tag-green" style="top: 60%; left: 50%;" contenteditable="false" data-key="p_3_tag2">最大回撤 15.59% (92天)</div>
-            <div class="chart-tag tag-green" style="bottom: 15%; left: 80%;" contenteditable="false" data-key="p_3_tag3">最低收益 -62100.56元</div>
-            <div class="x-axis"><div contenteditable="false" data-key="p_3_x1">2026-08-18</div><div contenteditable="false" data-key="p_3_x2">2026-11-18</div></div>
-          </div>
-        </div>
-      </div>
-
-      <div id="time-6month" class="profit-view" style="display: none;">
-        <div class="data-box">
-          <h2>近6月收益(元)</h2>
-          <div class="data-row">
-            <div class="data-col"><p>近6月收益金额</p><h3 contenteditable="false" data-key="p_6_amt">-94,674.15</h3></div>
-            <div class="data-col"><p>近6月收益率</p><h3 contenteditable="false" data-key="p_6_rate">-21.97%</h3></div>
-            <div class="data-col"><p>同期沪深300</p><h3 contenteditable="false" data-key="p_6_hs">-17.58%</h3></div>
-          </div>
-        </div>
-        <div class="chart-box">
-          <div class="chart-header"><h3>收益走势 ⓘ</h3></div>
-          <div class="chart-wrapper">
-             <div class="grid-line" style="top: 20%;"></div><div class="grid-line" style="top: 40%;"></div><div class="grid-line" style="top: 60%;"></div><div class="grid-line" style="top: 80%;"></div>
-             <div class="y-axis">
-               <div contenteditable="false" data-key="p_6_y1">40000.00</div><div contenteditable="false" data-key="p_6_y2">0.00</div>
-               <div contenteditable="false" data-key="p_6_y3">-40000.00</div><div contenteditable="false" data-key="p_6_y4">-80000.00</div>
-               <div contenteditable="false" data-key="p_6_y5">-120000.00</div>
-             </div>
-             <svg class="chart-svg" viewBox="-15 0 115 100" preserveAspectRatio="none">
-              <path d="M 0 15 L 10 25 L 20 20 L 30 35 L 40 30 L 50 45 L 60 40 L 70 60 L 80 55 L 90 75 L 100 70 L 100 100 L 0 100 Z" fill="url(#gGreenBg)" />
-              <path d="M 0 15 L 10 25 L 20 20 L 30 35 L 40 30 L 50 45 L 60 40 L 70 60 L 80 55 L 90 75 L 100 70" fill="none" stroke="#00a854" stroke-width="1" vector-effect="non-scaling-stroke" />
-              <circle cx="0" cy="15" r="1.5" fill="#fff" stroke="#00a854" stroke-width="1" vector-effect="non-scaling-stroke"/>
-              <circle cx="100" cy="70" r="1.5" fill="#00a854" stroke="#fff" stroke-width="1" vector-effect="non-scaling-stroke"/>
-            </svg>
-            <div class="chart-tag tag-red" style="top: 10%; left: 20%;" contenteditable="false" data-key="p_6_tag1">最高收益 3583.15元</div>
-            <div class="chart-tag tag-green" style="top: 55%; left: 50%;" contenteditable="false" data-key="p_6_tag2">最大回撤 22.61% (177天)</div>
-            <div class="chart-tag tag-green" style="bottom: 15%; left: 80%;" contenteditable="false" data-key="p_6_tag3">最低收益 -94674.15元</div>
-            <div class="x-axis"><div contenteditable="false" data-key="p_6_x1">2026-05-18</div><div contenteditable="false" data-key="p_6_x2">2026-11-18</div></div>
-          </div>
-        </div>
-      </div>
-
-      <div id="time-year" class="profit-view" style="display: none;">
-        <div class="data-box">
-          <h2>今年以来收益(元)</h2>
-          <div class="data-row">
-            <div class="data-col"><p>今年以来收益金额</p><h3 contenteditable="false" data-key="p_y_amt">-85,996.83</h3></div>
-            <div class="data-col"><p>今年以来收益率</p><h3 contenteditable="false" data-key="p_y_rate">-20.36%</h3></div>
-            <div class="data-col"><p>同期沪深300</p><h3 contenteditable="false" data-key="p_y_hs">-13.96%</h3></div>
-          </div>
-        </div>
-        <div class="chart-box">
-          <div class="chart-header"><h3>收益走势 ⓘ</h3></div>
-          <div class="chart-wrapper">
-             <div class="grid-line" style="top: 20%;"></div><div class="grid-line" style="top: 40%;"></div><div class="grid-line" style="top: 60%;"></div><div class="grid-line" style="top: 80%;"></div>
-             <div class="y-axis">
-               <div contenteditable="false" data-key="p_y_y1">30000.00</div><div contenteditable="false" data-key="p_y_y2">0.00</div>
-               <div contenteditable="false" data-key="p_y_y3">-30000.00</div><div contenteditable="false" data-key="p_y_y4">-60000.00</div>
-               <div contenteditable="false" data-key="p_y_y5">-90000.00</div>
-             </div>
-             <svg class="chart-svg" viewBox="-15 0 115 100" preserveAspectRatio="none">
-              <path d="M 0 50 L 20 50 L 30 45 L 40 35 L 50 50 L 60 40 L 70 65 L 80 60 L 90 80 L 100 85 L 100 100 L 0 100 Z" fill="url(#gGreenBg)" />
-              <path d="M 0 50 L 20 50 L 30 45 L 40 35 L 50 50 L 60 40 L 70 65 L 80 60 L 90 80 L 100 85" fill="none" stroke="#00a854" stroke-width="1" vector-effect="non-scaling-stroke" />
-              <circle cx="40" cy="35" r="1.5" fill="#fff" stroke="#00a854" stroke-width="1" vector-effect="non-scaling-stroke"/>
-              <circle cx="100" cy="85" r="1.5" fill="#00a854" stroke="#fff" stroke-width="1" vector-effect="non-scaling-stroke"/>
-            </svg>
-            <div class="chart-tag tag-red" style="top: 15%; left: 40%;" contenteditable="false" data-key="p_y_tag1">最高收益 12260.47元</div>
-            <div class="chart-tag tag-green" style="top: 55%; left: 50%;" contenteditable="false" data-key="p_y_tag2">最大回撤 22.61% (177天)</div>
-            <div class="chart-tag tag-green" style="bottom: 15%; left: 80%;" contenteditable="false" data-key="p_y_tag3">最低收益 -85996.83元</div>
-            <div class="x-axis"><div contenteditable="false" data-key="p_y_x1">2025-12-31</div><div contenteditable="false" data-key="p_y_x2">2026-11-18</div></div>
-          </div>
+          <svg class="chart-svg" viewBox="-15 0 115 100" preserveAspectRatio="none">
+            <path d="M 0 80 L 15 55 L 25 60 L 45 25 L 60 35 L 75 25 L 90 65 L 100 80 L 100 100 L 0 100 Z" fill="url(#gRedBg)" />
+            <path d="M 0 80 L 15 55 L 25 60 L 45 25 L 60 35 L 75 25 L 90 65 L 100 80" fill="none" stroke="#ff6b00" stroke-width="1.5" vector-effect="non-scaling-stroke" />
+            <circle cx="45" cy="25" r="2" fill="#fff" stroke="#ff6b00" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+            <circle cx="100" cy="80" r="2" fill="#00a854" stroke="#fff" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+          </svg>
+          <div class="chart-tag tag-red" style="top: 15%; left: 40%;" contenteditable="false">最高资产 359917.13元</div>
+          <div class="chart-tag tag-green" style="bottom: 15%; left: 80%;" contenteditable="false">最低资产 336201.01元</div>
+          <div class="x-axis"><div contenteditable="false">2026-11-02</div><div contenteditable="false">2026-11-19</div></div>
         </div>
       </div>
     </div>
+
   </div>
 
   <script>
+    // 页面跳转
     function goToPage(pageId) {
       if (document.body.classList.contains('editing')) return;
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.getElementById(pageId).classList.add('active');
       window.scrollTo(0, 0);
       
-      // 切换显示的按钮
       document.querySelectorAll('.edit-btn').forEach(btn => btn.style.display = 'none');
       let btn = document.getElementById('btn-' + pageId);
       if (btn && !localStorage.getItem(pageId + '_locked')) {
@@ -1012,6 +888,7 @@
       }
     }
 
+    // 收益分析 内部 Tab
     function switchMainTab(tabName) {
       if (document.body.classList.contains('editing')) return;
       document.getElementById('tab-holdings').classList.remove('active');
@@ -1028,25 +905,76 @@
       }
     }
 
-    function switchHoldingTime(timeId, btn) {
+    // 日历/月历/年历 切换
+    function switchProfitView(viewId, btn) {
       if (document.body.classList.contains('editing')) return;
-      document.querySelectorAll('.hold-view').forEach(v => v.style.display = 'none');
-      document.getElementById(timeId).style.display = 'block';
-      btn.parentElement.querySelectorAll('div').forEach(d => d.classList.remove('active'));
+      document.getElementById('view-calendar').style.display = 'none';
+      document.getElementById('view-monthly').style.display = 'none';
+      document.getElementById('view-yearly').style.display = 'none';
+      document.getElementById(viewId).style.display = 'block';
+      
+      document.querySelectorAll('.view-tabs div').forEach(d => d.classList.remove('active'));
       btn.classList.add('active');
     }
 
-    function switchProfitTime(timeId, btn) {
-      if (document.body.classList.contains('editing')) return;
-      document.querySelectorAll('.profit-view').forEach(v => v.style.display = 'none');
-      document.getElementById(timeId).style.display = 'block';
-      btn.parentElement.querySelectorAll('div').forEach(d => d.classList.remove('active'));
-      btn.classList.add('active');
+    // --- 动态日历逻辑 ---
+    let currentMonth = 11;
+    const maxMonth = 11;
+    const minMonth = 1;
+
+    function renderCalendar() {
+      document.querySelector('[data-key="cal_month_str"]').innerText = `2026年${currentMonth}月`;
+      
+      const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+      const totalDays = daysInMonth[currentMonth - 1];
+      const offset = (currentMonth - 1) * 3 % 7; 
+      
+      let html = '';
+      for(let i = 0; i < offset; i++) { html += `<div class="cal-item empty"></div>`; }
+      
+      for(let i = 1; i <= totalDays; i++) {
+        let isActive = (currentMonth === 11 && i === 24) ? 'active' : '';
+        let stateClass = '';
+        let displayVal = '0';
+        let key = `m${currentMonth}_d${i}`;
+        
+        // 填充一点默认假数据用于演示
+        if(currentMonth === 11) {
+          if(i===2) { stateClass='profit'; displayVal='4713.41'; }
+          if(i===3) { stateClass='loss'; displayVal='-2398.99'; }
+          if(i===24) { stateClass='active'; displayVal='1307.60'; }
+        } else {
+          if(i % 3 === 0) { stateClass='profit'; displayVal='120.50'; }
+          else if(i % 5 === 0) { stateClass='loss'; displayVal='-88.20'; }
+        }
+
+        // 确保所有的数字都是可编辑的
+        html += `
+          <div class="cal-item ${isActive} ${stateClass} ${displayVal==='0'?'zero':''}">
+            <div class="d" contenteditable="false" data-key="${key}_d">${i}</div>
+            <div class="v" contenteditable="false" data-key="${key}_v">${displayVal}</div>
+          </div>
+        `;
+      }
+      document.getElementById('calendarDays').innerHTML = html;
+      
+      if(isEditing) {
+        document.querySelectorAll('#calendarDays [data-key]').forEach(el => el.setAttribute('contenteditable', 'true'));
+      }
+      loadData();
     }
 
-    // --- 独立编辑与锁定逻辑 ---
+    function changeMonth(step) {
+      if (document.body.classList.contains('editing')) return;
+      const nextM = currentMonth + step;
+      if(nextM >= minMonth && nextM <= maxMonth) {
+        currentMonth = nextM;
+        renderCalendar();
+      }
+    }
+
+    // 加载数据 & 编辑
     let isEditing = false;
-    
     function loadData() {
       document.querySelectorAll('[data-key]').forEach(el => {
         const val = localStorage.getItem(el.getAttribute('data-key'));
@@ -1055,8 +983,8 @@
     }
 
     window.onload = function() {
+      renderCalendar();
       loadData();
-      // 初始化展示当前页 (默认 page1) 的按钮
       document.querySelectorAll('.edit-btn').forEach(btn => btn.style.display = 'none');
       if (!localStorage.getItem('page1_locked')) {
         document.getElementById('btn-page1').style.display = 'block';
@@ -1072,7 +1000,6 @@
       if (isEditing) {
         btn.innerHTML = '💾 保存并锁定';
         btn.style.background = '#ff3b30';
-        btn.style.boxShadow = '0 4px 15px rgba(255,59,48,0.4)';
         pageEl.classList.add('editing');
         editables.forEach(el => el.setAttribute('contenteditable', 'true'));
       } else {
@@ -1085,7 +1012,7 @@
           el.setAttribute('contenteditable', 'false');
           localStorage.setItem(el.getAttribute('data-key'), el.innerText);
         });
-        localStorage.setItem(pageId + '_locked', 'true'); // 记录当前页面已锁定
+        localStorage.setItem(pageId + '_locked', 'true');
         alert('当前页面数据已保存并锁定！');
       }
     }
