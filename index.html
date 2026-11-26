@@ -19,16 +19,18 @@
     .top-bar span { font-size: 22px; color: #333; font-weight: bold;}
     .profile-section { background: #fff; padding: 50px 20px 20px; position: relative; }
     .profile-info-top { display: flex; align-items: center; gap: 15px; margin-bottom: 15px;}
-    /* 图一：真人网图链接，保证不空白 */
+    
+    /* 使用最稳的 Unsplash 卡通小女孩 */
     .profile-info-top img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 1px solid #eee; }
     .profile-text h2 { font-size: 20px; font-weight: 600; display: flex; align-items: center; gap: 5px;}
-    .vip-tag { background: #555; color: #ffd700; font-size: 10px; padding: 2px 6px; border-radius: 10px; font-weight: normal;}
     .profile-text p { font-size: 14px; color: #666; margin-top: 5px;}
     .status-btn { display: inline-flex; align-items: center; gap: 5px; background: #f5f5f5; padding: 4px 10px; border-radius: 15px; font-size: 12px; color: #333; margin-top: 8px;}
-    .svip-banner { background: linear-gradient(90deg, #e3f2fd, #f0f8ff); border-radius: 12px; padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; margin-top: 15px; border: 1px solid #d0e3f0; position: relative; overflow: hidden;}
-    .svip-banner .left { font-size: 13px; color: #555; display: flex; flex-direction: column; gap: 4px; z-index: 2;}
+    
+    /* SVIP 横幅简化 */
+    .svip-banner { background: linear-gradient(90deg, #e3f2fd, #f0f8ff); border-radius: 12px; padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; margin-top: 15px; border: 1px solid #d0e3f0;}
+    .svip-banner .left { font-size: 13px; color: #555; display: flex; flex-direction: column; gap: 4px; }
     .svip-banner .left span:first-child { font-weight: bold; color: #333; }
-    .svip-banner .right-btn { background: #333; color: #fff; border: 1px solid #333; padding: 6px 14px; border-radius: 20px; font-size: 12px; z-index: 2;}
+    .svip-banner .right-btn { background: #333; color: #fff; border: 1px solid #333; padding: 6px 14px; border-radius: 20px; font-size: 12px;}
 
     .stats-bar { display: flex; justify-content: space-around; padding: 15px 0; background: #fff; margin-bottom: 10px;}
     .stat-item { text-align: center; }
@@ -39,8 +41,9 @@
     .grid-item { text-align: center; font-size: 13px; color: #333; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 8px;}
     .grid-item .icon-box { width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 26px; position: relative;}
     .red-dot { position: absolute; top: -2px; right: -2px; width: 8px; height: 8px; background: #ff3b30; border-radius: 50%; }
-    /* 简化的线框图标 SVG */
-    .icon-svg { width: 26px; height: 26px; fill: none; stroke: #333; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* 统一精美 SVG 图标 */
+    .icon-svg { width: 28px; height: 28px; fill: none; stroke: #333; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 
     .task-section { background: #fff; padding: 15px; margin-bottom: 10px; border-radius: 12px; margin-left: 10px; margin-right: 10px;}
     .task-header { display: flex; gap: 20px; font-size: 15px; margin-bottom: 15px; align-items: center;}
@@ -140,7 +143,6 @@
     .fund-asset-row { display: flex; justify-content: space-between; align-items: flex-end;}
     .fund-asset-item h4 { font-size: 13px; opacity: 0.9; margin-bottom: 5px; font-weight: normal; display: flex; align-items: center; gap: 5px;}
     .fund-asset-item .val { font-size: 28px; font-weight: bold; }
-    
     .fund-asset-item .profit-val { font-size: 24px; font-weight: bold; display: flex; align-items: center; gap: 5px; cursor: pointer;}
 
     .star-fund-card { background: #fff; border-radius: 16px; margin: -50px 15px 15px; padding: 20px; position: relative; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 2px solid #ffe0b2;}
@@ -326,9 +328,11 @@
     </div>
     <div class="profile-section">
       <div class="profile-info-top">
-        <img src="https://img1.baidu.com/it/u=3001511420,1731956652&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" alt="头像">
+        <!-- 使用你截图的女孩照片: Unsplash上的稳定链接 -->
+        <img src="https://images.unsplash.com/photo-1595959183082-7b570b7e08e2?q=80&w=200&auto=format&fit=crop" alt="头像">
         <div class="profile-text">
-          <h2 contenteditable="false" data-key="u_name">废话一大堆 0619 <span class="vip-tag">续费</span></h2>
+          <!-- 去掉了续费 -->
+          <h2 contenteditable="false" data-key="u_name">废话一大堆 0619</h2>
           <p contenteditable="false" data-key="u_desc">简介：暂无简介</p>
           <div class="status-btn">😊 状态</div>
         </div>
@@ -423,7 +427,7 @@
         </div>
         <div class="wallet-user-row">
           <div class="wallet-user-info">
-            <img src="https://img1.baidu.com/it/u=3001511420,1731956652&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" alt="">
+            <img src="https://images.unsplash.com/photo-1595959183082-7b570b7e08e2?q=80&w=200&auto=format&fit=crop" alt="">
             <span contenteditable="false" data-key="w_name">废话一大堆0619</span>
             <span class="tag">💰 开通</span>
           </div>
@@ -601,7 +605,7 @@
     <div class="my-fund-top">
       <div style="position: absolute; top: 15px; left: 15px; font-size: 24px; color: #fff; cursor:pointer;" onclick="goToPage('page3')">‹</div>
       <div class="my-fund-user">
-        <img src="https://img1.baidu.com/it/u=3001511420,1731956652&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" alt="">
+        <img src="https://images.unsplash.com/photo-1595959183082-7b570b7e08e2?q=80&w=200&auto=format&fit=crop" alt="">
         <span>马 * ></span>
         <span style="background: rgba(0,0,0,0.2); padding: 2px 8px; border-radius: 10px;">积极型</span>
         <span style="background: #333; color: #ffd700; padding: 2px 8px; border-radius: 10px;">V会员V2 ></span>
@@ -726,7 +730,7 @@
         <div class="progress-bar-bg">
           <div class="progress-bar-green"></div>
           <div class="progress-bar-orange"></div>
-          <img src="https://img1.baidu.com/it/u=3001511420,1731956652&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" class="progress-avatar">
+          <img src="https://images.unsplash.com/photo-1595959183082-7b570b7e08e2?q=80&w=200&auto=format&fit=crop" class="progress-avatar">
         </div>
         <div class="progress-labels">
           <div class="green" contenteditable="false" data-key="p_bar_l">亏损基民 74.95%</div>
@@ -833,10 +837,11 @@
         </div>
         <div class="chart-wrapper">
            <div class="grid-line" style="top: 20%;"></div><div class="grid-line" style="top: 40%;"></div><div class="grid-line" style="top: 60%;"></div><div class="grid-line" style="top: 80%;"></div>
+           <!-- Y轴数字加上 data-key -->
            <div class="y-axis">
-             <div contenteditable="false">20000.00</div><div contenteditable="false">10000.00</div>
-             <div contenteditable="false">0.00</div><div contenteditable="false">-10000.00</div>
-             <div contenteditable="false">-20000.00</div>
+             <div contenteditable="false" data-key="p_y1">20000.00</div><div contenteditable="false" data-key="p_y2">10000.00</div>
+             <div contenteditable="false" data-key="p_y3">0.00</div><div contenteditable="false" data-key="p_y4">-10000.00</div>
+             <div contenteditable="false" data-key="p_y5">-20000.00</div>
            </div>
            <svg class="chart-svg" viewBox="-15 0 115 100" preserveAspectRatio="none">
             <defs>
@@ -847,9 +852,10 @@
             <circle cx="40" cy="25" r="2" fill="#fff" stroke="#ff3b30" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
             <circle cx="100" cy="85" r="2" fill="#00a854" stroke="#fff" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
           </svg>
-          <div class="chart-tag tag-red" style="top: 15%; left: 40%;" contenteditable="false">最高收益 19103.48元</div>
-          <div class="chart-tag tag-green" style="bottom: 15%; right: 5%;" contenteditable="false">最低收益 -4572.76元</div>
-          <div class="x-axis"><div contenteditable="false">2026-10-31</div><div contenteditable="false">2026-11-24</div></div>
+          <div class="chart-tag tag-red" style="top: 15%; left: 40%;" contenteditable="false" data-key="p_tag1">最高收益 19103.48元</div>
+          <div class="chart-tag tag-green" style="bottom: 15%; right: 5%;" contenteditable="false" data-key="p_tag2">最低收益 -4572.76元</div>
+          <!-- X轴日期加上 data-key -->
+          <div class="x-axis"><div contenteditable="false" data-key="p_x1">2026-10-31</div><div contenteditable="false" data-key="p_x2">2026-11-24</div></div>
         </div>
       </div>
 
@@ -865,21 +871,21 @@
           </div>
         </div>
         <div class="legend-list">
-          <div class="legend-item"><div class="legend-dot" style="background:#6b78ff;"></div><div class="legend-name">备用金</div><div class="legend-val" contenteditable="false">0.95</div></div>
-          <div class="legend-item"><div class="legend-dot" style="background:#ffb600;"></div><div class="legend-name">基金</div><div class="legend-val" contenteditable="false">0.00</div></div>
-          <div class="legend-item"><div class="legend-dot" style="background:#ff3b30;"></div><div class="legend-name">组合</div><div class="legend-val" contenteditable="false">336200.06</div></div>
-          <div class="legend-item"><div class="legend-dot" style="background:#ff4081;"></div><div class="legend-name">黄金</div><div class="legend-val" contenteditable="false">0.00</div></div>
+          <div class="legend-item"><div class="legend-dot" style="background:#6b78ff;"></div><div class="legend-name">备用金</div><div class="legend-val" contenteditable="false" data-key="h_v1">0.95</div></div>
+          <div class="legend-item"><div class="legend-dot" style="background:#ffb600;"></div><div class="legend-name">基金</div><div class="legend-val" contenteditable="false" data-key="h_v2">0.00</div></div>
+          <div class="legend-item"><div class="legend-dot" style="background:#ff3b30;"></div><div class="legend-name">组合</div><div class="legend-val" contenteditable="false" data-key="h_v3">336200.06</div></div>
+          <div class="legend-item"><div class="legend-dot" style="background:#ff4081;"></div><div class="legend-name">黄金</div><div class="legend-val" contenteditable="false" data-key="h_v4">0.00</div></div>
         </div>
       </div>
       <div class="section-title">资产变动</div>
       <div class="chart-box" style="margin-top: 0;">
-        <div class="chart-top-info"><span contenteditable="false">2026-11-19</span><span><span style="color:#ff3b30;">●</span> 最新资产 <span style="color:#ff3b30;" contenteditable="false">+336201.01</span></span></div>
+        <div class="chart-top-info"><span contenteditable="false" data-key="h_date">2026-11-19</span><span><span style="color:#ff3b30;">●</span> 最新资产 <span style="color:#ff3b30;" contenteditable="false" data-key="h_m">+336201.01</span></span></div>
         <div class="chart-wrapper">
           <div class="grid-line" style="top: 20%;"></div><div class="grid-line" style="top: 40%;"></div><div class="grid-line" style="top: 60%;"></div><div class="grid-line" style="top: 80%;"></div>
           <div class="y-axis">
-            <div contenteditable="false">360000.00</div><div contenteditable="false">354000.00</div>
-            <div contenteditable="false">348000.00</div><div contenteditable="false">342000.00</div>
-            <div contenteditable="false">336000.00</div>
+            <div contenteditable="false" data-key="h_y1">360000.00</div><div contenteditable="false" data-key="h_y2">354000.00</div>
+            <div contenteditable="false" data-key="h_y3">348000.00</div><div contenteditable="false" data-key="h_y4">342000.00</div>
+            <div contenteditable="false" data-key="h_y5">336000.00</div>
           </div>
           <svg class="chart-svg" viewBox="-15 0 115 100" preserveAspectRatio="none">
             <path d="M 0 80 L 15 55 L 25 60 L 45 25 L 60 35 L 75 25 L 90 65 L 100 80 L 100 100 L 0 100 Z" fill="url(#gRedBg)" />
@@ -887,9 +893,9 @@
             <circle cx="45" cy="25" r="2" fill="#fff" stroke="#ff6b00" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
             <circle cx="100" cy="80" r="2" fill="#00a854" stroke="#fff" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
           </svg>
-          <div class="chart-tag tag-red" style="top: 15%; left: 40%;" contenteditable="false">最高资产 359917.13元</div>
-          <div class="chart-tag tag-green" style="bottom: 15%; left: 80%;" contenteditable="false">最低资产 336201.01元</div>
-          <div class="x-axis"><div contenteditable="false">2026-11-02</div><div contenteditable="false">2026-11-19</div></div>
+          <div class="chart-tag tag-red" style="top: 15%; left: 40%;" contenteditable="false" data-key="h_tag1">最高资产 359917.13元</div>
+          <div class="chart-tag tag-green" style="bottom: 15%; left: 80%;" contenteditable="false" data-key="h_tag2">最低资产 336201.01元</div>
+          <div class="x-axis"><div contenteditable="false" data-key="h_x1">2026-11-02</div><div contenteditable="false" data-key="h_x2">2026-11-19</div></div>
         </div>
       </div>
     </div>
