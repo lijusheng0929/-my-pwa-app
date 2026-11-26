@@ -20,7 +20,6 @@
     .profile-section { background: #fff; padding: 50px 20px 20px; position: relative; }
     .profile-info-top { display: flex; align-items: center; gap: 15px; margin-bottom: 15px;}
     
-    /* 极稳的图库头像 */
     .profile-info-top img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 1px solid #eee; }
     .profile-text h2 { font-size: 20px; font-weight: 600; display: flex; align-items: center; gap: 5px;}
     .profile-text p { font-size: 14px; color: #666; margin-top: 5px;}
@@ -302,6 +301,11 @@
     .section-title { font-size: 18px; font-weight: bold; padding: 15px; background: #fff;}
     .empty-state { text-align: center; padding: 40px 0; color: #999; font-size: 14px; background: #fff; margin-bottom: 20px;}
     .refresh-btn { float: right; font-size: 13px; color: #666; font-weight: normal;}
+    
+    /* 时间切换按钮 */
+    .time-tabs { display: flex; padding: 15px; background: #fff; gap: 10px; overflow-x: auto; white-space: nowrap; border-bottom: 1px solid #eee; }
+    .time-tabs div { padding: 8px 18px; border-radius: 20px; background: #f5f5f5; font-size: 14px; color: #666; cursor: pointer; }
+    .time-tabs div.active { background: #ffeeee; color: #ff3b30; font-weight: bold; }
   </style>
 </head>
 <body>
@@ -827,7 +831,6 @@
         </div>
         <div class="chart-wrapper">
            <div class="grid-line" style="top: 20%;"></div><div class="grid-line" style="top: 40%;"></div><div class="grid-line" style="top: 60%;"></div><div class="grid-line" style="top: 80%;"></div>
-           <!-- Y轴数字加上 data-key -->
            <div class="y-axis">
              <div contenteditable="false" data-key="p_y1">20000.00</div><div contenteditable="false" data-key="p_y2">10000.00</div>
              <div contenteditable="false" data-key="p_y3">0.00</div><div contenteditable="false" data-key="p_y4">-10000.00</div>
@@ -844,7 +847,6 @@
           </svg>
           <div class="chart-tag tag-red" style="top: 15%; left: 40%;" contenteditable="false" data-key="p_tag1">最高收益 19103.48元</div>
           <div class="chart-tag tag-green" style="bottom: 15%; right: 5%;" contenteditable="false" data-key="p_tag2">最低收益 -4572.76元</div>
-          <!-- X轴日期加上 data-key -->
           <div class="x-axis"><div contenteditable="false" data-key="p_x1">2026-10-31</div><div contenteditable="false" data-key="p_x2">2026-11-24</div></div>
         </div>
       </div>
@@ -869,6 +871,7 @@
       </div>
       <div class="section-title">资产变动</div>
       
+      <!-- 加上了资产变动的时间切换按钮 -->
       <div class="time-tabs">
         <div class="active" onclick="switchHoldingTime('hold-month', this)">本月</div>
         <div onclick="switchHoldingTime('hold-1month', this)">近一月</div>
