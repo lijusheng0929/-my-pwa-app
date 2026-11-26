@@ -760,7 +760,7 @@
         </div>
       </div>
 
-     <!-- 2. 收益月历视图（包含12月） -->
+     <!-- 2. 收益月历视图（包含12月，文字全部可改） -->
       <div id="view-monthly" style="display: none;">
         <div class="cal-header" style="padding: 15px; margin-bottom: 0; border-bottom: none;">
           <div class="month-select">
@@ -770,54 +770,31 @@
           <div style="color: #666; font-size: 13px;">筛选 ▼</div>
         </div>
         <div class="monthly-grid">
-          <div class="m-card bg-grey"><h4 contenteditable="false">1月</h4><p contenteditable="false">0.00</p></div>
-          <div class="m-card bg-grey"><h4 contenteditable="false">2月</h4><p contenteditable="false">0.00</p></div>
-          <div class="m-card bg-green"><h4 contenteditable="false">3月</h4><p contenteditable="false">-394.83</p></div>
-          <div class="m-card bg-red"><h4 contenteditable="false">4月</h4><p contenteditable="false">5340.53</p></div>
-          <div class="m-card bg-green"><h4 contenteditable="false">5月</h4><p contenteditable="false">-7720.60</p></div>
-          <div class="m-card bg-red"><h4 contenteditable="false">6月</h4><p contenteditable="false">6010.42</p><div class="rate" contenteditable="false">1.52%</div></div>
-          <div class="m-card bg-green"><h4 contenteditable="false">7月</h4><p contenteditable="false">-51862.89</p><div class="rate" contenteditable="false">-12.78%</div></div>
-          <div class="m-card bg-red"><h4 contenteditable="false">8月</h4><p contenteditable="false">12041.28</p><div class="rate" contenteditable="false">3.31%</div></div>
-          <div class="m-card bg-green"><h4 contenteditable="false">9月</h4><p contenteditable="false">-16621.97</p><div class="rate" contenteditable="false">-4.42%</div></div>
-          <div class="m-card bg-green"><h4 contenteditable="false">10月</h4><p contenteditable="false">-28216.01</p><div class="rate" contenteditable="false">-7.64%</div></div>
-          <div class="m-card bg-blue"><h4 contenteditable="false">11月</h4><p contenteditable="false">-5813.03</p><div class="rate" contenteditable="false">-2.09%</div></div>
-          <div class="m-card bg-green"><h4 contenteditable="false">12月</h4><p contenteditable="false">-1200.00</p><div class="rate" contenteditable="false">-1.20%</div></div>
+          <div class="m-card bg-grey"><h4 contenteditable="false" data-key="m_1m_title">1月</h4><p contenteditable="false" data-key="m_1m_val">0.00</p></div>
+          <div class="m-card bg-grey"><h4 contenteditable="false" data-key="m_2m_title">2月</h4><p contenteditable="false" data-key="m_2m_val">0.00</p></div>
+          <div class="m-card bg-green"><h4 contenteditable="false" data-key="m_3m_title">3月</h4><p contenteditable="false" data-key="m_3m_val">-394.83</p></div>
+          <div class="m-card bg-red"><h4 contenteditable="false" data-key="m_4m_title">4月</h4><p contenteditable="false" data-key="m_4m_val">5340.53</p></div>
+          <div class="m-card bg-green"><h4 contenteditable="false" data-key="m_5m_title">5月</h4><p contenteditable="false" data-key="m_5m_val">-7720.60</p></div>
+          <div class="m-card bg-red"><h4 contenteditable="false" data-key="m_6m_title">6月</h4><p contenteditable="false" data-key="m_6m_val">6010.42</p><div class="rate" contenteditable="false" data-key="m_6m_rate">1.52%</div></div>
+          <div class="m-card bg-green"><h4 contenteditable="false" data-key="m_7m_title">7月</h4><p contenteditable="false" data-key="m_7m_val">-51862.89</p><div class="rate" contenteditable="false" data-key="m_7m_rate">-12.78%</div></div>
+          <div class="m-card bg-red"><h4 contenteditable="false" data-key="m_8m_title">8月</h4><p contenteditable="false" data-key="m_8m_val">12041.28</p><div class="rate" contenteditable="false" data-key="m_8m_rate">3.31%</div></div>
+          <div class="m-card bg-green"><h4 contenteditable="false" data-key="m_9m_title">9月</h4><p contenteditable="false" data-key="m_9m_val">-16621.97</p><div class="rate" contenteditable="false" data-key="m_9m_rate">-4.42%</div></div>
+          <div class="m-card bg-green"><h4 contenteditable="false" data-key="m_10m_title">10月</h4><p contenteditable="false" data-key="m_10m_val">-28216.01</p><div class="rate" contenteditable="false" data-key="m_10m_rate">-7.64%</div></div>
+          <div class="m-card bg-blue"><h4 contenteditable="false" data-key="m_11m_title">11月</h4><p contenteditable="false" data-key="m_11m_val">-5813.03</p><div class="rate" contenteditable="false" data-key="m_11m_rate">-2.09%</div></div>
+          <div class="m-card bg-green"><h4 contenteditable="false" data-key="m_12m_title">12月</h4><p contenteditable="false" data-key="m_12m_val">-1200.00</p><div class="rate" contenteditable="false" data-key="m_12m_rate">-1.20%</div></div>
         </div>
       </div>
 
-      <!-- 3. 收益年历视图 -->
+      <!-- 3. 收益年历视图（文字全部可改） -->
       <div id="view-yearly" style="display: none;">
         <div class="yearly-area" style="padding-bottom: 0;">
-          <div class="yearly-title" contenteditable="false">2024年-2026年</div>
+          <div class="yearly-title" contenteditable="false" data-key="yearly_title">2024年-2026年</div>
           <div class="yearly-grid">
-            <div class="yearly-card bg-grey"><h4 contenteditable="false">2024</h4><p contenteditable="false">0.00</p></div>
-            <div class="yearly-card bg-grey"><h4 contenteditable="false">2025</h4><p contenteditable="false">0.00</p></div>
-            <div class="yearly-card bg-green"><h4 contenteditable="false">2026</h4><p contenteditable="false">-87237.10</p><div class="rate" contenteditable="false">-20.97%</div></div>
+            <div class="yearly-card bg-grey"><h4 contenteditable="false" data-key="y_2024_title">2024</h4><p contenteditable="false" data-key="y_2024_val">0.00</p></div>
+            <div class="yearly-card bg-grey"><h4 contenteditable="false" data-key="y_2025_title">2025</h4><p contenteditable="false" data-key="y_2025_val">0.00</p></div>
+            <div class="yearly-card bg-green"><h4 contenteditable="false" data-key="y_2026_title">2026</h4><p contenteditable="false" data-key="y_2026_val">-87237.10</p><div class="rate" contenteditable="false" data-key="y_2026_rate">-20.97%</div></div>
           </div>
         </div>
-
-        <div style="background: #fff; padding: 15px; margin-top: 10px;">
-          <h3 style="font-size: 16px; margin-bottom: 15px;">收益明细</h3>
-          <div style="display: flex; gap: 10px; margin-bottom: 20px;">
-            <span style="background:#ffeeee; color:#ff3b30; padding:6px 15px; border-radius:15px; font-size:14px;">基金</span>
-            <span style="background:#f5f5f5; color:#666; padding:6px 15px; border-radius:15px; font-size:14px;">组合</span>
-          </div>
-          
-          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding-bottom: 10px; font-size: 13px; color: #666;">
-            <div>基金名称</div>
-            <div>收益 ▼</div>
-          </div>
-          
-          <div style="text-align: center; padding: 40px 0;">
-            <div style="width: 100px; height: 100px; background: #fdf6f6; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 10px; position: relative;">
-              <div style="width: 40px; height: 40px; background: #ffcccb; transform: rotate(45deg);"></div>
-              <span style="position: absolute; top: 20px; right: 20px; font-size: 20px; color: #ff3b30; font-weight: bold;">Z</span>
-              <span style="position: absolute; top: 40px; right: 35px; font-size: 16px; color: #ff3b30; font-weight: bold;">Z</span>
-            </div>
-            <div style="color: #999; font-size: 14px;">暂无收益记录</div>
-          </div>
-        </div>
-      </div>
 
       <!-- 图表走势 -->
       <div class="chart-box">
