@@ -187,7 +187,7 @@
     
     .ref-profit { background: #fdf6f6; margin: 0 15px; padding: 15px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; font-size: 14px;}
     .ref-profit .left { font-weight: bold; color: #333;}
-    .ref-profit .right { color: #ff3b30; font-weight: bold;} /* 已改为红色 */
+    .ref-profit .right { color: #ff3b30; font-weight: bold;} /* 红色 */
     
     .my-fund-tabs { display: flex; padding: 15px; gap: 20px; font-size: 16px; color: #666;}
     .my-fund-tabs span.active { color: #333; font-weight: bold;}
@@ -329,6 +329,7 @@
     .p6-bottom-bar { position: fixed; bottom: 0; left: 0; width: 100%; display: flex; background: #fff; border-top: 1px solid #eee; z-index: 99;}
     .p6-bottom-bar div { flex: 1; text-align: center; padding: 15px 0; font-size: 16px; color: #333; border-right: 1px solid #eee; }
     .p6-bottom-bar div:last-child { background: #ff3b30; color: #fff; font-weight: bold; border-right: none;}
+
   </style>
 </head>
 <body>
@@ -663,11 +664,11 @@
           <div style="font-size: 15px; font-weight: bold;" contenteditable="false" data-key="ada_name">安达精选指数基金</div>
           <div style="text-align: right;">
             <div style="font-size: 15px; font-weight: bold;" contenteditable="false" data-key="ada_val1">334,018.61</div>
-            <div style="font-size: 13px; color: #00a854;" contenteditable="false" data-key="ada_val2">-2,181.63</div>
+            <div style="font-size: 13px; color: #ff3b30;" contenteditable="false" data-key="ada_val2">-2,181.63</div>
           </div>
           <div style="text-align: right;">
-            <div style="font-size: 15px; font-weight: bold; color: #00a854;" contenteditable="false" data-key="ada_val3">-88,178.29</div>
-            <div style="font-size: 13px; color: #00a854;" contenteditable="false" data-key="ada_val4">-20.88%</div>
+            <div style="font-size: 15px; font-weight: bold; color: #ff3b30;" contenteditable="false" data-key="ada_val3">-88,178.29</div>
+            <div style="font-size: 13px; color: #ff3b30;" contenteditable="false" data-key="ada_val4">-20.88%</div>
           </div>
         </div>
         <div style="background: #f5f5f5; border-radius: 4px; padding: 10px; font-size: 12px; color: #666; text-align: center;" contenteditable="false" data-key="ada_desc">
@@ -750,6 +751,7 @@
           <div class="cal-grid">
             <div class="cal-day">日</div><div class="cal-day">一</div><div class="cal-day">二</div><div class="cal-day">三</div>
             <div class="cal-day">四</div><div class="cal-day">五</div><div class="cal-day">六</div>
+            <!-- 动态日历内容由 JS 渲染 -->
             <div id="calendarDays" style="display: contents;"></div>
           </div>
         </div>
@@ -764,18 +766,18 @@
           <div style="color: #666; font-size: 13px;">筛选 ▼</div>
         </div>
         <div class="monthly-grid">
-          <div class="m-card bg-grey"><h4 contenteditable="false" data-key="m_1m_title">1月</h4><p contenteditable="false" data-key="m_1m_val" style="color: #999;">0.00</p></div>
-          <div class="m-card bg-grey"><h4 contenteditable="false" data-key="m_2m_title">2月</h4><p contenteditable="false" data-key="m_2m_val" style="color: #999;">0.00</p></div>
+          <div class="m-card bg-red"><h4 contenteditable="false" data-key="m_1m_title">1月</h4><p contenteditable="false" data-key="m_1m_val" style="color: #ff3b30;">0.00</p></div>
+          <div class="m-card bg-red"><h4 contenteditable="false" data-key="m_2m_title">2月</h4><p contenteditable="false" data-key="m_2m_val" style="color: #ff3b30;">0.00</p></div>
           <div class="m-card bg-green"><h4 contenteditable="false" data-key="m_3m_title">3月</h4><p contenteditable="false" data-key="m_3m_val" style="color: #00a854;">-394.83</p></div>
           <div class="m-card bg-red"><h4 contenteditable="false" data-key="m_4m_title">4月</h4><p contenteditable="false" data-key="m_4m_val" style="color: #ff3b30;">5340.53</p></div>
           <div class="m-card bg-green"><h4 contenteditable="false" data-key="m_5m_title">5月</h4><p contenteditable="false" data-key="m_5m_val" style="color: #00a854;">-7720.60</p></div>
           <div class="m-card bg-red"><h4 contenteditable="false" data-key="m_6m_title">6月</h4><p contenteditable="false" data-key="m_6m_val" style="color: #ff3b30;">6010.42</p><div class="rate" contenteditable="false" data-key="m_6m_rate" style="color: #ff3b30;">1.52%</div></div>
           <div class="m-card bg-green"><h4 contenteditable="false" data-key="m_7m_title">7月</h4><p contenteditable="false" data-key="m_7m_val" style="color: #00a854;">-51862.89</p><div class="rate" contenteditable="false" data-key="m_7m_rate" style="color: #00a854;">-12.78%</div></div>
           <div class="m-card bg-red"><h4 contenteditable="false" data-key="m_8m_title">8月</h4><p contenteditable="false" data-key="m_8m_val" style="color: #ff3b30;">12041.28</p><div class="rate" contenteditable="false" data-key="m_8m_rate" style="color: #ff3b30;">3.31%</div></div>
-          <div class="m-card bg-green"><h4 contenteditable="false" data-key="m_9m_title">9月</h4><p contenteditable="false" data-key="m_9m_val" style="color: #00a854;">-16621.97</p><div class="rate" contenteditable="false" data-key="m_9m_rate" style="color: #00a854;">-4.42%</div></div>
-          <div class="m-card bg-red"><h4 contenteditable="false" data-key="m_10m_title">10月</h4><p contenteditable="false" data-key="m_10m_val" style="color: #00a854;">-28216.01</p><div class="rate" contenteditable="false" data-key="m_10m_rate" style="color: #00a854;">-7.64%</div></div>
-          <div class="m-card bg-red"><h4 contenteditable="false" data-key="m_11m_title">11月</h4><p contenteditable="false" data-key="m_11m_val" style="color: #fff;">-5813.03</p><div class="rate" contenteditable="false" data-key="m_11m_rate" style="color: #fff;">-2.09%</div></div>
-          <div class="m-card bg-red"><h4 contenteditable="false" data-key="m_12m_title">12月</h4><p contenteditable="false" data-key="m_12m_val" style="color: #00a854;">-1200.00</p><div class="rate" contenteditable="false" data-key="m_12m_rate" style="color: #00a854;">-1.20%</div></div>
+          <div class="m-card bg-red"><h4 contenteditable="false" data-key="m_9m_title">9月</h4><p contenteditable="false" data-key="m_9m_val" style="color: #ff3b30;">-16621.97</p><div class="rate" contenteditable="false" data-key="m_9m_rate" style="color: #ff3b30;">-4.42%</div></div>
+          <div class="m-card bg-green"><h4 contenteditable="false" data-key="m_10m_title">10月</h4><p contenteditable="false" data-key="m_10m_val" style="color: #00a854;">-28216.01</p><div class="rate" contenteditable="false" data-key="m_10m_rate" style="color: #00a854;">-7.64%</div></div>
+          <div class="m-card bg-red"><h4 contenteditable="false" data-key="m_11m_title">11月</h4><p contenteditable="false" data-key="m_11m_val" style="color: #ff3b30;">-5813.03</p><div class="rate" contenteditable="false" data-key="m_11m_rate" style="color: #ff3b30;">-2.09%</div></div>
+          <div class="m-card bg-red"><h4 contenteditable="false" data-key="m_12m_title">12月</h4><p contenteditable="false" data-key="m_12m_val" style="color: #ff3b30;">-1200.00</p><div class="rate" contenteditable="false" data-key="m_12m_rate" style="color: #ff3b30;">-1.20%</div></div>
         </div>
       </div>
 
@@ -785,7 +787,7 @@
           <div class="yearly-grid">
             <div class="yearly-card bg-grey"><h4 contenteditable="false" data-key="y_2024_title">2024</h4><p contenteditable="false" data-key="y_2024_val" style="color: #999;">0.00</p></div>
             <div class="yearly-card bg-grey"><h4 contenteditable="false" data-key="y_2025_title">2025</h4><p contenteditable="false" data-key="y_2025_val" style="color: #999;">0.00</p></div>
-            <div class="yearly-card bg-red"><h4 contenteditable="false" data-key="y_2026_title">2026</h4><p contenteditable="false" data-key="y_2026_val" style="color: #00a854;">-87237.10</p><div class="rate" contenteditable="false" data-key="y_2026_rate" style="color: #00a854;">-20.97%</div></div>
+            <div class="yearly-card bg-red"><h4 contenteditable="false" data-key="y_2026_title">2026</h4><p contenteditable="false" data-key="y_2026_val" style="color: #ff3b30;">-87237.10</p><div class="rate" contenteditable="false" data-key="y_2026_rate" style="color: #ff3b30;">-20.97%</div></div>
           </div>
         </div>
 
@@ -864,11 +866,11 @@
         </div>
         <div class="col">
           <p>累计收益(元)</p>
-          <div class="val" style="color: #00a854;" contenteditable="false" data-key="p6_profit">-82701.34</div>
+          <div class="val" style="color: #ff3b30;" contenteditable="false" data-key="p6_profit">-82701.34</div>
         </div>
         <div class="col">
           <p>累计收益率</p>
-          <div class="val" style="color: #00a854;" contenteditable="false" data-key="p6_rate">-19.58%</div>
+          <div class="val" style="color: #ff3b30;" contenteditable="false" data-key="p6_rate">-19.58%</div>
         </div>
       </div>
       
@@ -896,15 +898,13 @@
       <h3>累计收益</h3>
       <div style="display: flex; gap: 10px; font-size: 13px; margin-bottom: 15px;">
         <span>2026-11-27</span>
-        <span style="color: #666;"><span style="color:#ff3b30;">●</span> 累计收益 <span style="color:#00a854;" contenteditable="false" data-key="p6_chart_val">-82701.34</span></span>
+        <span style="color: #666;"><span style="color:#ff3b30;">●</span> 累计收益 <span style="color:#ff3b30;" contenteditable="false" data-key="p6_chart_val">-82701.34</span></span>
       </div>
       <div class="p6-chart-wrapper">
         <div class="p6-y-axis">
-          <div contenteditable="false" data-key="p6_y1">-60000.00</div>
-<div contenteditable="false" data-key="p6_y2">-70000.00</div>
-<div contenteditable="false" data-key="p6_y3">-80000.00</div>
-<div contenteditable="false" data-key="p6_y4">-90000.00</div>
-<div contenteditable="false" data-key="p6_y5">-100000.00</div>
+          <div contenteditable="false" data-key="p6_y1">-60000.00</div><div contenteditable="false" data-key="p6_y2">-70000.00</div>
+          <div contenteditable="false" data-key="p6_y3">-80000.00</div><div contenteditable="false" data-key="p6_y4">-90000.00</div>
+          <div contenteditable="false" data-key="p6_y5">-100000.00</div>
         </div>
         <svg class="p6-chart-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
           <defs>
@@ -916,7 +916,11 @@
         <div class="p6-x-axis"><div contenteditable="false">2026-10-27</div><div contenteditable="false">2026-11-27</div></div>
       </div>
       <div class="p6-time-tabs">
-        <div class="active">近一月</div><div>近三月</div><div>近六月</div><div>近一年</div><div>近三年</div>
+        <div class="active" contenteditable="false" data-key="p6_tab1">近一月</div>
+        <div contenteditable="false" data-key="p6_tab2">近三月</div>
+        <div contenteditable="false" data-key="p6_tab3">近六月</div>
+        <div contenteditable="false" data-key="p6_tab4">近一年</div>
+        <div contenteditable="false" data-key="p6_tab5">近三年</div>
       </div>
     </div>
 
@@ -945,37 +949,37 @@
       <div class="p6-fund-item">
         <div class="left"><h4 contenteditable="false" data-key="p6_f1_name">国金惠诚A</h4><p contenteditable="false" data-key="p6_f1_code">010249</p></div>
         <div class="mid"><h4 contenteditable="false" data-key="p6_f1_amt" style="color: #ff3b30;">77,950.23元</h4></div>
-        <div class="right" contenteditable="false" data-key="p6_f1_rate" style="color: #00a854;">-5.05% ⌄</div>
+        <div class="right" contenteditable="false" data-key="p6_f1_rate" style="color: #ff3b30;">-5.05% ⌄</div>
       </div>
       
       <div class="p6-fund-item">
         <div class="left"><h4 contenteditable="false" data-key="p6_f2_name">光大保德信国证机器人产业指数发起式C</h4><p contenteditable="false" data-key="p6_f2_code">025318</p></div>
         <div class="mid"><h4 contenteditable="false" data-key="p6_f2_amt" style="color: #ff3b30;">62,059.54元</h4></div>
-        <div class="right" contenteditable="false" data-key="p6_f2_rate" style="color: #00a854;">-23.11% ⌄</div>
+        <div class="right" contenteditable="false" data-key="p6_f2_rate" style="color: #ff3b30;">-23.11% ⌄</div>
       </div>
 
       <div class="p6-fund-item">
         <div class="left"><h4 contenteditable="false" data-key="p6_f3_name">天弘中证光伏C</h4><p contenteditable="false" data-key="p6_f3_code">011103</p></div>
         <div class="mid"><h4 contenteditable="false" data-key="p6_f3_amt" style="color: #ff3b30;">56,647.58元</h4></div>
-        <div class="right" contenteditable="false" data-key="p6_f3_rate" style="color: #00a854;">-38.13% ⌄</div>
+        <div class="right" contenteditable="false" data-key="p6_f3_rate" style="color: #ff3b30;">-38.13% ⌄</div>
       </div>
 
       <div class="p6-fund-item">
         <div class="left"><h4 contenteditable="false" data-key="p6_f4_name">国金中证A500指数增强A</h4><p contenteditable="false" data-key="p6_f4_code">022485</p></div>
         <div class="mid"><h4 contenteditable="false" data-key="p6_f4_amt" style="color: #ff3b30;">43,783.80元</h4></div>
-        <div class="right" contenteditable="false" data-key="p6_f4_rate" style="color: #00a854;">-20.90% ⌄</div>
+        <div class="right" contenteditable="false" data-key="p6_f4_rate" style="color: #ff3b30;">-20.90% ⌄</div>
       </div>
 
       <div class="p6-fund-item">
         <div class="left"><h4 contenteditable="false" data-key="p6_f5_name">华安沪深300ETF联接C</h4><p contenteditable="false" data-key="p6_f5_code">008777</p></div>
         <div class="mid"><h4 contenteditable="false" data-key="p6_f5_amt" style="color: #ff3b30;">36,202.71元</h4></div>
-        <div class="right" contenteditable="false" data-key="p6_f5_rate" style="color: #00a854;">-16.04% ⌄</div>
+        <div class="right" contenteditable="false" data-key="p6_f5_rate" style="color: #ff3b30;">-16.04% ⌄</div>
       </div>
 
       <div class="p6-fund-item">
         <div class="left"><h4 contenteditable="false" data-key="p6_f6_name">国金中证1000指数增强A</h4><p contenteditable="false" data-key="p6_f6_code">017846</p></div>
         <div class="mid"><h4 contenteditable="false" data-key="p6_f6_amt" style="color: #ff3b30;">34,304.36元</h4></div>
-        <div class="right" contenteditable="false" data-key="p6_f6_rate" style="color: #00a854;">-31.33% ⌄</div>
+        <div class="right" contenteditable="false" data-key="p6_f6_rate" style="color: #ff3b30;">-31.33% ⌄</div>
       </div>
 
       <div class="p6-fund-item">
@@ -1029,7 +1033,6 @@
 
     function renderCalendar() {
       document.querySelector('[data-key="cal_month_str"]').innerText = `2026年${currentMonth}月`;
-      
       const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
       const totalDays = daysInMonth[currentMonth - 1];
       const offset = (currentMonth - 1) * 3 % 7; 
@@ -1038,29 +1041,41 @@
       for(let i = 0; i < offset; i++) { html += `<div class="cal-item empty"></div>`; }
       
       for(let i = 1; i <= totalDays; i++) {
-        let isActive = (currentMonth === 11 && i === 24) ? 'active' : '';
-        let stateClass = '';
+        let dayOfWeek = (offset + i - 1) % 7;
+        let isWeekend = (dayOfWeek === 0 || dayOfWeek === 6);
+        let stateClass = 'zero';
         let displayVal = '0';
         let key = `m${currentMonth}_d${i}`;
         
-        if(currentMonth === 11) {
-          if(i===2) { stateClass='profit'; displayVal='4713.41'; }
-          if(i===3) { stateClass='loss'; displayVal='-2398.99'; }
-          if(i===24) { stateClass='active'; displayVal='1307.60'; }
+        if (isWeekend) {
+          stateClass = 'zero'; displayVal = '0';
         } else {
-          if(i % 3 === 0) { stateClass='profit'; displayVal='120.50'; }
-          else if(i % 5 === 0) { stateClass='loss'; displayVal='-88.20'; }
+          if(currentMonth === 11) {
+            if(i===2 || i===5) { stateClass='profit'; displayVal='4713.41'; }
+            if(i===3 || i===6) { stateClass='loss'; displayVal='-2398.99'; }
+            if(i===24) { stateClass='active'; displayVal='1307.60'; }
+            else if(i % 2 === 0) { stateClass='profit'; displayVal='+' + (Math.floor(Math.random()*5000)+100); }
+            else { stateClass='loss'; displayVal='-' + (Math.floor(Math.random()*3000)+100); }
+          } else if (currentMonth === 7) {
+            stateClass = i % 3 === 0 ? 'loss' : 'profit'; displayVal = stateClass === 'loss' ? '-120.50' : '+340.20';
+          } else if (currentMonth === 8) {
+            stateClass = i < 6 ? 'loss' : 'profit'; displayVal = stateClass === 'loss' ? '-120.50' : '+340.20';
+          } else if ([9, 10].includes(currentMonth)) {
+            stateClass = i % 4 === 0 ? 'loss' : 'profit'; displayVal = stateClass === 'loss' ? '-120.50' : '+340.20';
+          } else {
+            if(i % 3 === 0) { stateClass='profit'; displayVal='120.50'; }
+            else if(i % 5 === 0) { stateClass='loss'; displayVal='-88.20'; }
+          }
         }
 
         html += `
-          <div class="cal-item ${isActive} ${stateClass} ${displayVal==='0'?'zero':''}">
+          <div class="cal-item ${stateClass}">
             <div class="d" contenteditable="false" data-key="${key}_d">${i}</div>
             <div class="v" contenteditable="false" data-key="${key}_v">${displayVal}</div>
           </div>
         `;
       }
       document.getElementById('calendarDays').innerHTML = html;
-      
       if(isEditing) {
         document.querySelectorAll('#calendarDays [data-key]').forEach(el => el.setAttribute('contenteditable', 'true'));
       }
