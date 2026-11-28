@@ -1044,55 +1044,74 @@
     const maxMonth = 12;
     const minMonth = 1;
 
-   function renderCalendar() {
+  function renderCalendar() {
       document.querySelector('[data-key="cal_month_str"]').innerText = `2026年${currentMonth}月`;
       const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
       const totalDays = daysInMonth[currentMonth - 1];
-      const offset = (currentMonth - 1) * 3 % 7; 
+      
+      // 计算1号是星期几 (2026年1月1日是周四)
+      const firstDay = new Date(2026, currentMonth - 1, 1).getDay(); 
       
       let html = '';
-      for(let i = 0; i < offset; i++) { html += `<div class="cal-item empty"></div>`; }
+      for(let i = 0; i < firstDay; i++) { html += `<div class="cal-item empty"></div>`; }
       
+      // 为每个月生成一套“有涨有跌”的真实数据
+      let workingDayCount = 0;
+      let tempDays = []; 
+
       for(let i = 1; i <= totalDays; i++) {
-        let dayOfWeek = (offset + i - 1) % 7;
+        let dayOfWeek = (firstDay + i - 1) % 7;
         let isWeekend = (dayOfWeek === 0 || dayOfWeek === 6);
         let stateClass = 'zero';
         let displayVal = '0';
         let key = `m${currentMonth}_d${i}`;
         
-        if (isWeekend) {
+        if (isWeekend || [1, 2].includes(currentMonth)) {
           stateClass = 'zero'; displayVal = '0';
         } else {
+          workingDayCount++;
           if(currentMonth === 11) {
-            if(i===2) { stateClass='profit'; displayVal='4713.41'; }
+            if(i===2) { stateClass='profit'; displayVal='+4713.41'; }
             else if(i===3) { stateClass='loss'; displayVal='-2398.99'; }
-            else if(i===24) { stateClass='active'; displayVal='1307.60'; }
-            else if(i % 2 === 0) { stateClass='profit'; displayVal='+' + (Math.floor(Math.random()*1500)+800); }
-            else { stateClass='profit'; displayVal='+' + (Math.floor(Math.random()*800)+200); } 
+            else if(i===24) { stateClass='active'; displayVal='+1307.60'; }
+            else {
+              // 11月：一多半红，一小半绿，生成不重复的随机数
+              if (workingDayCount % 3 === 0) {
+                stateClass='loss'; displayVal= `-${(Math.floor(Math.random()*800)+200).toFixed(2)}`;
+              } else {
+                stateClass='profit'; displayVal= `+${(Math.floor(Math.random()*1500)+400).toFixed(2)}`;
+              }
+            }
           } else if (currentMonth === 7) {
-            stateClass = i % 3 === 0 ? 'loss' : 'profit'; displayVal = stateClass === 'loss' ? '-120.50' : '+340.20';
+            // 7月：一半红一半绿
+            if (workingDayCount % 2 === 0) { stateClass='loss'; displayVal= `-${(Math.floor(Math.random()*300)+100).toFixed(2)}`; }
+            else { stateClass='profit'; displayVal= `+${(Math.floor(Math.random()*400)+200).toFixed(2)}`; }
           } else if (currentMonth === 8) {
-            stateClass = i < 6 ? 'loss' : 'profit'; displayVal = stateClass === 'loss' ? '-120.50' : '+340.20';
-          } else if (currentMonth === 9) {
-            stateClass='profit'; displayVal='+' + (Math.floor(Math.random()*1000)+500); 
-          } else if (currentMonth === 10) {
-            stateClass='profit'; displayVal='+' + (Math.floor(Math.random()*1100)+500); 
-          } else if ([1, 2].includes(currentMonth)) {
-             stateClass = 'zero'; displayVal = '0';
+            // 8月：前6个工作日绿，其余红
+            if (workingDayCount <= 6) { stateClass='loss'; displayVal= `-${(Math.floor(Math.random()*300)+100).toFixed(2)}`; }
+            else { stateClass='profit'; displayVal= `+${(Math.floor(Math.random()*400)+200).toFixed(2)}`; }
+          } else if ([9, 10].includes(currentMonth)) {
+            // 9月10月：一多半红，一小半绿
+            if (workingDayCount % 3 === 0) { stateClass='loss'; displayVal= `-${(Math.floor(Math.random()*500)+100).toFixed(2)}`; }
+            else { stateClass='profit'; displayVal= `+${(Math.floor(Math.random()*900)+300).toFixed(2)}`; }
           } else {
-            if(i % 3 === 0) { stateClass='profit'; displayVal='120.50'; }
+            // 其它月份常规波动
+            if(i % 3 === 0) { stateClass='profit'; displayVal='+120.50'; }
             else if(i % 5 === 0) { stateClass='loss'; displayVal='-88.20'; }
           }
         }
 
-        html += `
+        tempDays.push(`
           <div class="cal-item ${stateClass}">
             <div class="d" contenteditable="false" data-key="${key}_d">${i}</div>
             <div class="v" contenteditable="false" data-key="${key}_v">${displayVal}</div>
           </div>
-        `;
+        `);
       }
+      
+      html += tempDays.join('');
       document.getElementById('calendarDays').innerHTML = html;
+      
       if(isEditing) {
         document.querySelectorAll('#calendarDays [data-key]').forEach(el => el.setAttribute('contenteditable', 'true'));
       }
